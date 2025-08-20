@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Automation Scripts - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card bg-dark text-white sticky-top">
+                    <div class="card-header">
+                        <h5><i class="fas fa-list"></i> Course Navigation</h5>
+                    </div>
+                    <div class="card-body">
+                        <nav class="nav flex-column">
+                            <a class="nav-link text-success" href="#introduction">Introduction</a>
+                            <a class="nav-link text-success" href="#basics">Automation Basics</a>
+                            <a class="nav-link text-success" href="#file-operations">File Operations</a>
+                            <a class="nav-link text-success" href="#network-automation">Network Automation</a>
+                            <a class="nav-link text-success" href="#security-automation">Security Automation</a>
+                            <a class="nav-link text-success" href="#examples">Practical Examples</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <div class="card bg-dark text-white">
+                    <div class="card-header">
+                        <h1 class="text-success">
+                            <i class="fas fa-robot"></i> Python Automation Scripts
+                        </h1>
+                        <p class="mb-0">Automate security tasks and penetration testing with Python</p>
+                    </div>
+                    <div class="card-body">
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to Automation</h2>
+                            <p>Python automation allows security professionals to streamline repetitive tasks, perform bulk operations, and create efficient workflows for penetration testing and security assessments.</p>
+                            
+                            <h3 class="text-success mt-4">Benefits of Automation</h3>
+                            <ul>
+                                <li>Save time on repetitive tasks</li>
+                                <li>Reduce human error</li>
+                                <li>Scale security operations</li>
+                                <li>Consistent execution</li>
+                                <li>24/7 monitoring capabilities</li>
+                            </ul>
+                        </section>
+
+                        <section id="basics" class="mt-5">
+                            <h2 class="text-success">Automation Basics</h2>
+                            <p>Essential Python modules and concepts for automation:</p>
+                            
+                            <div class="terminal">
+# Essential imports
+import os
+import sys
+import subprocess
+import time
+import schedule
+import threading
+from pathlib import Path
+
+# File operations
+import shutil
+import glob
+
+# Network operations
+import requests
+import socket
+
+# Data processing
+import json
+import csv
+import xml.etree.ElementTree as ET
+                            </div>
+                        </section>
+
+                        <section id="file-operations" class="mt-5">
+                            <h2 class="text-success">File Operations Automation</h2>
+                            
+                            <h3 class="text-success mt-4">File Management</h3>
+                            <div class="terminal">
+import os
+import shutil
+from pathlib import Path
+
+def organize_files_by_extension(directory):
+    """Organize files in directory by extension"""
+    path = Path(directory)
+    
+    for file in path.iterdir():
+        if file.is_file():
+            extension = file.suffix.lower()
+            if extension:
+                # Create directory for extension
+                ext_dir = path / extension[1:]  # Remove the dot
+                ext_dir.mkdir(exist_ok=True)
+                
+                # Move file to extension directory
+                shutil.move(str(file), str(ext_dir / file.name))
+
+def backup_important_files(source_dir, backup_dir):
+    """Backup files with specific extensions"""
+    important_extensions = ['.py', '.txt', '.md', '.json', '.xml']
+    
+    backup_path = Path(backup_dir)
+    backup_path.mkdir(exist_ok=True)
+    
+    for ext in important_extensions:
+        files = Path(source_dir).glob(f'**/*{ext}')
+        for file in files:
+            dest = backup_path / file.name
+            shutil.copy2(file, dest)
+            print(f"Backed up: {file.name}")
+
+# Usage
+organize_files_by_extension("/path/to/downloads")
+backup_important_files("/home/user/projects", "/backup/projects")
+                            </div>
+
+                            <h3 class="text-success mt-4">Log Analysis</h3>
+                            <div class="terminal">
+import re
+from collections import Counter
+
+def analyze_access_logs(log_file):
+    """Analyze web server access logs"""
+    ip_pattern = r'^(\d+\.\d+\.\d+\.\d+)'
+    status_pattern = r'" (\d{3}) '
+    
+    ips = []
+    status_codes = []
+    
+    with open(log_file, 'r') as f:
+        for line in f:
+            # Extract IP addresses
+            ip_match = re.search(ip_pattern, line)
+            if ip_match:
+                ips.append(ip_match.group(1))
+            
+            # Extract status codes
+            status_match = re.search(status_pattern, line)
+            if status_match:
+                status_codes.append(status_match.group(1))
+    
+    # Count occurrences
+    ip_counts = Counter(ips)
+    status_counts = Counter(status_codes)
+    
+    print("Top 10 IP addresses:")
+    for ip, count in ip_counts.most_common(10):
+        print(f"{ip}: {count}")
+    
+    print("\nStatus code distribution:")
+    for status, count in status_counts.items():
+        print(f"{status}: {count}")
+
+# Usage
+analyze_access_logs("/var/log/apache2/access.log")
+                            </div>
+                        </section>
+
+                        <section id="network-automation" class="mt-5">
+                            <h2 class="text-success">Network Automation</h2>
+                            
+                            <h3 class="text-success mt-4">Port Scanner</h3>
+                            <div class="terminal">
+import socket
+import threading
+from datetime import datetime
+
+class PortScanner:
+    def __init__(self, target, threads=100):
+        self.target = target
+        self.threads = threads
+        self.open_ports = []
+        self.lock = threading.Lock()
+    
+    def scan_port(self, port):
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(1)
+            result = sock.connect_ex((self.target, port))
+            
+            if result == 0:
+                with self.lock:
+                    self.open_ports.append(port)
+                    print(f"Port {port}: Open")
+            
+            sock.close()
+        except:
+            pass
+    
+    def scan_range(self, start_port, end_port):
+        print(f"Scanning {self.target} from port {start_port} to {end_port}")
+        start_time = datetime.now()
+        
+        threads = []
+        for port in range(start_port, end_port + 1):
+            thread = threading.Thread(target=self.scan_port, args=(port,))
+            threads.append(thread)
+            thread.start()
+            
+            # Limit concurrent threads
+            if len(threads) >= self.threads:
+                for t in threads:
+                    t.join()
+                threads = []
+        
+        # Wait for remaining threads
+        for t in threads:
+            t.join()
+        
+        end_time = datetime.now()
+        print(f"Scan completed in {end_time - start_time}")
+        return self.open_ports
+
+# Usage
+scanner = PortScanner("192.168.1.1")
+open_ports = scanner.scan_range(1, 1000)
+                            </div>
+
+                            <h3 class="text-success mt-4">Website Monitor</h3>
+                            <div class="terminal">
+import requests
+import time
+import smtplib
+from email.mime.text import MIMEText
+
+class WebsiteMonitor:
+    def __init__(self, urls, check_interval=300):
+        self.urls = urls
+        self.check_interval = check_interval
+        self.status_history = {}
+    
+    def check_website(self, url):
+        try:
+            response = requests.get(url, timeout=10)
+            status = {
+                'url': url,
+                'status_code': response.status_code,
+                'response_time': response.elapsed.total_seconds(),
+                'timestamp': time.time(),
+                'available': response.status_code == 200
+            }
+            return status
+        except Exception as e:
+            return {
+                'url': url,
+                'status_code': None,
+                'response_time': None,
+                'timestamp': time.time(),
+                'available': False,
+                'error': str(e)
+            }
+    
+    def send_alert(self, message):
+        # Configure email settings
+        smtp_server = "smtp.gmail.com"
+        smtp_port = 587
+        email = "your_email@gmail.com"
+        password = "your_password"
+        
+        msg = MIMEText(message)
+        msg['Subject'] = "Website Alert"
+        msg['From'] = email
+        msg['To'] = "admin@company.com"
+        
+        try:
+            server = smtplib.SMTP(smtp_server, smtp_port)
+            server.starttls()
+            server.login(email, password)
+            server.send_message(msg)
+            server.quit()
+        except Exception as e:
+            print(f"Failed to send email: {e}")
+    
+    def monitor(self):
+        while True:
+            for url in self.urls:
+                status = self.check_website(url)
+                
+                if not status['available']:
+                    message = f"Website {url} is down! Error: {status.get('error', 'Unknown')}"
+                    print(message)
+                    self.send_alert(message)
+                else:
+                    print(f"{url} is up (Response time: {status['response_time']:.2f}s)")
+            
+            time.sleep(self.check_interval)
+
+# Usage
+urls = ["https://example.com", "https://google.com"]
+monitor = WebsiteMonitor(urls, check_interval=60)
+# monitor.monitor()  # Uncomment to start monitoring
+                            </div>
+                        </section>
+
+                        <section id="security-automation" class="mt-5">
+                            <h2 class="text-success">Security Automation</h2>
+                            
+                            <h3 class="text-success mt-4">Vulnerability Scanner</h3>
+                            <div class="terminal">
+import requests
+import threading
+from urllib.parse import urljoin, urlparse
+
+class WebVulnScanner:
+    def __init__(self, target_url):
+        self.target_url = target_url
+        self.vulnerabilities = []
+        
+    def test_sql_injection(self, url):
+        """Test for SQL injection vulnerabilities"""
+        sql_payloads = [
+            "' OR '1'='1",
+            "' OR '1'='1' --",
+            "' OR '1'='1' /*",
+            "admin'--",
+            "admin' #",
+            "' UNION SELECT NULL--"
+        ]
+        
+        for payload in sql_payloads:
+            try:
+                response = requests.get(url, params={'id': payload}, timeout=5)
+                if any(error in response.text.lower() for error in 
+                      ['sql syntax', 'mysql_fetch', 'ora-', 'microsoft odbc']):
+                    self.vulnerabilities.append({
+                        'type': 'SQL Injection',
+                        'url': url,
+                        'payload': payload,
+                        'severity': 'High'
+                    })
+            except:
+                pass
+    
+    def test_xss(self, url):
+        """Test for XSS vulnerabilities"""
+        xss_payloads = [
+            "<script>alert('XSS')</script>",
+            "javascript:alert('XSS')",
+            "<img src=x onerror=alert('XSS')>",
+            "';alert('XSS');//"
+        ]
+        
+        for payload in xss_payloads:
+            try:
+                response = requests.get(url, params={'q': payload}, timeout=5)
+                if payload in response.text:
+                    self.vulnerabilities.append({
+                        'type': 'Cross-Site Scripting (XSS)',
+                        'url': url,
+                        'payload': payload,
+                        'severity': 'Medium'
+                    })
+            except:
+                pass
+    
+    def scan(self):
+        """Run vulnerability scan"""
+        print(f"Scanning {self.target_url} for vulnerabilities...")
+        
+        # Test different endpoints
+        endpoints = ['/', '/login', '/search', '/admin', '/user']
+        
+        for endpoint in endpoints:
+            full_url = urljoin(self.target_url, endpoint)
+            self.test_sql_injection(full_url)
+            self.test_xss(full_url)
+        
+        return self.vulnerabilities
+
+# Usage
+scanner = WebVulnScanner("http://testphp.vulnweb.com")
+vulnerabilities = scanner.scan()
+
+for vuln in vulnerabilities:
+    print(f"Found {vuln['type']} at {vuln['url']}")
+                            </div>
+                        </section>
+
+                        <section id="examples" class="mt-5">
+                            <h2 class="text-success">Practical Examples</h2>
+                            
+                            <h3 class="text-success mt-4">Automated Backup Script</h3>
+                            <div class="terminal">
+import os
+import shutil
+import schedule
+import time
+from datetime import datetime
+
+def create_backup():
+    """Create automated backup of important directories"""
+    source_dirs = [
+        "/home/user/Documents",
+        "/home/user/Scripts",
+        "/etc"
+    ]
+    
+    backup_base = "/backup"
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    for source in source_dirs:
+        if os.path.exists(source):
+            dir_name = os.path.basename(source)
+            backup_dir = f"{backup_base}/{dir_name}_{timestamp}"
+            
+            try:
+                shutil.copytree(source, backup_dir)
+                print(f"Backup created: {backup_dir}")
+            except Exception as e:
+                print(f"Backup failed for {source}: {e}")
+
+# Schedule backups
+schedule.every().day.at("02:00").do(create_backup)
+schedule.every().sunday.at("01:00").do(create_backup)
+
+# Run scheduler
+while True:
+    schedule.run_pending()
+    time.sleep(60)
+                            </div>
+
+                            <h3 class="text-success mt-4">System Health Monitor</h3>
+                            <div class="terminal">
+import psutil
+import time
+import json
+from datetime import datetime
+
+class SystemMonitor:
+    def __init__(self, log_file="system_health.json"):
+        self.log_file = log_file
+        self.alerts = []
+    
+    def get_system_stats(self):
+        """Collect system statistics"""
+        return {
+            'timestamp': datetime.now().isoformat(),
+            'cpu_percent': psutil.cpu_percent(interval=1),
+            'memory_percent': psutil.virtual_memory().percent,
+            'disk_percent': psutil.disk_usage('/').percent,
+            'network_io': psutil.net_io_counters()._asdict(),
+            'process_count': len(psutil.pids())
+        }
+    
+    def check_thresholds(self, stats):
+        """Check if any metrics exceed thresholds"""
+        if stats['cpu_percent'] > 80:
+            self.alerts.append(f"High CPU usage: {stats['cpu_percent']}%")
+        
+        if stats['memory_percent'] > 85:
+            self.alerts.append(f"High memory usage: {stats['memory_percent']}%")
+        
+        if stats['disk_percent'] > 90:
+            self.alerts.append(f"High disk usage: {stats['disk_percent']}%")
+    
+    def log_stats(self, stats):
+        """Log statistics to file"""
+        with open(self.log_file, 'a') as f:
+            f.write(json.dumps(stats) + '\n')
+    
+    def monitor(self, interval=60):
+        """Start monitoring system"""
+        while True:
+            stats = self.get_system_stats()
+            self.check_thresholds(stats)
+            self.log_stats(stats)
+            
+            if self.alerts:
+                print(f"ALERTS: {', '.join(self.alerts)}")
+                self.alerts.clear()
+            
+            time.sleep(interval)
+
+# Usage
+monitor = SystemMonitor()
+# monitor.monitor()  # Uncomment to start monitoring
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="row mt-5">
+                            <div class="col-6">
+                                <a href="web-scraping.html" class="btn btn-outline-success">
+                                    <i class="fas fa-arrow-left"></i> Previous: Web Scraping
+                                </a>
+                            </div>
+                            <div class="col-6 text-end">
+                                <a href="cryptography.html" class="btn btn-outline-success">
+                                    Next: Cryptography <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>ABID HACKER</h5>
+                    <p>Professional Ethical Hacking Learning Platform</p>
+                    <p>Created by: Abid Mehmood</p>
+                    <p>Email: abidbusiness@gmail.com</p>
+                    <p>Phone/WhatsApp: 03029382306</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../about.html" class="text-white-50">About Us</a></li>
+                        <li><a href="../contact.html" class="text-white-50">Contact</a></li>
+                        <li><a href="../privacy.html" class="text-white-50">Privacy Policy</a></li>
+                        <li><a href="../terms.html" class="text-white-50">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. All rights reserved. Professional Web Designer.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Scanning Techniques - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">Network Scanning</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#introduction" class="text-success text-decoration-none">Introduction</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#types" class="text-success text-decoration-none">Scan Types</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#host-discovery" class="text-success text-decoration-none">Host Discovery</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#port-scanning" class="text-success text-decoration-none">Port Scanning</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#stealth" class="text-success text-decoration-none">Stealth Techniques</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#defense" class="text-success text-decoration-none">Defense Methods</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-search"></i> Network Scanning Techniques</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction" class="mb-5">
+                            <h2 class="text-success">What is Network Scanning?</h2>
+                            <p class="lead">Network scanning is the process of identifying active hosts, open ports, and services running on a network. It's a fundamental reconnaissance technique used by both ethical hackers and malicious attackers.</p>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i> <strong>Learning Objective:</strong> Master various network scanning techniques, understand their purposes, and learn how to defend against malicious scanning attempts.
+                            </div>
+
+                            <h3 class="text-success mt-4">Why Network Scanning Matters</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="text-success">For Security Professionals</h5>
+                                    <ul>
+                                        <li>Identify network assets and inventory</li>
+                                        <li>Discover unauthorized devices</li>
+                                        <li>Assess network security posture</li>
+                                        <li>Validate firewall configurations</li>
+                                        <li>Monitor for rogue services</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="text-success">For Attackers (Know Your Enemy)</h5>
+                                    <ul>
+                                        <li>Map network topology</li>
+                                        <li>Identify potential targets</li>
+                                        <li>Find vulnerable services</li>
+                                        <li>Plan attack vectors</li>
+                                        <li>Gather intelligence for exploitation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Scan Types Section -->
+                        <section id="types" class="mb-5">
+                            <h2 class="text-success">Types of Network Scans</h2>
+                            
+                            <h3 class="text-success mt-4">1. Host Discovery Scans</h3>
+                            <p>Determine which hosts are alive on the network</p>
+                            <div class="terminal">
+# ICMP Echo (Ping) Scan
+nmap -sn 192.168.1.0/24
+
+# TCP SYN Ping
+nmap -PS80,443,22 192.168.1.0/24
+
+# UDP Ping
+nmap -PU53,67,68 192.168.1.0/24
+
+# ARP Ping (Local network)
+nmap -PR 192.168.1.0/24
+                            </div>
+
+                            <h3 class="text-success mt-4">2. Port Scanning</h3>
+                            <p>Identify open ports and services on target hosts</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">TCP Scans</h5>
+                                            <div class="terminal">
+# TCP SYN Scan (Stealth)
+nmap -sS target
+
+# TCP Connect Scan
+nmap -sT target
+
+# TCP ACK Scan
+nmap -sA target
+
+# TCP Window Scan
+nmap -sW target
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">UDP Scans</h5>
+                                            <div class="terminal">
+# UDP Scan
+nmap -sU target
+
+# UDP with version detection
+nmap -sUV target
+
+# Fast UDP scan (top ports)
+nmap -sU --top-ports 100 target
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">3. Service and Version Detection</h3>
+                            <div class="terminal">
+# Service version detection
+nmap -sV target
+
+# Aggressive service detection
+nmap -sV --version-intensity 9 target
+
+# OS fingerprinting
+nmap -O target
+
+# Comprehensive scan
+nmap -A target
+                            </div>
+                        </section>
+
+                        <!-- Host Discovery Section -->
+                        <section id="host-discovery" class="mb-5">
+                            <h2 class="text-success">Host Discovery Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">ICMP-Based Discovery</h3>
+                            <div class="code-block">
+# Traditional ping sweep
+for i in {1..254}; do
+    ping -c 1 -W 1 192.168.1.$i &> /dev/null && echo "192.168.1.$i is alive"
+done
+
+# Using fping for faster scanning
+fping -a -g 192.168.1.0/24 2>/dev/null
+
+# Nmap ping sweep
+nmap -sn 192.168.1.0/24
+                            </div>
+
+                            <h3 class="text-success mt-4">TCP-Based Discovery</h3>
+                            <div class="terminal">
+# TCP SYN ping to common ports
+nmap -PS21,22,23,25,53,80,110,443,993,995 192.168.1.0/24
+
+# TCP ACK ping
+nmap -PA80,443 192.168.1.0/24
+
+# Specific port combinations
+nmap -PS80 -PA3389 192.168.1.0/24
+                            </div>
+
+                            <h3 class="text-success mt-4">ARP Discovery (Local Networks)</h3>
+                            <div class="terminal">
+# ARP scan with nmap
+nmap -PR 192.168.1.0/24
+
+# Using arp-scan
+arp-scan -l
+arp-scan 192.168.1.0/24
+
+# Manual ARP table check
+arp -a
+                            </div>
+
+                            <div class="alert alert-success">
+                                <i class="fas fa-lightbulb"></i> <strong>Pro Tip:</strong> ARP scanning is the most reliable method for discovering hosts on local networks since it operates at Layer 2 and bypasses most firewalls.
+                            </div>
+                        </section>
+
+                        <!-- Port Scanning Section -->
+                        <section id="port-scanning" class="mb-5">
+                            <h2 class="text-success">Advanced Port Scanning</h2>
+                            
+                            <h3 class="text-success mt-4">TCP Scan Types Explained</h3>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success mb-3">
+                                        <div class="card-body">
+                                            <h5 class="text-success">SYN Scan (-sS)</h5>
+                                            <p><strong>How it works:</strong></p>
+                                            <div class="code-block">
+1. Send SYN packet
+2. If port open: receive SYN-ACK
+3. Send RST to close connection
+4. If port closed: receive RST
+                                            </div>
+                                            <p><strong>Advantages:</strong> Stealthy, fast, doesn't complete connections</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success mb-3">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Connect Scan (-sT)</h5>
+                                            <p><strong>How it works:</strong></p>
+                                            <div class="code-block">
+1. Complete TCP 3-way handshake
+2. Establish full connection
+3. Close connection properly
+                                            </div>
+                                            <p><strong>Advantages:</strong> Works without root privileges, accurate results</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">UDP Scanning Challenges</h3>
+                            <div class="alert alert-warning">
+                                <h5 class="text-warning">UDP Scanning Difficulties</h5>
+                                <ul class="mb-0">
+                                    <li><strong>Slow:</strong> UDP is connectionless, responses are optional</li>
+                                    <li><strong>Rate Limited:</strong> ICMP responses are often rate-limited</li>
+                                    <li><strong>Firewalls:</strong> Often filtered without clear indication</li>
+                                    <li><strong>False Positives:</strong> Difficult to distinguish open vs. filtered</li>
+                                </ul>
+                            </div>
+
+                            <div class="terminal">
+# Effective UDP scanning techniques
+nmap -sU --top-ports 100 target
+nmap -sU -sV --version-intensity 0 target
+nmap -sU --max-retries 1 target
+                            </div>
+
+                            <h3 class="text-success mt-4">Port Range Strategies</h3>
+                            <div class="terminal">
+# Scan specific ports
+nmap -p 80,443,22,21,25 target
+
+# Scan port ranges
+nmap -p 1-1000 target
+nmap -p 1000-2000 target
+
+# Scan all ports
+nmap -p- target
+
+# Top ports only (faster)
+nmap --top-ports 100 target
+nmap --top-ports 1000 target
+                            </div>
+                        </section>
+
+                        <!-- Stealth Techniques Section -->
+                        <section id="stealth" class="mb-5">
+                            <h2 class="text-success">Stealth Scanning Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">Timing and Performance</h3>
+                            <div class="terminal">
+# Timing templates (0-5)
+nmap -T0 target  # Paranoid (very slow)
+nmap -T1 target  # Sneaky (slow)
+nmap -T2 target  # Polite (slower)
+nmap -T3 target  # Normal (default)
+nmap -T4 target  # Aggressive (fast)
+nmap -T5 target  # Insane (very fast)
+
+# Custom timing
+nmap --scan-delay 5s target
+nmap --max-rate 100 target
+                            </div>
+
+                            <h3 class="text-success mt-4">Fragmentation and Evasion</h3>
+                            <div class="terminal">
+# Fragment packets
+nmap -f target
+
+# Specify MTU size
+nmap --mtu 16 target
+
+# Decoy scanning
+nmap -D 192.168.1.100,192.168.1.101,ME target
+
+# Source port spoofing
+nmap --source-port 53 target
+nmap -g 80 target
+
+# Randomize target order
+nmap --randomize-hosts target1 target2 target3
+                            </div>
+
+                            <h3 class="text-success mt-4">Advanced Evasion</h3>
+                            <div class="terminal">
+# Idle scan (zombie scan)
+nmap -sI zombie_host target
+
+# FTP bounce scan
+nmap -b ftp_server target
+
+# Custom TCP flags
+nmap --scanflags URGACKPSHRSTSYNFIN target
+
+# Bad checksum (test IDS)
+nmap --badsum target
+                            </div>
+                        </section>
+
+                        <!-- Defense Methods Section -->
+                        <section id="defense" class="mb-5">
+                            <h2 class="text-success">Defending Against Network Scans</h2>
+                            
+                            <h3 class="text-success mt-4">Detection Methods</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="text-success">Network-Based Detection</h5>
+                                    <ul>
+                                        <li><strong>IDS/IPS:</strong> Snort, Suricata</li>
+                                        <li><strong>Network Monitoring:</strong> Wireshark, tcpdump</li>
+                                        <li><strong>Flow Analysis:</strong> NetFlow, sFlow</li>
+                                        <li><strong>Honeypots:</strong> Detect scanning attempts</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="text-success">Host-Based Detection</h5>
+                                    <ul>
+                                        <li><strong>Log Analysis:</strong> System and application logs</li>
+                                        <li><strong>Port Scan Detectors:</strong> PortSentry, PSAD</li>
+                                        <li><strong>HIDS:</strong> OSSEC, Samhain</li>
+                                        <li><strong>Behavioral Analysis:</strong> Unusual connection patterns</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Prevention Strategies</h3>
+                            <div class="terminal">
+# Firewall rules to limit scanning
+iptables -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --set
+iptables -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --update --seconds 60 --hitcount 4 -j DROP
+
+# Rate limiting with iptables
+iptables -A INPUT -p tcp --dport 80 -m limit --limit 25/minute --limit-burst 100 -j ACCEPT
+
+# Block common scan patterns
+iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP
+iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP
+                            </div>
+
+                            <h3 class="text-success mt-4">Response Actions</h3>
+                            <div class="alert alert-info">
+                                <h5 class="text-info">Incident Response for Port Scans</h5>
+                                <ol class="mb-0">
+                                    <li><strong>Log and Document:</strong> Record source IP, time, ports scanned</li>
+                                    <li><strong>Analyze Pattern:</strong> Determine scan type and intent</li>
+                                    <li><strong>Block Source:</strong> Temporarily or permanently block scanning IP</li>
+                                    <li><strong>Investigate:</strong> Check for successful compromises</li>
+                                    <li><strong>Harden Systems:</strong> Close unnecessary ports and services</li>
+                                    <li><strong>Monitor:</strong> Increase monitoring for follow-up attacks</li>
+                                </ol>
+                            </div>
+
+                            <h3 class="text-success mt-4">Practical Defense Example</h3>
+                            <div class="code-block">
+# PortSentry configuration example
+# /etc/portsentry/portsentry.conf
+
+# Ports to monitor
+TCP_PORTS="1,7,9,11,15,70,79,80,109,110,111,119,143,540,635,1080,1524,2000,5742,6667,12345,12346,20034,27665,31337,32771,32772,32773,32774,40421,49724,54320"
+
+# Response when scan detected
+KILL_ROUTE="/sbin/iptables -I INPUT -s $TARGET$ -j DROP"
+
+# Log file location
+SCAN_TRIGGER="0"
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="tcp-ip.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Previous: TCP/IP
+                            </a>
+                            <a href="wireless-security.html" class="btn btn-success">
+                                Next: Wireless Security <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

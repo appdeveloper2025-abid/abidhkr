@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Engineering & Phishing - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Courses
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courses.html">All Courses</a></li>
+                            <li><a class="dropdown-item" href="getting-started.html">Getting Started</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="courses.html#networking">Networking</a></li>
+                            <li><a class="dropdown-item" href="courses.html#python">Python Security</a></li>
+                            <li><a class="dropdown-item" href="courses.html#kali-tools">Kali Tools</a></li>
+                            <li><a class="dropdown-item" href="courses.html#web-security">Web Security</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container-fluid mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-list"></i> Course Navigation</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <a href="#introduction" class="list-group-item list-group-item-action">Introduction</a>
+                            <a href="#psychology" class="list-group-item list-group-item-action">Psychology of SE</a>
+                            <a href="#techniques" class="list-group-item list-group-item-action">SE Techniques</a>
+                            <a href="#phishing" class="list-group-item list-group-item-action">Phishing Attacks</a>
+                            <a href="#vishing-smishing" class="list-group-item list-group-item-action">Vishing & Smishing</a>
+                            <a href="#physical-se" class="list-group-item list-group-item-action">Physical SE</a>
+                            <a href="#defense" class="list-group-item list-group-item-action">Defense Strategies</a>
+                            <a href="#virtual-lab" class="list-group-item list-group-item-action">Virtual Lab</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-user-secret"></i> Social Engineering & Phishing</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to Social Engineering</h2>
+                            <p>Social engineering is the art of manipulating people to divulge confidential information or perform actions that compromise security. It exploits human psychology rather than technical vulnerabilities.</p>
+                            
+                            <div class="alert alert-info mt-4">
+                                <h4 class="text-primary"><i class="fas fa-lightbulb"></i> Core Theory</h4>
+                                <p>Social engineering is like being a master manipulator or con artist, but for cybersecurity purposes. Instead of breaking through technical defenses, attackers exploit the weakest link in any security system: humans. Think of it as "hacking people" rather than hacking computers.</p>
+                            </div>
+
+                            <h3 class="text-success mt-4">Why Social Engineering Works</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Human Factors</h4>
+                                    <ul>
+                                        <li><strong>Trust:</strong> People naturally want to help others</li>
+                                        <li><strong>Authority:</strong> Respect for perceived authority figures</li>
+                                        <li><strong>Urgency:</strong> Pressure to act quickly without thinking</li>
+                                        <li><strong>Fear:</strong> Anxiety about consequences</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Organizational Factors</h4>
+                                    <ul>
+                                        <li><strong>Lack of Training:</strong> Insufficient security awareness</li>
+                                        <li><strong>Poor Policies:</strong> Unclear security procedures</li>
+                                        <li><strong>Busy Environment:</strong> Pressure to be productive</li>
+                                        <li><strong>Helpful Culture:</strong> Emphasis on customer service</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Psychology Section -->
+                        <section id="psychology" class="mb-5">
+                            <h2 class="text-success">Psychology of Social Engineering</h2>
+                            <p>Understanding psychological principles helps both attackers and defenders recognize manipulation tactics.</p>
+                            
+                            <h3 class="text-success mt-4">Cialdini's Principles of Influence</h3>
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-brain"></i> Six Principles of Persuasion</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ol>
+                                        <li><strong>Reciprocity:</strong> People feel obligated to return favors</li>
+                                        <li><strong>Commitment/Consistency:</strong> People want to appear consistent with previous actions</li>
+                                        <li><strong>Social Proof:</strong> People follow what others are doing</li>
+                                        <li><strong>Authority:</strong> People defer to perceived experts or authority figures</li>
+                                        <li><strong>Liking:</strong> People are more easily influenced by those they like</li>
+                                        <li><strong>Scarcity:</strong> People value things that appear limited or rare</li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Cognitive Biases Exploited</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Decision-Making Biases</h4>
+                                    <ul>
+                                        <li><strong>Anchoring:</strong> Over-reliance on first information</li>
+                                        <li><strong>Confirmation Bias:</strong> Seeking confirming information</li>
+                                        <li><strong>Availability Heuristic:</strong> Judging by easily recalled examples</li>
+                                        <li><strong>Halo Effect:</strong> Overall impression influences specific traits</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Social Biases</h4>
+                                    <ul>
+                                        <li><strong>In-group Bias:</strong> Favoring group members</li>
+                                        <li><strong>Authority Bias:</strong> Attributing greater accuracy to authority</li>
+                                        <li><strong>Bandwagon Effect:</strong> Following popular trends</li>
+                                        <li><strong>Fundamental Attribution Error:</strong> Judging others by actions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Techniques Section -->
+                        <section id="techniques" class="mb-5">
+                            <h2 class="text-success">Social Engineering Techniques</h2>
+                            <p>Various techniques are used to manipulate targets into revealing information or performing actions.</p>
+                            
+                            <h3 class="text-success mt-4">Common Attack Vectors</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Pretexting</h4>
+                                    <p>Creating a fabricated scenario to engage a victim and gain their trust.</p>
+                                    <ul>
+                                        <li>Impersonating IT support</li>
+                                        <li>Posing as vendor or partner</li>
+                                        <li>Fake emergency situations</li>
+                                        <li>Authority figure impersonation</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Baiting</h4>
+                                    <p>Offering something enticing to spark curiosity and prompt action.</p>
+                                    <ul>
+                                        <li>Infected USB drives</li>
+                                        <li>Free software downloads</li>
+                                        <li>Malicious email attachments</li>
+                                        <li>Fake prize notifications</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="code-block mt-4">
+# Example Social Engineering Scenarios
+
+## Pretexting Example
+"Hi, this is John from IT Security. We've detected suspicious activity on your account 
+and need to verify your credentials immediately to prevent data loss."
+
+## Baiting Example
+"Congratulations! You've won a $500 gift card. Click here to claim your prize!"
+
+## Authority Example
+"This is the CEO's assistant. He needs the quarterly financial reports sent to this 
+email address immediately for an urgent board meeting."
+                            </div>
+                        </section>
+
+                        <!-- Phishing Section -->
+                        <section id="phishing" class="mb-5">
+                            <h2 class="text-success">Phishing Attacks</h2>
+                            <p>Phishing is the most common form of social engineering, using deceptive emails to steal credentials or install malware.</p>
+                            
+                            <h3 class="text-success mt-4">Types of Phishing</h3>
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-envelope"></i> Phishing Categories</h5>
+                                </div>
+                                <div class="card-body">
+                                    <dl class="row">
+                                        <dt class="col-sm-3">Bulk Phishing</dt>
+                                        <dd class="col-sm-9">Mass emails sent to thousands of recipients</dd>
+                                        
+                                        <dt class="col-sm-3">Spear Phishing</dt>
+                                        <dd class="col-sm-9">Targeted attacks against specific individuals or organizations</dd>
+                                        
+                                        <dt class="col-sm-3">Whaling</dt>
+                                        <dd class="col-sm-9">Attacks targeting high-profile executives (C-level)</dd>
+                                        
+                                        <dt class="col-sm-3">Clone Phishing</dt>
+                                        <dd class="col-sm-9">Legitimate emails replicated with malicious links/attachments</dd>
+                                        
+                                        <dt class="col-sm-3">Business Email Compromise</dt>
+                                        <dd class="col-sm-9">Compromised business email accounts for financial fraud</dd>
+                                    </dl>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Phishing Indicators</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Email Indicators</h4>
+                                    <ul>
+                                        <li><strong>Sender Address:</strong> Suspicious or spoofed domains</li>
+                                        <li><strong>Generic Greetings:</strong> "Dear Customer" instead of name</li>
+                                        <li><strong>Urgency:</strong> "Act now" or "Limited time" language</li>
+                                        <li><strong>Grammar/Spelling:</strong> Poor language quality</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Technical Indicators</h4>
+                                    <ul>
+                                        <li><strong>Suspicious Links:</strong> Hover to reveal true destination</li>
+                                        <li><strong>Unexpected Attachments:</strong> Executable files or macros</li>
+                                        <li><strong>Mismatched URLs:</strong> Display text vs. actual link</li>
+                                        <li><strong>Shortened URLs:</strong> Hiding true destination</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Vishing & Smishing Section -->
+                        <section id="vishing-smishing" class="mb-5">
+                            <h2 class="text-success">Vishing & Smishing</h2>
+                            <p>Voice and SMS-based social engineering attacks are increasingly common and effective.</p>
+                            
+                            <h3 class="text-success mt-4">Vishing (Voice Phishing)</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Common Scenarios</h4>
+                                    <ul>
+                                        <li><strong>Bank Security:</strong> Fake fraud alerts</li>
+                                        <li><strong>Tech Support:</strong> Microsoft/Apple scams</li>
+                                        <li><strong>Government:</strong> IRS or tax scams</li>
+                                        <li><strong>Utilities:</strong> Threatening service disconnection</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Techniques Used</h4>
+                                    <ul>
+                                        <li><strong>Caller ID Spoofing:</strong> Faking legitimate numbers</li>
+                                        <li><strong>Voice Modulation:</strong> Changing voice characteristics</li>
+                                        <li><strong>Background Sounds:</strong> Creating authentic environment</li>
+                                        <li><strong>Pressure Tactics:</strong> Creating urgency and fear</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Smishing (SMS Phishing)</h3>
+                            <div class="code-block">
+# Common Smishing Examples
+
+## Fake Package Delivery
+"Your package delivery failed. Click here to reschedule: [malicious link]"
+
+## Bank Alert
+"ALERT: Suspicious activity on your account. Verify immediately: [malicious link]"
+
+## Prize Scam
+"Congratulations! You've won $1000. Claim here: [malicious link]"
+
+## COVID-19 Scam
+"You've been exposed to COVID-19. Get your test results: [malicious link]"
+                            </div>
+                        </section>
+
+                        <!-- Physical SE Section -->
+                        <section id="physical-se" class="mb-5">
+                            <h2 class="text-success">Physical Social Engineering</h2>
+                            <p>Physical social engineering involves face-to-face manipulation to gain unauthorized access to facilities or information.</p>
+                            
+                            <h3 class="text-success mt-4">Physical Attack Techniques</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Access Techniques</h4>
+                                    <ul>
+                                        <li><strong>Tailgating:</strong> Following authorized person through doors</li>
+                                        <li><strong>Piggybacking:</strong> Asking someone to hold door open</li>
+                                        <li><strong>Impersonation:</strong> Posing as employee, contractor, or visitor</li>
+                                        <li><strong>Distraction:</strong> Creating diversions to access restricted areas</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Information Gathering</h4>
+                                    <ul>
+                                        <li><strong>Dumpster Diving:</strong> Searching through trash for information</li>
+                                        <li><strong>Shoulder Surfing:</strong> Observing passwords or sensitive data</li>
+                                        <li><strong>Eavesdropping:</strong> Listening to private conversations</li>
+                                        <li><strong>Badge Cloning:</strong> Copying access cards or badges</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Defense Section -->
+                        <section id="defense" class="mb-5">
+                            <h2 class="text-success">Defense Strategies</h2>
+                            <p>Protecting against social engineering requires a combination of technology, policies, and human awareness.</p>
+                            
+                            <h3 class="text-success mt-4">Technical Controls</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Email Security</h4>
+                                    <ul>
+                                        <li><strong>Spam Filters:</strong> Block suspicious emails</li>
+                                        <li><strong>DMARC/SPF/DKIM:</strong> Email authentication</li>
+                                        <li><strong>Sandboxing:</strong> Analyze attachments safely</li>
+                                        <li><strong>Link Protection:</strong> URL rewriting and analysis</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Access Controls</h4>
+                                    <ul>
+                                        <li><strong>Multi-Factor Authentication:</strong> Additional verification</li>
+                                        <li><strong>Zero Trust:</strong> Verify every access request</li>
+                                        <li><strong>Privileged Access Management:</strong> Control admin access</li>
+                                        <li><strong>Network Segmentation:</strong> Limit lateral movement</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Human-Centered Defenses</h3>
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-users"></i> Security Awareness Program</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul>
+                                        <li><strong>Regular Training:</strong> Ongoing security education</li>
+                                        <li><strong>Simulated Phishing:</strong> Practice identifying attacks</li>
+                                        <li><strong>Incident Reporting:</strong> Easy reporting mechanisms</li>
+                                        <li><strong>Security Culture:</strong> Making security everyone's responsibility</li>
+                                        <li><strong>Verification Procedures:</strong> Protocols for verifying requests</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Virtual Lab Section -->
+                        <section id="virtual-lab" class="mb-5">
+                            <h2 class="text-success">Social Engineering Virtual Lab</h2>
+                            <p>Practice identifying and analyzing social engineering attacks in our interactive environment.</p>
+                            
+                            <div class="card border-success">
+                                <div class="card-header bg-dark text-success">
+                                    <h5 class="mb-0"><i class="fas fa-terminal"></i> Virtual Terminal - Social Engineering Lab</h5>
+                                </div>
+                                <div class="card-body bg-black text-success p-0">
+                                    <div id="terminal-social" class="virtual-terminal" style="height: 400px; overflow-y: auto; padding: 15px; font-family: 'Courier New', monospace; font-size: 14px;">
+                                        <div class="terminal-line">
+                                            <span class="text-warning">analyst@security</span><span class="text-white">:</span><span class="text-primary">~</span><span class="text-white">$ </span><span class="cursor">_</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">
+                                        Try commands: <code>analyze-email suspicious.eml</code>, <code>check-domain phishing-site.com</code>, <code>generate-report</code>
+                                    </small>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="row mt-5">
+                            <div class="col-md-6">
+                                <a href="digital-forensics.html" class="btn btn-outline-success">
+                                    <i class="fas fa-arrow-left"></i> Digital Forensics
+                                </a>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <a href="wireless-security.html" class="btn btn-success">
+                                    Wireless Security <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. All rights reserved. Professional Ethical Hacking Education.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+    <script src="../js/virtual-terminal.js"></script>
+</body>
+</html>

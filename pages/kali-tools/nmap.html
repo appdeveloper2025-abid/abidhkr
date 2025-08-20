@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nmap Mastery - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-dragon text-warning"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container-fluid my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <div class="card bg-dark border-success">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0"><i class="fas fa-search text-white me-2"></i>Nmap - Network Discovery & Security Auditing</h4>
+                    </div>
+                    <div class="card-body text-white">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#installation" class="text-success text-decoration-none">Installation</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#basic-scans" class="text-success text-decoration-none">Basic Scans</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#advanced-scans" class="text-success text-decoration-none">Advanced Scans</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#scripting" class="text-success text-decoration-none">NSE Scripts</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#stealth" class="text-success text-decoration-none">Stealth Techniques</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#practical" class="text-success text-decoration-none">Practical Examples</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terminal Sidebar -->
+            <div class="col-lg-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <div class="card bg-dark border-warning sidebar-terminal" id="sidebar-terminal">
+                        <!-- Terminal content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-radar-dish"></i> Nmap Mastery</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to Nmap</h2>
+                            <p>Nmap (Network Mapper) is a free and open-source network discovery and security auditing tool. It's one of the most essential tools in a penetration tester's arsenal.</p>
+                            
+                            <div class="alert alert-info mt-4">
+                                <h4 class="text-primary"><i class="fas fa-lightbulb"></i> Core Theory</h4>
+                                <p>Nmap works by sending specially crafted packets to target systems and analyzing the responses. Think of it as "knocking on doors" of a building to see which rooms are occupied and what's inside each room.</p>
+                            </div>
+
+                            <h3 class="text-success mt-4">How Network Scanning Works</h3>
+                            <p>Network scanning is based on fundamental networking principles:</p>
+                            <ol>
+                                <li><strong>TCP Three-Way Handshake:</strong> SYN → SYN-ACK → ACK sequence for connection establishment</li>
+                                <li><strong>Port States:</strong> Open (service listening), Closed (no service), Filtered (firewall blocking)</li>
+                                <li><strong>ICMP Protocol:</strong> Used for host discovery and network diagnostics</li>
+                                <li><strong>Service Fingerprinting:</strong> Analyzing service banners and responses to identify software</li>
+                            </ol>
+
+                            <h3 class="text-success mt-4">Scanning Theory & Methodology</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Stealth Considerations</h4>
+                                    <ul>
+                                        <li><strong>SYN Scan:</strong> Half-open scan, doesn't complete connection</li>
+                                        <li><strong>Timing:</strong> Slower scans avoid detection</li>
+                                        <li><strong>Fragmentation:</strong> Split packets to evade firewalls</li>
+                                        <li><strong>Decoy Scanning:</strong> Hide among fake source IPs</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Vulnerability Scanning:</strong> NSE scripts</li>
+                                        <li><strong>Firewall Evasion:</strong> Bypass security measures</li>
+                                        <li><strong>Output Formats:</strong> Multiple report formats</li>
+                                        <li><strong>Timing Control:</strong> Stealth scanning options</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Installation Section -->
+                        <section id="installation" class="mb-5">
+                            <h2 class="text-success">Installation</h2>
+                            
+                            <h3 class="text-success mt-4">Kali Linux (Pre-installed)</h3>
+                            <div class="terminal">
+nmap --version
+                            </div>
+
+                            <h3 class="text-success mt-4">Ubuntu/Debian</h3>
+                            <div class="terminal">
+sudo apt update
+sudo apt install nmap
+                            </div>
+
+                            <h3 class="text-success mt-4">Windows</h3>
+                            <p>Download from <a href="https://nmap.org/download.html" class="text-success">nmap.org</a> and run the installer.</p>
+
+                            <h3 class="text-success mt-4">macOS</h3>
+                            <div class="terminal">
+brew install nmap
+                            </div>
+                        </section>
+
+                        <!-- Basic Scans Section -->
+                        <section id="basic-scans" class="mb-5">
+                            <h2 class="text-success">Basic Scanning Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">1. Basic Host Discovery</h3>
+                            <div class="terminal">
+# Ping scan - discover live hosts
+nmap -sn 192.168.1.0/24
+
+# Scan specific IP
+nmap 192.168.1.1
+
+# Scan multiple IPs
+nmap 192.168.1.1-10
+                            </div>
+
+                            <h3 class="text-success mt-4">2. Port Scanning</h3>
+                            <div class="terminal">
+# TCP SYN scan (default)
+nmap -sS target_ip
+
+# TCP connect scan
+nmap -sT target_ip
+
+# UDP scan
+nmap -sU target_ip
+
+# Scan specific ports
+nmap -p 80,443,22 target_ip
+
+# Scan port ranges
+nmap -p 1-1000 target_ip
+                            </div>
+
+                            <h3 class="text-success mt-4">3. Service Version Detection</h3>
+                            <div class="terminal">
+# Service version detection
+nmap -sV target_ip
+
+# Aggressive service detection
+nmap -sV --version-intensity 9 target_ip
+
+# Light service detection
+nmap -sV --version-intensity 0 target_ip
+                            </div>
+
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-triangle"></i> <strong>Legal Notice:</strong> Only scan networks you own or have explicit permission to test. Unauthorized scanning is illegal.
+                            </div>
+                        </section>
+
+                        <!-- Advanced Scans Section -->
+                        <section id="advanced-scans" class="mb-5">
+                            <h2 class="text-success">Advanced Scanning Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">1. Operating System Detection</h3>
+                            <div class="terminal">
+# OS fingerprinting
+nmap -O target_ip
+
+# Aggressive OS detection
+nmap -O --osscan-guess target_ip
+
+# OS detection with version scanning
+nmap -O -sV target_ip
+                            </div>
+
+                            <h3 class="text-success mt-4">2. Comprehensive Scanning</h3>
+                            <div class="terminal">
+# Aggressive scan (OS, version, script, traceroute)
+nmap -A target_ip
+
+# Comprehensive scan with all TCP ports
+nmap -A -p- target_ip
+
+# Fast scan (top 100 ports)
+nmap -F target_ip
+                            </div>
+
+                            <h3 class="text-success mt-4">3. Timing Templates</h3>
+                            <div class="code-block">
+# Timing templates (0-5)
+-T0  # Paranoid (very slow, IDS evasion)
+-T1  # Sneaky (slow, IDS evasion)
+-T2  # Polite (slower, less bandwidth)
+-T3  # Normal (default timing)
+-T4  # Aggressive (faster, reliable networks)
+-T5  # Insane (very fast, may miss results)
+                            </div>
+
+                            <div class="terminal">
+# Examples
+nmap -T4 -A target_ip        # Fast aggressive scan
+nmap -T1 -sS target_ip       # Slow stealth scan
+                            </div>
+                        </section>
+
+                        <!-- NSE Scripts Section -->
+                        <section id="scripting" class="mb-5">
+                            <h2 class="text-success">Nmap Scripting Engine (NSE)</h2>
+                            
+                            <h3 class="text-success mt-4">Script Categories</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>auth:</strong> Authentication bypass</li>
+                                        <li><strong>broadcast:</strong> Network broadcast discovery</li>
+                                        <li><strong>brute:</strong> Brute force attacks</li>
+                                        <li><strong>default:</strong> Default safe scripts</li>
+                                        <li><strong>discovery:</strong> Network discovery</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>dos:</strong> Denial of service</li>
+                                        <li><strong>exploit:</strong> Exploit vulnerabilities</li>
+                                        <li><strong>fuzzer:</strong> Fuzzing attacks</li>
+                                        <li><strong>intrusive:</strong> Intrusive scripts</li>
+                                        <li><strong>vuln:</strong> Vulnerability detection</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Common NSE Scripts</h3>
+                            <div class="terminal">
+# Run default scripts
+nmap -sC target_ip
+
+# Run specific script
+nmap --script http-title target_ip
+
+# Run script category
+nmap --script vuln target_ip
+
+# Multiple scripts
+nmap --script "http-* and not http-brute" target_ip
+
+# Vulnerability scanning
+nmap --script vuln,safe target_ip
+                            </div>
+
+                            <h3 class="text-success mt-4">Popular Scripts Examples</h3>
+                            <div class="terminal">
+# HTTP information gathering
+nmap --script http-enum target_ip
+nmap --script http-headers target_ip
+nmap --script http-methods target_ip
+
+# SMB enumeration
+nmap --script smb-enum-shares target_ip
+nmap --script smb-os-discovery target_ip
+
+# DNS enumeration
+nmap --script dns-brute target_domain
+
+# SSL/TLS testing
+nmap --script ssl-enum-ciphers -p 443 target_ip
+                            </div>
+                        </section>
+
+                        <!-- Stealth Techniques Section -->
+                        <section id="stealth" class="mb-5">
+                            <h2 class="text-success">Stealth and Evasion Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">1. Fragmentation</h3>
+                            <div class="terminal">
+# Fragment packets
+nmap -f target_ip
+
+# Specify fragment size
+nmap --mtu 16 target_ip
+                            </div>
+
+                            <h3 class="text-success mt-4">2. Decoy Scanning</h3>
+                            <div class="terminal">
+# Use decoy IPs
+nmap -D 192.168.1.100,192.168.1.101,ME target_ip
+
+# Random decoys
+nmap -D RND:10 target_ip
+                            </div>
+
+                            <h3 class="text-success mt-4">3. Source Port Spoofing</h3>
+                            <div class="terminal">
+# Spoof source port
+nmap --source-port 53 target_ip
+nmap -g 80 target_ip
+                            </div>
+
+                            <h3 class="text-success mt-4">4. Idle Scan (Zombie Scan)</h3>
+                            <div class="terminal">
+# Use zombie host for scanning
+nmap -sI zombie_ip target_ip
+                            </div>
+
+                            <div class="alert alert-info">
+                                <i class="fas fa-lightbulb"></i> <strong>Pro Tip:</strong> Combine multiple evasion techniques for maximum stealth, but remember this may reduce scan accuracy.
+                            </div>
+                        </section>
+
+                        <!-- Practical Examples Section -->
+                        <section id="practical" class="mb-5">
+                            <h2 class="text-success">Practical Scanning Scenarios</h2>
+                            
+                            <h3 class="text-success mt-4">Scenario 1: Network Discovery</h3>
+                            <div class="terminal">
+# Discover live hosts in network
+nmap -sn 192.168.1.0/24
+
+# Save results to file
+nmap -sn 192.168.1.0/24 > live_hosts.txt
+                            </div>
+
+                            <h3 class="text-success mt-4">Scenario 2: Web Server Assessment</h3>
+                            <div class="terminal">
+# Comprehensive web server scan
+nmap -sS -sV -O --script http-enum,http-headers,http-methods,http-title -p 80,443,8080,8443 target_ip
+
+# SSL/TLS security assessment
+nmap --script ssl-cert,ssl-enum-ciphers,ssl-heartbleed -p 443 target_ip
+                            </div>
+
+                            <h3 class="text-success mt-4">Scenario 3: Network Infrastructure Scan</h3>
+                            <div class="terminal">
+# Scan for network devices
+nmap -sS -O --script snmp-info,snmp-sysdescr -p 161 network_range
+
+# Router/Switch discovery
+nmap --script broadcast-dhcp-discover
+                            </div>
+
+                            <h3 class="text-success mt-4">Output Formats</h3>
+                            <div class="terminal">
+# Normal output
+nmap target_ip
+
+# XML output
+nmap -oX scan_results.xml target_ip
+
+# Grepable output
+nmap -oG scan_results.gnmap target_ip
+
+# All formats
+nmap -oA scan_results target_ip
+                            </div>
+
+                            <h3 class="text-success mt-4">Reading Nmap Results</h3>
+                            <div class="code-block">
+# Port States
+open       # Port is accepting connections
+closed     # Port is accessible but no service listening
+filtered   # Port is blocked by firewall/filter
+unfiltered # Port is accessible but state cannot be determined
+open|filtered # Port is either open or filtered
+
+# Service Detection
+22/tcp   open  ssh     OpenSSH 7.4 (protocol 2.0)
+80/tcp   open  http    Apache httpd 2.4.6
+443/tcp  open  https   Apache httpd 2.4.6 ((CentOS))
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="../courses.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Back to Courses
+                            </a>
+                            <a href="metasploit.html" class="btn btn-success">
+                                Next: Metasploit Framework <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS - Load virtual-terminal first -->
+    <script src="../../js/virtual-terminal.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/sidebar-terminal.js"></script>
+</body>
+</html>

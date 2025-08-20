@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCP/IP Protocol Suite - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">Course Navigation</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#introduction" class="text-success text-decoration-none">Introduction</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#layers" class="text-success text-decoration-none">TCP/IP Layers</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#protocols" class="text-success text-decoration-none">Key Protocols</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#security" class="text-success text-decoration-none">Security Implications</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#practical" class="text-success text-decoration-none">Practical Examples</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#quiz" class="text-success text-decoration-none">Knowledge Check</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-network-wired"></i> TCP/IP Protocol Suite</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction" class="mb-5">
+                            <h2 class="text-success">Introduction to TCP/IP</h2>
+                            <p class="lead">The TCP/IP (Transmission Control Protocol/Internet Protocol) suite is the foundation of modern internet communication. Understanding these protocols is crucial for ethical hackers and cybersecurity professionals.</p>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i> <strong>Learning Objective:</strong> By the end of this course, you will understand how TCP/IP works, its security implications, and how to analyze network traffic for security assessment.
+                            </div>
+
+                            <h3 class="text-success mt-4">What is TCP/IP?</h3>
+                            <p>TCP/IP is a suite of communication protocols used to interconnect network devices on the internet. It defines how data should be packetized, addressed, transmitted, routed, and received.</p>
+                            
+                            <div class="alert alert-warning mt-4">
+                                <h4 class="text-dark"><i class="fas fa-lightbulb"></i> Core Theory</h4>
+                                <p><strong>Analogy:</strong> Think of TCP/IP like the postal system. IP is like the addressing system (getting mail to the right city), while TCP is like registered mail (ensuring reliable delivery with confirmation). Each layer adds its own "envelope" with specific information.</p>
+                            </div>
+
+                            <h3 class="text-success mt-4">Historical Context</h3>
+                            <p>TCP/IP was developed in the 1970s by DARPA for ARPANET. Key milestones:</p>
+                            <ul>
+                                <li><strong>1973:</strong> Vint Cerf and Bob Kahn begin developing TCP</li>
+                                <li><strong>1978:</strong> TCP split into TCP and IP layers</li>
+                                <li><strong>1983:</strong> ARPANET officially adopts TCP/IP</li>
+                                <li><strong>1990s:</strong> Internet explosion makes TCP/IP the global standard</li>
+                            </ul>
+
+                            <h3 class="text-success mt-4">Why TCP/IP Matters for Security</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Attack Vectors</h4>
+                                    <ul>
+                                        <li>Every network communication uses TCP/IP</li>
+                                        <li>Multiple layers = multiple attack points</li>
+                                        <li>Protocol vulnerabilities affect entire networks</li>
+                                        <li>Understanding helps identify weak points</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Defense Requirements</h4>
+                                    <ul>
+                                        <li>Network monitoring requires protocol knowledge</li>
+                                        <li>Firewall rules based on TCP/IP concepts</li>
+                                        <li>IDS systems analyze packet structures</li>
+                                        <li>Forensics requires deep protocol understanding</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="code-block">
+# Basic TCP/IP Stack Overview
+Application Layer    → HTTP, HTTPS, FTP, SSH, DNS
+Transport Layer      → TCP, UDP
+Internet Layer       → IP, ICMP, ARP
+Network Access Layer → Ethernet, WiFi
+                            </div>
+                        </section>
+
+                        <!-- TCP/IP Layers Section -->
+                        <section id="layers" class="mb-5">
+                            <h2 class="text-success">TCP/IP Model Layers</h2>
+                            <p>The TCP/IP model consists of four layers, each with specific responsibilities:</p>
+
+                            <h3 class="text-success mt-4">1. Application Layer</h3>
+                            <p>This layer provides network services directly to applications. Common protocols include:</p>
+                            <ul>
+                                <li><strong>HTTP/HTTPS:</strong> Web browsing and secure communication</li>
+                                <li><strong>FTP:</strong> File transfer protocol</li>
+                                <li><strong>SSH:</strong> Secure shell for remote access</li>
+                                <li><strong>DNS:</strong> Domain name resolution</li>
+                                <li><strong>SMTP:</strong> Email transmission</li>
+                            </ul>
+
+                            <div class="code-block">
+# Example HTTP Request
+GET /index.html HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0
+Accept: text/html,application/xhtml+xml
+                            </div>
+
+                            <h3 class="text-success mt-4">2. Transport Layer</h3>
+                            <p>Provides end-to-end communication services. Two main protocols:</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">TCP (Transmission Control Protocol)</h5>
+                                            <ul>
+                                                <li>Connection-oriented</li>
+                                                <li>Reliable delivery</li>
+                                                <li>Error checking</li>
+                                                <li>Flow control</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">UDP (User Datagram Protocol)</h5>
+                                            <ul>
+                                                <li>Connectionless</li>
+                                                <li>Fast transmission</li>
+                                                <li>No error recovery</li>
+                                                <li>Minimal overhead</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">3. Internet Layer</h3>
+                            <p>Handles packet routing and addressing. Key protocols:</p>
+                            <ul>
+                                <li><strong>IP (Internet Protocol):</strong> Addressing and routing</li>
+                                <li><strong>ICMP:</strong> Error reporting and diagnostics</li>
+                                <li><strong>ARP:</strong> Address resolution</li>
+                            </ul>
+
+                            <h3 class="text-success mt-4">4. Network Access Layer</h3>
+                            <p>Defines how data is physically transmitted over the network medium.</p>
+                        </section>
+
+                        <!-- Key Protocols Section -->
+                        <section id="protocols" class="mb-5">
+                            <h2 class="text-success">Key Protocols Deep Dive</h2>
+                            
+                            <h3 class="text-success mt-4">TCP Three-Way Handshake</h3>
+                            <p>TCP establishes connections using a three-way handshake process:</p>
+                            
+                            <div class="code-block">
+Client → Server: SYN (Synchronize)
+Server → Client: SYN-ACK (Synchronize-Acknowledge)
+Client → Server: ACK (Acknowledge)
+
+# Connection established - data transfer can begin
+                            </div>
+
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-triangle"></i> <strong>Security Note:</strong> The three-way handshake can be exploited in SYN flood attacks, where attackers send many SYN packets without completing the handshake.
+                            </div>
+
+                            <h3 class="text-success mt-4">IP Addressing</h3>
+                            <p>IP addresses identify devices on a network. There are two versions:</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-success">IPv4</h4>
+                                    <div class="code-block">
+# Format: xxx.xxx.xxx.xxx
+192.168.1.1    # Private network
+10.0.0.1       # Private network
+172.16.0.1     # Private network
+8.8.8.8        # Public (Google DNS)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-success">IPv6</h4>
+                                    <div class="code-block">
+# Format: xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
+::1                    # Loopback
+fe80::1                # Link-local
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Security Implications Section -->
+                        <section id="security" class="mb-5">
+                            <h2 class="text-success">Security Implications</h2>
+                            
+                            <h3 class="text-success mt-4">Common TCP/IP Vulnerabilities</h3>
+                            
+                            <div class="card bg-dark border-danger mb-3">
+                                <div class="card-body">
+                                    <h5 class="text-danger">1. IP Spoofing</h5>
+                                    <p>Attackers can forge source IP addresses to impersonate other systems.</p>
+                                    <div class="code-block">
+# Example: Spoofed packet appears to come from trusted source
+Source IP: 192.168.1.100 (Trusted server)
+Actual Source: 10.0.0.50 (Attacker)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card bg-dark border-danger mb-3">
+                                <div class="card-body">
+                                    <h5 class="text-danger">2. TCP Sequence Prediction</h5>
+                                    <p>Predictable sequence numbers can lead to session hijacking.</p>
+                                </div>
+                            </div>
+
+                            <div class="card bg-dark border-danger mb-3">
+                                <div class="card-body">
+                                    <h5 class="text-danger">3. Man-in-the-Middle Attacks</h5>
+                                    <p>Intercepting and modifying communications between two parties.</p>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Defensive Measures</h3>
+                            <ul>
+                                <li><strong>Encryption:</strong> Use TLS/SSL for secure communication</li>
+                                <li><strong>Firewalls:</strong> Filter traffic based on rules</li>
+                                <li><strong>Intrusion Detection:</strong> Monitor for suspicious patterns</li>
+                                <li><strong>Network Segmentation:</strong> Isolate critical systems</li>
+                            </ul>
+                        </section>
+
+                        <!-- Practical Examples Section -->
+                        <section id="practical" class="mb-5">
+                            <h2 class="text-success">Practical Examples</h2>
+                            
+                            <h3 class="text-success mt-4">Using Wireshark to Analyze TCP/IP</h3>
+                            <p>Wireshark is a powerful tool for analyzing network traffic:</p>
+                            
+                            <div class="code-block">
+# Common Wireshark Filters for TCP/IP Analysis
+tcp.port == 80          # HTTP traffic
+tcp.flags.syn == 1      # SYN packets
+ip.addr == 192.168.1.1  # Specific IP address
+tcp.stream eq 0         # Follow TCP stream
+                            </div>
+
+                            <h3 class="text-success mt-4">Nmap TCP/IP Scanning</h3>
+                            <div class="terminal">
+# Basic TCP SYN scan
+nmap -sS target_ip
+
+# TCP connect scan
+nmap -sT target_ip
+
+# UDP scan
+nmap -sU target_ip
+
+# OS detection using TCP/IP fingerprinting
+nmap -O target_ip
+                            </div>
+
+                            <h3 class="text-success mt-4">Python TCP/IP Programming</h3>
+                            <div class="code-block">
+import socket
+
+# Create TCP socket
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Connect to server
+sock.connect(('example.com', 80))
+
+# Send HTTP request
+request = "GET / HTTP/1.1\r\nHost: example.com\r\n\r\n"
+sock.send(request.encode())
+
+# Receive response
+response = sock.recv(4096)
+print(response.decode())
+
+sock.close()
+                            </div>
+                        </section>
+
+                        <!-- Knowledge Check Section -->
+                        <section id="quiz" class="mb-5">
+                            <h2 class="text-success">Knowledge Check</h2>
+                            
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="text-success">Question 1</h5>
+                                    <p>What are the four layers of the TCP/IP model?</p>
+                                    <button class="btn btn-outline-success btn-sm" onclick="toggleAnswer('answer1')">Show Answer</button>
+                                    <div id="answer1" class="mt-2" style="display: none;">
+                                        <div class="alert alert-success">
+                                            <strong>Answer:</strong> Application Layer, Transport Layer, Internet Layer, Network Access Layer
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="text-success">Question 2</h5>
+                                    <p>What is the difference between TCP and UDP?</p>
+                                    <button class="btn btn-outline-success btn-sm" onclick="toggleAnswer('answer2')">Show Answer</button>
+                                    <div id="answer2" class="mt-2" style="display: none;">
+                                        <div class="alert alert-success">
+                                            <strong>Answer:</strong> TCP is connection-oriented and reliable, while UDP is connectionless and faster but unreliable.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="text-success">Question 3</h5>
+                                    <p>Describe the TCP three-way handshake process.</p>
+                                    <button class="btn btn-outline-success btn-sm" onclick="toggleAnswer('answer3')">Show Answer</button>
+                                    <div id="answer3" class="mt-2" style="display: none;">
+                                        <div class="alert alert-success">
+                                            <strong>Answer:</strong> 1) Client sends SYN, 2) Server responds with SYN-ACK, 3) Client sends ACK to complete the connection.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="../courses.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Back to Courses
+                            </a>
+                            <a href="network-scanning.html" class="btn btn-success">
+                                Next: Network Scanning <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+    
+    <script>
+        function toggleAnswer(answerId) {
+            const answer = document.getElementById(answerId);
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

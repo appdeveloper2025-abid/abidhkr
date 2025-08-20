@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydra Password Cracking - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card bg-dark text-white sticky-top">
+                    <div class="card-header">
+                        <h5><i class="fas fa-list"></i> Course Navigation</h5>
+                    </div>
+                    <div class="card-body">
+                        <nav class="nav flex-column">
+                            <a class="nav-link text-success" href="#introduction">Introduction</a>
+                            <a class="nav-link text-success" href="#installation">Installation</a>
+                            <a class="nav-link text-success" href="#basic-usage">Basic Usage</a>
+                            <a class="nav-link text-success" href="#protocols">Supported Protocols</a>
+                            <a class="nav-link text-success" href="#wordlists">Wordlists</a>
+                            <a class="nav-link text-success" href="#advanced">Advanced Techniques</a>
+                            <a class="nav-link text-success" href="#defense">Defense</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <div class="card bg-dark text-white">
+                    <div class="card-header">
+                        <h1 class="text-success">
+                            <i class="fas fa-key"></i> Hydra Password Cracking
+                        </h1>
+                        <p class="mb-0">Master network login password cracking with Hydra</p>
+                    </div>
+                    <div class="card-body">
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to Hydra</h2>
+                            <p>Hydra is a parallelized login cracker which supports numerous protocols to attack. It's very fast and flexible, making it a popular choice for penetration testers and security professionals.</p>
+                            
+                            <h3 class="text-success mt-4">Key Features</h3>
+                            <ul>
+                                <li>Supports over 50 protocols</li>
+                                <li>Parallel processing capabilities</li>
+                                <li>Customizable attack patterns</li>
+                                <li>Resume interrupted attacks</li>
+                                <li>IPv6 support</li>
+                            </ul>
+                        </section>
+
+                        <section id="installation" class="mt-5">
+                            <h2 class="text-success">Installation</h2>
+                            <p>Hydra comes pre-installed with Kali Linux. For other systems:</p>
+                            
+                            <div class="terminal">
+# Ubuntu/Debian
+sudo apt-get install hydra
+
+# From source
+git clone https://github.com/vanhauser-thc/thc-hydra.git
+cd thc-hydra
+./configure
+make
+sudo make install
+                            </div>
+                        </section>
+
+                        <section id="basic-usage" class="mt-5">
+                            <h2 class="text-success">Basic Usage</h2>
+                            <p>Basic Hydra syntax and common commands:</p>
+                            
+                            <div class="terminal">
+# Basic syntax
+hydra [options] target service
+
+# SSH brute force
+hydra -l admin -P passwords.txt ssh://192.168.1.100
+
+# HTTP POST form attack
+hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/login:username=^USER^&password=^PASS^:Invalid"
+
+# FTP brute force
+hydra -L users.txt -P passwords.txt ftp://192.168.1.100
+
+# Multiple usernames and passwords
+hydra -L userlist.txt -P passlist.txt 192.168.1.100 ssh
+                            </div>
+                        </section>
+
+                        <section id="protocols" class="mt-5">
+                            <h2 class="text-success">Supported Protocols</h2>
+                            <p>Hydra supports numerous protocols for password attacks:</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-success">Network Protocols</h4>
+                                    <ul>
+                                        <li>SSH (ssh)</li>
+                                        <li>FTP (ftp)</li>
+                                        <li>Telnet (telnet)</li>
+                                        <li>HTTP(S) (http-get, http-post)</li>
+                                        <li>SMTP (smtp)</li>
+                                        <li>POP3 (pop3)</li>
+                                        <li>IMAP (imap)</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-success">Database Protocols</h4>
+                                    <ul>
+                                        <li>MySQL (mysql)</li>
+                                        <li>PostgreSQL (postgres)</li>
+                                        <li>MSSQL (mssql)</li>
+                                        <li>Oracle (oracle-listener)</li>
+                                        <li>MongoDB (mongodb)</li>
+                                        <li>Redis (redis)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="wordlists" class="mt-5">
+                            <h2 class="text-success">Wordlists and Dictionaries</h2>
+                            <p>Effective password attacks require good wordlists:</p>
+                            
+                            <div class="terminal">
+# Common wordlist locations in Kali
+/usr/share/wordlists/rockyou.txt
+/usr/share/wordlists/fasttrack.txt
+/usr/share/wordlists/dirb/common.txt
+
+# Create custom wordlist
+crunch 6 8 0123456789 -o numbers.txt
+
+# Using multiple wordlists
+hydra -L users.txt -P /usr/share/wordlists/rockyou.txt ssh://target
+
+# Generate username list
+hydra -L /usr/share/wordlists/metasploit/unix_users.txt -p password ssh://target
+                            </div>
+                        </section>
+
+                        <section id="advanced" class="mt-5">
+                            <h2 class="text-success">Advanced Techniques</h2>
+                            <p>Advanced Hydra usage and optimization:</p>
+                            
+                            <h3 class="text-success mt-4">Performance Tuning</h3>
+                            <div class="terminal">
+# Increase parallel tasks
+hydra -t 16 -l admin -P passwords.txt ssh://target
+
+# Set connection timeout
+hydra -w 30 -l admin -P passwords.txt ssh://target
+
+# Limit attempts per connection
+hydra -c 3 -l admin -P passwords.txt ssh://target
+
+# Resume interrupted attack
+hydra -R
+                            </div>
+
+                            <h3 class="text-success mt-4">HTTP Form Attacks</h3>
+                            <div class="terminal">
+# HTTP POST form with cookies
+hydra -l admin -P passwords.txt target http-post-form "/login:user=^USER^&pass=^PASS^:Invalid:H=Cookie: PHPSESSID=abc123"
+
+# HTTPS form attack
+hydra -l admin -P passwords.txt target https-post-form "/login:username=^USER^&password=^PASS^:Login Failed"
+
+# Custom user agent
+hydra -l admin -P passwords.txt target http-post-form "/login:user=^USER^&pass=^PASS^:Invalid:H=User-Agent: Mozilla/5.0"
+                            </div>
+                        </section>
+
+                        <section id="defense" class="mt-5">
+                            <h2 class="text-success">Defense Against Brute Force</h2>
+                            <p>Protecting systems from password attacks:</p>
+                            
+                            <ul>
+                                <li><strong>Account Lockout:</strong> Lock accounts after failed attempts</li>
+                                <li><strong>Rate Limiting:</strong> Limit login attempts per IP</li>
+                                <li><strong>Strong Passwords:</strong> Enforce complex password policies</li>
+                                <li><strong>Two-Factor Authentication:</strong> Add additional security layer</li>
+                                <li><strong>Monitoring:</strong> Log and alert on suspicious activity</li>
+                                <li><strong>IP Whitelisting:</strong> Restrict access by IP address</li>
+                            </ul>
+
+                            <div class="terminal">
+# Monitor failed SSH attempts
+tail -f /var/log/auth.log | grep "Failed password"
+
+# Configure fail2ban
+sudo apt-get install fail2ban
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="row mt-5">
+                            <div class="col-6">
+                                <a href="nikto.html" class="btn btn-outline-success">
+                                    <i class="fas fa-arrow-left"></i> Previous: Nikto Scanner
+                                </a>
+                            </div>
+                            <div class="col-6 text-end">
+                                <a href="../web-security/owasp-top10.html" class="btn btn-outline-success">
+                                    Next: OWASP Top 10 <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>ABID HACKER</h5>
+                    <p>Professional Ethical Hacking Learning Platform</p>
+                    <p>Created by: Abid Mehmood</p>
+                    <p>Email: abidbusiness@gmail.com</p>
+                    <p>Phone/WhatsApp: 03029382306</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../about.html" class="text-white-50">About Us</a></li>
+                        <li><a href="../contact.html" class="text-white-50">Contact</a></li>
+                        <li><a href="../privacy.html" class="text-white-50">Privacy Policy</a></li>
+                        <li><a href="../terms.html" class="text-white-50">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. All rights reserved. Professional Web Designer.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

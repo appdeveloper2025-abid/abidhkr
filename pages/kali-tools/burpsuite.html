@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burp Suite Web Security - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">Burp Suite</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#introduction" class="text-success text-decoration-none">Introduction</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#setup" class="text-success text-decoration-none">Setup & Proxy</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#spider" class="text-success text-decoration-none">Spider & Scanner</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#intruder" class="text-success text-decoration-none">Intruder</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#repeater" class="text-success text-decoration-none">Repeater</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#extensions" class="text-success text-decoration-none">Extensions</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-bug"></i> Burp Suite Web Security Testing</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction" class="mb-5">
+                            <h2 class="text-success">What is Burp Suite?</h2>
+                            <p class="lead">Burp Suite is an integrated platform for performing security testing of web applications. It's designed to be used by hands-on testers to support the testing process.</p>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i> <strong>Learning Objective:</strong> Master web application security testing using Burp Suite's comprehensive toolkit for finding and exploiting vulnerabilities.
+                            </div>
+
+                            <h3 class="text-success mt-4">Burp Suite Editions</h3>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Community Edition</h5>
+                                            <ul class="text-light">
+                                                <li>Free version</li>
+                                                <li>Basic proxy functionality</li>
+                                                <li>Manual testing tools</li>
+                                                <li>Limited scanner</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Professional</h5>
+                                            <ul class="text-light">
+                                                <li>Advanced scanner</li>
+                                                <li>Intruder tool</li>
+                                                <li>Extensions support</li>
+                                                <li>Reporting features</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Enterprise</h5>
+                                            <ul class="text-light">
+                                                <li>Automated scanning</li>
+                                                <li>CI/CD integration</li>
+                                                <li>Team collaboration</li>
+                                                <li>Advanced reporting</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Setup Section -->
+                        <section id="setup" class="mb-5">
+                            <h2 class="text-success">Setup & Proxy Configuration</h2>
+                            
+                            <h3 class="text-success mt-4">Installation</h3>
+                            <div class="terminal">
+# Download from PortSwigger website
+https://portswigger.net/burp/communitydownload
+
+# Kali Linux installation
+sudo apt update
+sudo apt install burpsuite
+
+# Start Burp Suite
+burpsuite
+                            </div>
+
+                            <h3 class="text-success mt-4">Proxy Setup</h3>
+                            <div class="terminal">
+# Default Burp Proxy Settings
+IP: 127.0.0.1
+Port: 8080
+
+# Browser Proxy Configuration (Firefox)
+1. Open Firefox
+2. Go to Settings → Network Settings
+3. Select "Manual proxy configuration"
+4. HTTP Proxy: 127.0.0.1, Port: 8080
+5. Check "Use this proxy server for all protocols"
+
+# Install Burp CA Certificate
+1. Browse to http://burp while proxy is running
+2. Click "CA Certificate" to download
+3. Import certificate in browser
+                            </div>
+
+                            <h3 class="text-success mt-4">Intercept Configuration</h3>
+                            <div class="terminal">
+# Proxy Tab Settings
+1. Go to Proxy → Intercept
+2. Turn "Intercept is on/off" as needed
+3. Configure intercept rules in Options
+4. Set scope to target specific domains
+
+# Useful Intercept Rules
+- Intercept requests to specific URLs
+- Intercept responses with specific content
+- Skip common file types (images, CSS, JS)
+                            </div>
+                        </section>
+
+                        <!-- Spider Section -->
+                        <section id="spider" class="mb-5">
+                            <h2 class="text-success">Spider & Scanner</h2>
+                            
+                            <h3 class="text-success mt-4">Web Crawler (Spider)</h3>
+                            <div class="terminal">
+# Manual Spidering
+1. Browse target application normally
+2. Burp automatically maps the application
+3. Review Site Map in Target tab
+4. Right-click → Spider this host
+
+# Spider Configuration
+- Set crawl limits
+- Configure authentication
+- Exclude specific paths
+- Set crawl optimization
+                            </div>
+
+                            <h3 class="text-success mt-4">Vulnerability Scanner</h3>
+                            <div class="terminal">
+# Active Scanning (Pro version)
+1. Right-click on target in Site Map
+2. Select "Actively scan this host"
+3. Configure scan settings
+4. Monitor scan progress
+
+# Passive Scanning
+- Automatically analyzes all traffic
+- Identifies potential issues
+- No additional requests sent
+- Available in Community Edition
+                            </div>
+
+                            <h3 class="text-success mt-4">Common Vulnerabilities Detected</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>SQL Injection:</strong> Database attacks</li>
+                                        <li><strong>XSS:</strong> Cross-site scripting</li>
+                                        <li><strong>CSRF:</strong> Cross-site request forgery</li>
+                                        <li><strong>XXE:</strong> XML external entities</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>SSRF:</strong> Server-side request forgery</li>
+                                        <li><strong>Directory Traversal:</strong> Path manipulation</li>
+                                        <li><strong>Insecure Deserialization:</strong> Object injection</li>
+                                        <li><strong>Security Misconfigurations:</strong> Server issues</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Intruder Section -->
+                        <section id="intruder" class="mb-5">
+                            <h2 class="text-success">Intruder Attack Tool</h2>
+                            
+                            <h3 class="text-success mt-4">Attack Types</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Sniper</h5>
+                                            <p>Single payload set, one position at a time</p>
+                                            <div class="terminal">
+# Use case: Username enumeration
+POST /login
+username=§admin§&password=test
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Battering Ram</h5>
+                                            <p>Single payload set, all positions simultaneously</p>
+                                            <div class="terminal">
+# Use case: Same value in multiple fields
+username=§admin§&password=§admin§
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Payload Types</h3>
+                            <div class="terminal">
+# Simple List
+- Load from file
+- Paste from clipboard
+- Manual entry
+
+# Brute Forcer
+- Character sets
+- Min/max length
+- Case variations
+
+# Numbers
+- Sequential numbers
+- Random numbers
+- Hex numbers
+
+# Runtime File
+- Read from file during attack
+- Useful for large wordlists
+                            </div>
+
+                            <h3 class="text-success mt-4">Common Attack Scenarios</h3>
+                            <div class="terminal">
+# Password Brute Force
+1. Capture login request
+2. Send to Intruder
+3. Mark password field as payload position
+4. Load password wordlist
+5. Start attack and analyze responses
+
+# SQL Injection Testing
+1. Identify injection points
+2. Load SQL injection payloads
+3. Analyze response differences
+4. Look for error messages or timing differences
+
+# Directory Enumeration
+1. Capture directory request
+2. Mark directory name as payload position
+3. Load directory wordlist (dirb, dirbuster)
+4. Look for 200 response codes
+                            </div>
+                        </section>
+
+                        <!-- Repeater Section -->
+                        <section id="repeater" class="mb-5">
+                            <h2 class="text-success">Repeater Manual Testing</h2>
+                            
+                            <h3 class="text-success mt-4">Using Repeater</h3>
+                            <div class="terminal">
+# Send Request to Repeater
+1. Right-click on any request
+2. Select "Send to Repeater"
+3. Modify request in Repeater tab
+4. Click "Go" to send modified request
+5. Analyze response
+
+# Repeater Features
+- Syntax highlighting
+- Request/response history
+- Multiple tabs for different requests
+- Raw/pretty/hex views
+                            </div>
+
+                            <h3 class="text-success mt-4">Manual Testing Techniques</h3>
+                            <div class="terminal">
+# SQL Injection Testing
+Original: id=1
+Test: id=1'
+Test: id=1' OR '1'='1
+Test: id=1' UNION SELECT 1,2,3--
+
+# XSS Testing
+Original: search=test
+Test: search=<script>alert(1)</script>
+Test: search="><img src=x onerror=alert(1)>
+Test: search=javascript:alert(1)
+
+# Authentication Bypass
+Original: admin=false
+Test: admin=true
+Test: role=admin
+Test: Remove authentication headers
+                            </div>
+
+                            <h3 class="text-success mt-4">Response Analysis</h3>
+                            <div class="terminal">
+# Look for:
+- Status code changes (200, 302, 403, 500)
+- Response length differences
+- Error messages in response
+- Timing differences
+- New headers or cookies
+- Content changes
+
+# Compare Responses
+1. Use "Response" dropdown
+2. Select "Compare responses"
+3. Analyze differences between requests
+                            </div>
+                        </section>
+
+                        <!-- Extensions Section -->
+                        <section id="extensions" class="mb-5">
+                            <h2 class="text-success">Extensions & Add-ons</h2>
+                            
+                            <h3 class="text-success mt-4">Popular Extensions</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Logger++</h5>
+                                            <p>Advanced logging and filtering</p>
+                                            <ul class="text-light">
+                                                <li>Custom log filters</li>
+                                                <li>Export capabilities</li>
+                                                <li>Advanced search</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Autorize</h5>
+                                            <p>Authorization testing automation</p>
+                                            <ul class="text-light">
+                                                <li>Privilege escalation detection</li>
+                                                <li>Access control testing</li>
+                                                <li>Automated authorization bypass</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Installing Extensions</h3>
+                            <div class="terminal">
+# BApp Store (Built-in)
+1. Go to Extender → BApp Store
+2. Browse available extensions
+3. Click "Install" for desired extensions
+
+# Manual Installation
+1. Download .jar file
+2. Go to Extender → Extensions
+3. Click "Add"
+4. Select extension file
+5. Configure extension settings
+                            </div>
+
+                            <h3 class="text-success mt-4">Useful Extensions List</h3>
+                            <div class="terminal">
+# Security Testing
+- Param Miner: Parameter discovery
+- Backslash Powered Scanner: Advanced scanning
+- Active Scan++: Enhanced vulnerability detection
+- J2EEScan: Java application testing
+
+# Workflow Enhancement
+- Copy As Python-Requests: Export to Python
+- Request Smuggler: HTTP request smuggling
+- CSRF Scanner: Cross-site request forgery detection
+- Reflected Parameters: Parameter reflection analysis
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="wireshark.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Previous: Wireshark
+                            </a>
+                            <a href="sqlmap.html" class="btn btn-success">
+                                Next: SQLMap <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

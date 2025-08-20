@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-dragon text-warning me-2"></i>
+                ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-terminal"></i> Terminal
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="openTerminalModal('general')"><i class="fas fa-laptop-code"></i> General Practice</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="openTerminalModal('pentest')"><i class="fas fa-search"></i> Penetration Testing</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="openTerminalModal('forensics')"><i class="fas fa-search-plus"></i> Digital Forensics</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="openTerminalModal('social')"><i class="fas fa-user-secret"></i> Social Engineering</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="openTerminalModal('wireless')"><i class="fas fa-wifi"></i> Wireless Security</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="openCodeEditorModal()"><i class="fas fa-code"></i> Code Editor</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="openPythonEditorModal()"><i class="fab fa-python"></i> Python Editor</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-success mb-4">
+                    <i class="fas fa-graduation-cap"></i> All Courses
+                </h1>
+                <p class="lead mb-5">Master ethical hacking with our comprehensive course collection. Each course is designed with practical examples and detailed explanations.</p>
+                
+                <!-- Search Bar -->
+                <div class="mb-4">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search courses...">
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Categories -->
+        <div class="row">
+            <!-- Networking Fundamentals -->
+            <div id="networking" class="col-12 mb-5">
+                <h2 class="text-success mb-4">
+                    <i class="fas fa-network-wired"></i> Networking Fundamentals
+                </h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">TCP/IP Protocol Suite</h5>
+                                <p class="card-text">Learn the foundation of internet communication protocols.</p>
+                                <a href="networking/tcp-ip.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Network Scanning</h5>
+                                <p class="card-text">Master network discovery and port scanning techniques.</p>
+                                <a href="networking/network-scanning.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Wireless Security</h5>
+                                <p class="card-text">Understand WiFi security protocols and vulnerabilities.</p>
+                                <a href="networking/wireless-security.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">OSI Model</h5>
+                                <p class="card-text">Deep dive into the 7-layer networking model.</p>
+                                <a href="networking/osi-model.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">DNS Security</h5>
+                                <p class="card-text">Learn DNS protocols and security implications.</p>
+                                <a href="networking/dns-security.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Firewall Bypassing</h5>
+                                <p class="card-text">Advanced techniques to bypass network security controls.</p>
+                                <a href="networking/firewall-bypassing.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Python for Security -->
+            <div id="python" class="col-12 mb-5">
+                <h2 class="text-success mb-4">
+                    <i class="fab fa-python"></i> Python for Security
+                </h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Python Basics for Hackers</h5>
+                                <p class="card-text">Essential Python programming for cybersecurity.</p>
+                                <a href="python/python-basics.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Network Programming</h5>
+                                <p class="card-text">Build network tools and scanners with Python.</p>
+                                <a href="python/network-programming.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Web Scraping</h5>
+                                <p class="card-text">Extract data from websites for reconnaissance.</p>
+                                <a href="python/web-scraping.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Automation Scripts</h5>
+                                <p class="card-text">Automate security tasks and penetration testing.</p>
+                                <a href="python/automation.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Cryptography</h5>
+                                <p class="card-text">Implement encryption and decryption algorithms.</p>
+                                <a href="python/cryptography.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Exploit Development</h5>
+                                <p class="card-text">Create custom exploits and payloads.</p>
+                                <a href="python/exploit-dev.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kali Linux Tools -->
+            <div id="kali-tools" class="col-12 mb-5">
+                <h2 class="text-success mb-4">
+                    <i class="fas fa-terminal"></i> Kali Linux Tools
+                </h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Nmap Mastery</h5>
+                                <p class="card-text">Complete guide to network discovery and security auditing.</p>
+                                <a href="kali-tools/nmap.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Metasploit Framework</h5>
+                                <p class="card-text">Professional penetration testing framework.</p>
+                                <a href="kali-tools/metasploit.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Wireshark Analysis</h5>
+                                <p class="card-text">Network protocol analyzer and packet capture.</p>
+                                <a href="kali-tools/wireshark.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Burp Suite</h5>
+                                <p class="card-text">Web application security testing platform.</p>
+                                <a href="kali-tools/burpsuite.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">SQLMap</h5>
+                                <p class="card-text">Automated SQL injection testing tool.</p>
+                                <a href="kali-tools/sqlmap.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Nikto Scanner</h5>
+                                <p class="card-text">Web server vulnerability scanner.</p>
+                                <a href="kali-tools/nikto.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Hydra Password Cracking</h5>
+                                <p class="card-text">Network login password cracking tool.</p>
+                                <a href="kali-tools/hydra.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">John the Ripper</h5>
+                                <p class="card-text">Advanced password cracking and hash analysis.</p>
+                                <a href="kali-tools/john-the-ripper.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Security -->
+            <div id="web-security" class="col-12 mb-5">
+                <h2 class="text-success mb-4">
+                    <i class="fas fa-globe"></i> Web Security
+                </h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">OWASP Top 10</h5>
+                                <p class="card-text">Critical web application security risks.</p>
+                                <a href="web-security/owasp-top10.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">SQL Injection</h5>
+                                <p class="card-text">Database security vulnerabilities and exploitation.</p>
+                                <a href="web-security/sql-injection.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Cross-Site Scripting</h5>
+                                <p class="card-text">XSS vulnerabilities and prevention techniques.</p>
+                                <a href="web-security/xss-attacks.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">CSRF Attacks</h5>
+                                <p class="card-text">Cross-Site Request Forgery vulnerabilities.</p>
+                                <a href="web-security/csrf-attacks.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Authentication Bypass</h5>
+                                <p class="card-text">Breaking authentication and session management.</p>
+                                <a href="web-security/auth-bypass.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Session Hijacking</h5>
+                                <p class="card-text">Understanding and preventing session-based attacks.</p>
+                                <a href="web-security/session-hijacking.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Courses -->
+            <div class="col-12 mb-5">
+                <h2 class="text-success mb-4">
+                    <i class="fas fa-plus-circle"></i> Additional Security Topics
+                </h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">OSI Model</h5>
+                                <p class="card-text">Understanding the 7-layer network communication model.</p>
+                                <a href="networking/osi-model.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Python Cryptography</h5>
+                                <p class="card-text">Master encryption and security with Python.</p>
+                                <a href="python/cryptography.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 course-item">
+                            <div class="card-body">
+                                <h5 class="card-title">Getting Started</h5>
+                                <p class="card-text">Begin your ethical hacking journey.</p>
+                                <a href="getting-started.html" class="btn btn-outline-success">Start Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>ABID HACKER</h5>
+                    <p>Professional Ethical Hacking Learning Platform</p>
+                    <p>Created by: Abid Mehmood</p>
+                    <p>Email: abidbusiness@gmail.com</p>
+                    <p>Phone/WhatsApp: 03029382306</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-white-50">About Us</a></li>
+                        <li><a href="contact.html" class="text-white-50">Contact</a></li>
+                        <li><a href="privacy.html" class="text-white-50">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-white-50">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. All rights reserved. Professional Web Designer.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Terminal Modal -->
+    <div class="modal fade" id="terminalModal" tabindex="-1" aria-labelledby="terminalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content bg-dark">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="terminalModalLabel">
+                        <i class="fas fa-terminal"></i> <span id="terminalTitle">Virtual Terminal</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div id="modal-terminal" class="virtual-terminal bg-black text-success" style="height: 500px; overflow-y: auto; padding: 15px; font-family: 'Courier New', monospace; font-size: 14px;">
+                        <!-- Terminal content will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer bg-dark">
+                    <small class="text-muted me-auto">
+                        <span id="terminalHint">Type 'help' to see available commands</span>
+                    </small>
+                    <button type="button" class="btn btn-outline-success btn-sm" onclick="clearTerminal()">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Editor Modal -->
+    <div class="modal fade" id="codeEditorModal" tabindex="-1" aria-labelledby="codeEditorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content bg-dark">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="codeEditorModalLabel">
+                        <i class="fas fa-code"></i> Code Editor Terminal
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div id="codeEditorTerminal" class="code-editor-terminal bg-black text-success" style="height: 600px; overflow-y: auto; padding: 15px; font-family: 'Courier New', monospace; font-size: 14px;">
+                        <!-- Code editor terminal content will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer bg-dark">
+                    <small class="text-muted me-auto">
+                        Multi-language code editor with execution support
+                    </small>
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Python Editor Modal -->
+    <div class="modal fade" id="pythonEditorModal" tabindex="-1" aria-labelledby="pythonEditorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title" id="pythonEditorModalLabel">
+                        <i class="fab fa-python"></i> Python Code Editor & Tester
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0" style="height: calc(100vh - 120px);">
+                    <div id="pythonEditorContainer" class="python-editor-container" style="height: 100%;">
+                        <!-- Python editor content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS - Load virtual-terminal first -->
+    <script src="../js/virtual-terminal.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/code-editor-terminal.js"></script>
+    <script src="../js/python-editor.js"></script>
+    
+    <!-- Terminal Modal JavaScript -->
+    <script>
+        let currentModalTerminal = null;
+        
+        function openTerminalModal(terminalType) {
+            const terminalTitles = {
+                'general': 'General Practice Terminal',
+                'pentest': 'Penetration Testing Terminal',
+                'forensics': 'Digital Forensics Terminal',
+                'social': 'Social Engineering Terminal',
+                'wireless': 'Wireless Security Terminal'
+            };
+            
+            const terminalPrompts = {
+                'general': 'user@kali:~$ ',
+                'pentest': 'root@kali:~# ',
+                'forensics': 'forensics@lab:~# ',
+                'social': 'analyst@security:~$ ',
+                'wireless': 'wireless@lab:~$ '
+            };
+            
+            const terminalHints = {
+                'general': 'Try commands: ls, pwd, whoami, help',
+                'pentest': 'Try commands: nmap, nikto, dirb, metasploit, help',
+                'forensics': 'Try commands: volatility, strings, fls, autopsy, help',
+                'social': 'Try commands: analyze-email, check-domain, help',
+                'wireless': 'Try commands: airodump-ng, aircrack-ng, reaver, help'
+            };
+            
+            // Update modal title and hint
+            document.getElementById('terminalTitle').textContent = terminalTitles[terminalType];
+            document.getElementById('terminalHint').textContent = terminalHints[terminalType];
+            
+            // Clear previous terminal
+            const terminalContainer = document.getElementById('modal-terminal');
+            terminalContainer.innerHTML = '';
+            
+            // Create terminal immediately
+            try {
+                if (window.VirtualTerminal) {
+                    currentModalTerminal = new window.VirtualTerminal('modal-terminal', terminalPrompts[terminalType]);
+                    console.log('Terminal created successfully');
+                } else {
+                    console.log('VirtualTerminal not found, retrying...');
+                    // Retry after a short delay
+                    setTimeout(() => {
+                        if (window.VirtualTerminal) {
+                            currentModalTerminal = new window.VirtualTerminal('modal-terminal', terminalPrompts[terminalType]);
+                            console.log('Terminal created on retry');
+                        } else {
+                            terminalContainer.innerHTML = '<div class="text-center text-danger p-4">Terminal failed to load. Please refresh the page.</div>';
+                        }
+                    }, 500);
+                }
+            } catch (error) {
+                console.error('Error creating terminal:', error);
+                terminalContainer.innerHTML = '<div class="text-center text-danger p-4">Error: ' + error.message + '</div>';
+            }
+            
+            // Show the modal
+            const modal = new bootstrap.Modal(document.getElementById('terminalModal'));
+            modal.show();
+            
+            // Focus terminal after modal is shown
+            setTimeout(() => {
+                if (currentModalTerminal && currentModalTerminal.focusInput) {
+                    currentModalTerminal.focusInput();
+                }
+            }, 300);
+        }
+        
+        function clearTerminal() {
+            if (currentModalTerminal) {
+                currentModalTerminal.container.innerHTML = '';
+                currentModalTerminal.addLine('Welcome to ABID HACKER Virtual Terminal');
+                currentModalTerminal.addLine('Type \'help\' to see available commands');
+                currentModalTerminal.addLine('');
+                currentModalTerminal.createInputLine();
+                currentModalTerminal.focusInput();
+            }
+        }
+        
+        // Handle modal close event
+        document.getElementById('terminalModal').addEventListener('hidden.bs.modal', function () {
+            currentModalTerminal = null;
+        });
+        
+        // Prevent dropdown from closing when clicking terminal links
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalDropdownItems = document.querySelectorAll('[onclick^="openTerminalModal"]');
+            terminalDropdownItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

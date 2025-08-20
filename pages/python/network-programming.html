@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Network Programming - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">Network Programming</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#sockets" class="text-success text-decoration-none">Socket Programming</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#tcp" class="text-success text-decoration-none">TCP Programming</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#udp" class="text-success text-decoration-none">UDP Programming</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#http" class="text-success text-decoration-none">HTTP Requests</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#scanning" class="text-success text-decoration-none">Network Scanning</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#examples" class="text-success text-decoration-none">Practical Examples</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fab fa-python"></i> Python Network Programming</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Socket Programming Section -->
+                        <section id="sockets" class="mb-5">
+                            <h2 class="text-success">Socket Programming Fundamentals</h2>
+                            <p class="lead">Sockets are endpoints for communication between processes. Python's socket module provides low-level networking interface for creating network applications.</p>
+                            
+                            <h3 class="text-success mt-4">Basic Socket Operations</h3>
+                            <div class="code-block">
+import socket
+
+# Create socket
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Socket types
+AF_INET     # IPv4
+AF_INET6    # IPv6
+SOCK_STREAM # TCP
+SOCK_DGRAM  # UDP
+                            </div>
+                        </section>
+
+                        <!-- TCP Programming Section -->
+                        <section id="tcp" class="mb-5">
+                            <h2 class="text-success">TCP Client/Server Programming</h2>
+                            
+                            <h3 class="text-success mt-4">TCP Server</h3>
+                            <div class="code-block">
+import socket
+import threading
+
+def handle_client(client_socket, address):
+    print(f"Connection from {address}")
+    
+    while True:
+        try:
+            data = client_socket.recv(1024)
+            if not data:
+                break
+            
+            response = f"Echo: {data.decode()}"
+            client_socket.send(response.encode())
+            
+        except Exception as e:
+            print(f"Error: {e}")
+            break
+    
+    client_socket.close()
+
+def tcp_server(host='localhost', port=9999):
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server.bind((host, port))
+    server.listen(5)
+    
+    print(f"Server listening on {host}:{port}")
+    
+    try:
+        while True:
+            client, address = server.accept()
+            client_thread = threading.Thread(
+                target=handle_client, 
+                args=(client, address)
+            )
+            client_thread.start()
+    except KeyboardInterrupt:
+        print("Server shutting down...")
+    finally:
+        server.close()
+
+if __name__ == "__main__":
+    tcp_server()
+                            </div>
+
+                            <h3 class="text-success mt-4">TCP Client</h3>
+                            <div class="code-block">
+import socket
+
+def tcp_client(host='localhost', port=9999):
+    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    
+    try:
+        client.connect((host, port))
+        
+        while True:
+            message = input("Enter message (or 'quit'): ")
+            if message.lower() == 'quit':
+                break
+                
+            client.send(message.encode())
+            response = client.recv(1024)
+            print(f"Server response: {response.decode()}")
+            
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        client.close()
+
+if __name__ == "__main__":
+    tcp_client()
+                            </div>
+                        </section>
+
+                        <!-- HTTP Requests Section -->
+                        <section id="http" class="mb-5">
+                            <h2 class="text-success">HTTP Programming</h2>
+                            
+                            <h3 class="text-success mt-4">Using Requests Library</h3>
+                            <div class="code-block">
+import requests
+import json
+
+# GET request
+response = requests.get('https://httpbin.org/get')
+print(f"Status: {response.status_code}")
+print(f"Headers: {response.headers}")
+print(f"Content: {response.text}")
+
+# POST request with data
+data = {'username': 'admin', 'password': 'secret'}
+response = requests.post('https://httpbin.org/post', data=data)
+print(response.json())
+
+# Custom headers and authentication
+headers = {
+    'User-Agent': 'Security Scanner 1.0',
+    'Accept': 'application/json'
+}
+
+auth = ('username', 'password')
+response = requests.get('https://httpbin.org/basic-auth/username/password', 
+                       headers=headers, auth=auth)
+                            </div>
+                        </section>
+
+                        <!-- Network Scanning Section -->
+                        <section id="scanning" class="mb-5">
+                            <h2 class="text-success">Network Scanning with Python</h2>
+                            
+                            <h3 class="text-success mt-4">Port Scanner</h3>
+                            <div class="code-block">
+import socket
+import threading
+from datetime import datetime
+
+class PortScanner:
+    def __init__(self, target, threads=100):
+        self.target = target
+        self.threads = threads
+        self.open_ports = []
+        
+    def scan_port(self, port):
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(1)
+            result = sock.connect_ex((self.target, port))
+            
+            if result == 0:
+                self.open_ports.append(port)
+                print(f"Port {port}: Open")
+                
+            sock.close()
+        except Exception:
+            pass
+    
+    def scan_range(self, start_port, end_port):
+        print(f"Scanning {self.target} from port {start_port} to {end_port}")
+        print(f"Started at: {datetime.now()}")
+        
+        threads = []
+        for port in range(start_port, end_port + 1):
+            thread = threading.Thread(target=self.scan_port, args=(port,))
+            threads.append(thread)
+            thread.start()
+            
+            # Limit concurrent threads
+            if len(threads) >= self.threads:
+                for t in threads:
+                    t.join()
+                threads = []
+        
+        # Wait for remaining threads
+        for t in threads:
+            t.join()
+            
+        print(f"Scan completed at: {datetime.now()}")
+        print(f"Open ports: {sorted(self.open_ports)}")
+
+# Usage
+scanner = PortScanner("scanme.nmap.org")
+scanner.scan_range(1, 1000)
+                            </div>
+                        </section>
+
+                        <!-- Practical Examples Section -->
+                        <section id="examples" class="mb-5">
+                            <h2 class="text-success">Practical Security Tools</h2>
+                            
+                            <h3 class="text-success mt-4">Banner Grabber</h3>
+                            <div class="code-block">
+import socket
+
+def grab_banner(target, port):
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(5)
+        sock.connect((target, port))
+        
+        # Send HTTP request for web servers
+        if port in [80, 443, 8080, 8443]:
+            sock.send(b"GET / HTTP/1.1\r\nHost: " + target.encode() + b"\r\n\r\n")
+        
+        banner = sock.recv(1024).decode().strip()
+        sock.close()
+        
+        return banner
+    except Exception as e:
+        return f"Error: {e}"
+
+# Usage
+target = "example.com"
+common_ports = [21, 22, 23, 25, 53, 80, 110, 143, 443, 993, 995]
+
+for port in common_ports:
+    banner = grab_banner(target, port)
+    if banner and "Error" not in banner:
+        print(f"Port {port}: {banner[:100]}...")
+                            </div>
+
+                            <h3 class="text-success mt-4">Web Directory Scanner</h3>
+                            <div class="code-block">
+import requests
+import threading
+from queue import Queue
+
+class DirScanner:
+    def __init__(self, target_url, wordlist, threads=10):
+        self.target_url = target_url.rstrip('/')
+        self.wordlist = wordlist
+        self.threads = threads
+        self.queue = Queue()
+        self.found_dirs = []
+        
+    def scan_directory(self):
+        while not self.queue.empty():
+            directory = self.queue.get()
+            url = f"{self.target_url}/{directory}"
+            
+            try:
+                response = requests.get(url, timeout=5)
+                if response.status_code == 200:
+                    self.found_dirs.append((directory, response.status_code, len(response.content)))
+                    print(f"[FOUND] /{directory} - Status: {response.status_code}, Size: {len(response.content)}")
+                elif response.status_code in [301, 302]:
+                    print(f"[REDIRECT] /{directory} - Status: {response.status_code}")
+                    
+            except requests.exceptions.RequestException:
+                pass
+            finally:
+                self.queue.task_done()
+    
+    def run_scan(self):
+        # Load wordlist into queue
+        for directory in self.wordlist:
+            self.queue.put(directory.strip())
+        
+        # Start threads
+        for _ in range(self.threads):
+            thread = threading.Thread(target=self.scan_directory)
+            thread.daemon = True
+            thread.start()
+        
+        self.queue.join()
+        return self.found_dirs
+
+# Usage
+wordlist = ['admin', 'login', 'backup', 'config', 'test', 'dev', 'api']
+scanner = DirScanner("http://example.com", wordlist)
+results = scanner.run_scan()
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="python-basics.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Previous: Python Basics
+                            </a>
+                            <a href="web-scraping.html" class="btn btn-success">
+                                Next: Web Scraping <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

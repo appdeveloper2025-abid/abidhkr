@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikto Web Scanner - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">Nikto Scanner</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#introduction" class="text-success text-decoration-none">Introduction</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#installation" class="text-success text-decoration-none">Installation</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#basic-scanning" class="text-success text-decoration-none">Basic Scanning</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#advanced-options" class="text-success text-decoration-none">Advanced Options</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#output-formats" class="text-success text-decoration-none">Output Formats</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#plugins" class="text-success text-decoration-none">Plugins & Tuning</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-search"></i> Nikto Web Vulnerability Scanner</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction" class="mb-5">
+                            <h2 class="text-success">What is Nikto?</h2>
+                            <p class="lead">Nikto is an open-source web server scanner that performs comprehensive tests against web servers for multiple items, including dangerous files, outdated server software, and server configuration issues.</p>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i> <strong>Learning Objective:</strong> Master web server vulnerability scanning, configuration assessment, and security testing using Nikto's comprehensive testing capabilities.
+                            </div>
+
+                            <h3 class="text-success mt-4">Key Features</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>6700+ Tests:</strong> Comprehensive vulnerability database</li>
+                                        <li><strong>Server Detection:</strong> Web server fingerprinting</li>
+                                        <li><strong>Plugin System:</strong> Modular testing approach</li>
+                                        <li><strong>SSL Support:</strong> HTTPS scanning capabilities</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Multiple Formats:</strong> Various output options</li>
+                                        <li><strong>Proxy Support:</strong> Works with web proxies</li>
+                                        <li><strong>Authentication:</strong> Basic and NTLM auth</li>
+                                        <li><strong>Cookie Support:</strong> Session-based scanning</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">What Nikto Detects</h3>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Server Issues</h5>
+                                            <ul class="text-light">
+                                                <li>Outdated software versions</li>
+                                                <li>Default files and directories</li>
+                                                <li>Insecure configurations</li>
+                                                <li>Missing security headers</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Dangerous Files</h5>
+                                            <ul class="text-light">
+                                                <li>Backup files</li>
+                                                <li>Test files</li>
+                                                <li>Admin interfaces</li>
+                                                <li>Debug pages</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Vulnerabilities</h5>
+                                            <ul class="text-light">
+                                                <li>Known CVEs</li>
+                                                <li>XSS vulnerabilities</li>
+                                                <li>SQL injection points</li>
+                                                <li>Directory traversal</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Installation Section -->
+                        <section id="installation" class="mb-5">
+                            <h2 class="text-success">Installation & Setup</h2>
+                            
+                            <h3 class="text-success mt-4">Kali Linux</h3>
+                            <div class="terminal">
+# Nikto is pre-installed in Kali Linux
+nikto -Version
+
+# Update Nikto database
+nikto -update
+
+# Manual installation
+sudo apt update
+sudo apt install nikto
+                            </div>
+
+                            <h3 class="text-success mt-4">Ubuntu/Debian</h3>
+                            <div class="terminal">
+# Install from repositories
+sudo apt update
+sudo apt install nikto
+
+# Install dependencies
+sudo apt install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions
+                            </div>
+
+                            <h3 class="text-success mt-4">From Source</h3>
+                            <div class="terminal">
+# Clone from GitHub
+git clone https://github.com/sullo/nikto.git
+cd nikto/program
+
+# Run directly
+./nikto.pl -h target.com
+
+# Make executable globally
+sudo ln -s /path/to/nikto/program/nikto.pl /usr/local/bin/nikto
+                            </div>
+                        </section>
+
+                        <!-- Basic Scanning Section -->
+                        <section id="basic-scanning" class="mb-5">
+                            <h2 class="text-success">Basic Scanning Operations</h2>
+                            
+                            <h3 class="text-success mt-4">Simple Scans</h3>
+                            <div class="terminal">
+# Basic scan
+nikto -h target.com
+
+# Scan specific port
+nikto -h target.com -p 8080
+
+# Scan multiple ports
+nikto -h target.com -p 80,443,8080
+
+# HTTPS scan
+nikto -h https://target.com
+
+# Scan with verbose output
+nikto -h target.com -v
+                            </div>
+
+                            <h3 class="text-success mt-4">Target Specification</h3>
+                            <div class="terminal">
+# Single host
+nikto -h 192.168.1.100
+
+# Multiple hosts
+nikto -h 192.168.1.100,192.168.1.101
+
+# Host range
+nikto -h 192.168.1.100-110
+
+# From file
+nikto -h hosts.txt
+
+# Subnet scan
+nmap -sL 192.168.1.0/24 | grep "Nmap scan report" | awk '{print $5}' > hosts.txt
+nikto -h hosts.txt
+                            </div>
+
+                            <h3 class="text-success mt-4">Authentication</h3>
+                            <div class="terminal">
+# Basic authentication
+nikto -h target.com -id username:password
+
+# NTLM authentication
+nikto -h target.com -id domain\\username:password
+
+# Cookie-based authentication
+nikto -h target.com -C "PHPSESSID=abc123; user=admin"
+
+# Custom headers
+nikto -h target.com -H "Authorization: Bearer token123"
+                            </div>
+                        </section>
+
+                        <!-- Advanced Options Section -->
+                        <section id="advanced-options" class="mb-5">
+                            <h2 class="text-success">Advanced Scanning Options</h2>
+                            
+                            <h3 class="text-success mt-4">Scan Tuning</h3>
+                            <div class="terminal">
+# Scan specific categories
+nikto -h target.com -T 1    # Interesting files
+nikto -h target.com -T 2    # Misconfiguration
+nikto -h target.com -T 3    # Information disclosure
+nikto -h target.com -T 4    # Injection (XSS/Script/HTML)
+nikto -h target.com -T 5    # Remote file retrieval
+nikto -h target.com -T 6    # Denial of service
+nikto -h target.com -T 7    # Remote file retrieval (server wide)
+nikto -h target.com -T 8    # Command execution (remote shell)
+nikto -h target.com -T 9    # SQL injection
+nikto -h target.com -T 0    # File upload
+nikto -h target.com -T a    # Authentication bypass
+nikto -h target.com -T b    # Software identification
+nikto -h target.com -T c    # Remote source inclusion
+
+# Multiple categories
+nikto -h target.com -T 1,2,3
+                            </div>
+
+                            <h3 class="text-success mt-4">Performance Options</h3>
+                            <div class="terminal">
+# Timeout settings
+nikto -h target.com -timeout 10
+
+# Maximum scan time
+nikto -h target.com -maxtime 3600
+
+# Delay between requests
+nikto -h target.com -Pause 2
+
+# User agent
+nikto -h target.com -useragent "Mozilla/5.0 (compatible; Nikto)"
+
+# Custom user agent
+nikto -h target.com -useragent "Custom Scanner 1.0"
+                            </div>
+
+                            <h3 class="text-success mt-4">Proxy and SSL</h3>
+                            <div class="terminal">
+# Use proxy
+nikto -h target.com -useproxy http://proxy:8080
+
+# Ignore SSL certificate errors
+nikto -h https://target.com -ssl
+
+# Force SSL version
+nikto -h target.com -ssl -port 443
+
+# Disable SSL checks
+nikto -h https://target.com -nossl
+                            </div>
+                        </section>
+
+                        <!-- Output Formats Section -->
+                        <section id="output-formats" class="mb-5">
+                            <h2 class="text-success">Output Formats & Reporting</h2>
+                            
+                            <h3 class="text-success mt-4">Output Options</h3>
+                            <div class="terminal">
+# Save to file (text format)
+nikto -h target.com -o results.txt
+
+# HTML report
+nikto -h target.com -o results.html -Format html
+
+# XML output
+nikto -h target.com -o results.xml -Format xml
+
+# CSV format
+nikto -h target.com -o results.csv -Format csv
+
+# Multiple formats
+nikto -h target.com -o results -Format html,xml,txt
+                            </div>
+
+                            <h3 class="text-success mt-4">Report Customization</h3>
+                            <div class="terminal">
+# No banner in output
+nikto -h target.com -nobanner
+
+# Display only vulnerabilities
+nikto -h target.com -Display V
+
+# Display options:
+# 1 - Show redirects
+# 2 - Show cookies received
+# 3 - Show all 200/OK responses
+# 4 - Show URLs which require authentication
+# V - Verbose output
+
+# Custom display
+nikto -h target.com -Display 1,2,V
+                            </div>
+
+                            <h3 class="text-success mt-4">Database Updates</h3>
+                            <div class="terminal">
+# Update plugin database
+nikto -update
+
+# List all plugins
+nikto -list-plugins
+
+# Show database info
+nikto -dbcheck
+
+# Force database update
+nikto -update -D V
+                            </div>
+                        </section>
+
+                        <!-- Plugins Section -->
+                        <section id="plugins" class="mb-5">
+                            <h2 class="text-success">Plugins & Advanced Features</h2>
+                            
+                            <h3 class="text-success mt-4">Plugin Management</h3>
+                            <div class="terminal">
+# List available plugins
+nikto -list-plugins
+
+# Use specific plugins
+nikto -h target.com -Plugins "apacheusers,cgi"
+
+# Exclude plugins
+nikto -h target.com -Plugins "@@DEFAULT" -PluginTimeout 60
+
+# Plugin categories:
+# - apacheusers: Enumerate Apache users
+# - cgi: CGI scanning
+# - headers: HTTP header analysis
+# - httpoptions: HTTP methods testing
+# - msgs: Custom message testing
+# - outdated: Outdated software detection
+# - paths: Path discovery
+# - robots: robots.txt analysis
+                            </div>
+
+                            <h3 class="text-success mt-4">Custom Scans</h3>
+                            <div class="terminal">
+# Scan specific directory
+nikto -h target.com -root /admin/
+
+# Custom port range
+nikto -h target.com -p 1-1000
+
+# Evasion techniques
+nikto -h target.com -evasion 1
+# Evasion modes:
+# 1 - Random URI encoding
+# 2 - Directory self-reference
+# 3 - Premature URL ending
+# 4 - Prepend long random string
+# 5 - Fake parameter
+# 6 - TAB as request spacer
+# 7 - Change case
+# 8 - Use Windows directory separator
+
+# Multiple evasion techniques
+nikto -h target.com -evasion 1,2,3
+                            </div>
+
+                            <h3 class="text-success mt-4">Integration Examples</h3>
+                            <div class="terminal">
+# Combine with Nmap
+nmap -p 80,443 --open target.com | grep "open" | awk '{print $1}' | nikto -h -
+
+# Scan from Nmap XML
+nmap -p 80,443 -oX scan.xml target.com
+nikto -h scan.xml
+
+# Integration with Burp Suite
+# 1. Configure Nikto to use Burp as proxy
+nikto -h target.com -useproxy http://127.0.0.1:8080
+
+# Automated scanning script
+#!/bin/bash
+for host in $(cat targets.txt); do
+    echo "Scanning $host"
+    nikto -h $host -o "nikto_$host.html" -Format html
+done
+                            </div>
+
+                            <h3 class="text-success mt-4">Common Use Cases</h3>
+                            <div class="terminal">
+# Quick vulnerability assessment
+nikto -h target.com -T 1,2,3,4,9 -o quick_scan.html -Format html
+
+# Comprehensive security audit
+nikto -h target.com -T 1,2,3,4,5,6,7,8,9,0,a,b,c -o full_audit.xml -Format xml
+
+# Stealth scanning
+nikto -h target.com -T 1,2,3 -timeout 20 -Pause 5 -evasion 1,2,7
+
+# SSL/TLS specific testing
+nikto -h https://target.com -ssl -T 2,3 -Plugins "headers,httpoptions"
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="sqlmap.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Previous: SQLMap
+                            </a>
+                            <a href="../web-security/xss-attacks.html" class="btn btn-success">
+                                Next: XSS Attacks <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

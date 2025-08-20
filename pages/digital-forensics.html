@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Forensics & Incident Response - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Courses
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courses.html">All Courses</a></li>
+                            <li><a class="dropdown-item" href="getting-started.html">Getting Started</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="courses.html#networking">Networking</a></li>
+                            <li><a class="dropdown-item" href="courses.html#python">Python Security</a></li>
+                            <li><a class="dropdown-item" href="courses.html#kali-tools">Kali Tools</a></li>
+                            <li><a class="dropdown-item" href="courses.html#web-security">Web Security</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container-fluid mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-list"></i> Course Navigation</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <a href="#introduction" class="list-group-item list-group-item-action">Introduction</a>
+                            <a href="#forensics-process" class="list-group-item list-group-item-action">Forensics Process</a>
+                            <a href="#evidence-acquisition" class="list-group-item list-group-item-action">Evidence Acquisition</a>
+                            <a href="#analysis-techniques" class="list-group-item list-group-item-action">Analysis Techniques</a>
+                            <a href="#incident-response" class="list-group-item list-group-item-action">Incident Response</a>
+                            <a href="#tools" class="list-group-item list-group-item-action">Forensics Tools</a>
+                            <a href="#virtual-lab" class="list-group-item list-group-item-action">Virtual Lab</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-search"></i> Digital Forensics & Incident Response</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to Digital Forensics</h2>
+                            <p>Digital forensics is the process of uncovering and interpreting electronic data for use in a court of law. It combines computer science and investigative procedures to recover digital evidence.</p>
+                            
+                            <div class="alert alert-info mt-4">
+                                <h4 class="text-primary"><i class="fas fa-lightbulb"></i> Core Theory</h4>
+                                <p>Think of digital forensics as being a detective in the digital world. Just as traditional detectives collect fingerprints and DNA evidence, digital forensics experts collect digital "fingerprints" - file timestamps, network logs, deleted files, and system artifacts that tell the story of what happened on a computer system.</p>
+                            </div>
+
+                            <h3 class="text-success mt-4">Types of Digital Forensics</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">By Device Type</h4>
+                                    <ul>
+                                        <li><strong>Computer Forensics:</strong> Desktop and laptop analysis</li>
+                                        <li><strong>Mobile Forensics:</strong> Smartphones and tablets</li>
+                                        <li><strong>Network Forensics:</strong> Network traffic analysis</li>
+                                        <li><strong>Cloud Forensics:</strong> Cloud-based evidence</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">By Application</h4>
+                                    <ul>
+                                        <li><strong>Criminal Investigations</strong></li>
+                                        <li><strong>Corporate Security Incidents</strong></li>
+                                        <li><strong>Civil Litigation</strong></li>
+                                        <li><strong>Regulatory Compliance</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Forensics Process Section -->
+                        <section id="forensics-process" class="mb-5">
+                            <h2 class="text-success">Digital Forensics Process</h2>
+                            <p>A systematic approach ensures evidence integrity and legal admissibility.</p>
+                            
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-cogs"></i> Forensics Methodology</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ol>
+                                        <li><strong>Identification:</strong> Recognize potential evidence sources</li>
+                                        <li><strong>Preservation:</strong> Secure and protect evidence from alteration</li>
+                                        <li><strong>Collection:</strong> Acquire evidence using forensically sound methods</li>
+                                        <li><strong>Examination:</strong> Process and extract relevant information</li>
+                                        <li><strong>Analysis:</strong> Interpret findings and draw conclusions</li>
+                                        <li><strong>Presentation:</strong> Report findings clearly and accurately</li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Chain of Custody</h3>
+                            <p>Maintaining an unbroken chain of custody is crucial for legal proceedings:</p>
+                            <ul>
+                                <li><strong>Documentation:</strong> Record every person who handles evidence</li>
+                                <li><strong>Timestamps:</strong> Log when evidence was accessed or transferred</li>
+                                <li><strong>Security:</strong> Ensure evidence is stored securely</li>
+                                <li><strong>Integrity:</strong> Use cryptographic hashes to verify evidence hasn't been altered</li>
+                            </ul>
+                        </section>
+
+                        <!-- Evidence Acquisition Section -->
+                        <section id="evidence-acquisition" class="mb-5">
+                            <h2 class="text-success">Evidence Acquisition</h2>
+                            <p>Proper evidence acquisition ensures data integrity and legal admissibility.</p>
+                            
+                            <h3 class="text-success mt-4">Live vs. Dead Acquisition</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Live Acquisition</h4>
+                                    <ul>
+                                        <li><strong>Volatile Memory:</strong> RAM contents</li>
+                                        <li><strong>Running Processes:</strong> Active system state</li>
+                                        <li><strong>Network Connections:</strong> Current network activity</li>
+                                        <li><strong>Encrypted Volumes:</strong> Mounted encrypted drives</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Dead Acquisition</h4>
+                                    <ul>
+                                        <li><strong>Complete Disk Image:</strong> Bit-for-bit copy</li>
+                                        <li><strong>File System Analysis:</strong> Deleted file recovery</li>
+                                        <li><strong>Metadata Preservation:</strong> File timestamps</li>
+                                        <li><strong>Unallocated Space:</strong> Hidden data recovery</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="code-block mt-4">
+# Creating forensic disk image with dd
+dd if=/dev/sda of=/mnt/evidence/disk_image.dd bs=4096 conv=noerror,sync
+
+# Creating image with dcfldd (enhanced dd)
+dcfldd if=/dev/sda of=/mnt/evidence/disk_image.dd hash=sha256 hashlog=/mnt/evidence/hash.log
+
+# Memory acquisition with LiME
+insmod lime.ko "path=/mnt/evidence/memory.lime format=lime"
+
+# Volatility memory analysis
+volatility -f memory.lime --profile=LinuxUbuntu1604x64 linux_pslist
+                            </div>
+                        </section>
+
+                        <!-- Analysis Techniques Section -->
+                        <section id="analysis-techniques" class="mb-5">
+                            <h2 class="text-success">Analysis Techniques</h2>
+                            <p>Various techniques are used to extract meaningful information from digital evidence.</p>
+                            
+                            <h3 class="text-success mt-4">File System Analysis</h3>
+                            <div class="code-block">
+# The Sleuth Kit (TSK) commands
+fls -r disk_image.dd                    # List files and directories
+icat disk_image.dd 12345 > recovered_file.txt  # Recover file by inode
+blkcat disk_image.dd 1000 > block_data.bin     # Extract specific block
+
+# Autopsy GUI analysis
+autopsy &
+
+# File carving with foremost
+foremost -i disk_image.dd -o carved_files/
+                            </div>
+
+                            <h3 class="text-success mt-4">Timeline Analysis</h3>
+                            <p>Creating timelines helps understand the sequence of events:</p>
+                            <div class="code-block">
+# Create timeline with log2timeline/plaso
+log2timeline.py --storage-file timeline.plaso disk_image.dd
+
+# Convert to CSV format
+psort.py -o l2tcsv -w timeline.csv timeline.plaso
+
+# Timeline analysis with mactime
+fls -r -m / disk_image.dd > bodyfile.txt
+mactime -b bodyfile.txt -d > timeline.txt
+                            </div>
+
+                            <h3 class="text-success mt-4">Network Forensics</h3>
+                            <div class="code-block">
+# Wireshark command line analysis
+tshark -r capture.pcap -T fields -e ip.src -e ip.dst -e tcp.port
+
+# Extract files from network capture
+tcpflow -r capture.pcap -o extracted_files/
+
+# Network timeline with Argus
+argus -r capture.pcap -w argus.log
+ra -r argus.log -s time,saddr,daddr,sport,dport,proto
+                            </div>
+                        </section>
+
+                        <!-- Incident Response Section -->
+                        <section id="incident-response" class="mb-5">
+                            <h2 class="text-success">Incident Response</h2>
+                            <p>Incident response is the organized approach to addressing and managing security breaches or cyberattacks.</p>
+                            
+                            <h3 class="text-success mt-4">NIST Incident Response Framework</h3>
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-shield-alt"></i> IR Lifecycle</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ol>
+                                        <li><strong>Preparation:</strong> Establish IR capabilities and procedures</li>
+                                        <li><strong>Detection & Analysis:</strong> Identify and investigate incidents</li>
+                                        <li><strong>Containment, Eradication & Recovery:</strong> Stop the attack and restore systems</li>
+                                        <li><strong>Post-Incident Activity:</strong> Learn from the incident and improve</li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Incident Classification</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">By Severity</h4>
+                                    <ul>
+                                        <li><strong>Low:</strong> Minimal business impact</li>
+                                        <li><strong>Medium:</strong> Moderate business impact</li>
+                                        <li><strong>High:</strong> Significant business impact</li>
+                                        <li><strong>Critical:</strong> Severe business impact</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">By Type</h4>
+                                    <ul>
+                                        <li><strong>Malware Infection</strong></li>
+                                        <li><strong>Data Breach</strong></li>
+                                        <li><strong>Denial of Service</strong></li>
+                                        <li><strong>Insider Threat</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Tools Section -->
+                        <section id="tools" class="mb-5">
+                            <h2 class="text-success">Digital Forensics Tools</h2>
+                            <p>Professional forensics requires specialized tools for evidence acquisition and analysis.</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Commercial Tools</h4>
+                                    <ul>
+                                        <li><strong>EnCase:</strong> Comprehensive forensics platform</li>
+                                        <li><strong>FTK (Forensic Toolkit):</strong> Digital investigation suite</li>
+                                        <li><strong>X-Ways Forensics:</strong> Advanced hex editor and forensics tool</li>
+                                        <li><strong>Cellebrite:</strong> Mobile device forensics</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Open Source Tools</h4>
+                                    <ul>
+                                        <li><strong>Autopsy:</strong> Digital forensics platform</li>
+                                        <li><strong>Volatility:</strong> Memory forensics framework</li>
+                                        <li><strong>The Sleuth Kit:</strong> File system analysis</li>
+                                        <li><strong>YARA:</strong> Malware identification</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Virtual Lab Section -->
+                        <section id="virtual-lab" class="mb-5">
+                            <h2 class="text-success">Digital Forensics Virtual Lab</h2>
+                            <p>Practice digital forensics commands in our interactive virtual terminal.</p>
+                            
+                            <div class="card border-success">
+                                <div class="card-header bg-dark text-success">
+                                    <h5 class="mb-0"><i class="fas fa-terminal"></i> Virtual Terminal - Forensics Lab</h5>
+                                </div>
+                                <div class="card-body bg-black text-success p-0">
+                                    <div id="terminal-forensics" class="virtual-terminal" style="height: 400px; overflow-y: auto; padding: 15px; font-family: 'Courier New', monospace; font-size: 14px;">
+                                        <div class="terminal-line">
+                                            <span class="text-warning">forensics@lab</span><span class="text-white">:</span><span class="text-primary">~</span><span class="text-white"># </span><span class="cursor">_</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">
+                                        Try commands: <code>volatility -f memory.dump imageinfo</code>, <code>fls -r disk.dd</code>, <code>strings evidence.bin</code>
+                                    </small>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="row mt-5">
+                            <div class="col-md-6">
+                                <a href="penetration-testing.html" class="btn btn-outline-success">
+                                    <i class="fas fa-arrow-left"></i> Penetration Testing
+                                </a>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <a href="social-engineering.html" class="btn btn-success">
+                                    Social Engineering <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. All rights reserved. Professional Ethical Hacking Education.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+    <script src="../js/virtual-terminal.js"></script>
+</body>
+</html>

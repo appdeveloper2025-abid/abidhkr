@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Cryptography - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card bg-dark text-white sticky-top">
+                    <div class="card-header">
+                        <h5><i class="fas fa-list"></i> Course Navigation</h5>
+                    </div>
+                    <div class="card-body">
+                        <nav class="nav flex-column">
+                            <a class="nav-link text-success" href="#introduction">Introduction</a>
+                            <a class="nav-link text-success" href="#basics">Crypto Basics</a>
+                            <a class="nav-link text-success" href="#symmetric">Symmetric Encryption</a>
+                            <a class="nav-link text-success" href="#asymmetric">Asymmetric Encryption</a>
+                            <a class="nav-link text-success" href="#hashing">Hashing</a>
+                            <a class="nav-link text-success" href="#digital-signatures">Digital Signatures</a>
+                            <a class="nav-link text-success" href="#practical">Practical Examples</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <div class="card bg-dark text-white">
+                    <div class="card-header">
+                        <h1 class="text-success">
+                            <i class="fas fa-lock"></i> Python Cryptography
+                        </h1>
+                        <p class="mb-0">Master encryption and security with Python</p>
+                    </div>
+                    <div class="card-body">
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to Cryptography</h2>
+                            <p>Cryptography is the practice of securing information by transforming it into an unreadable format. Python provides excellent libraries for implementing various cryptographic algorithms and protocols.</p>
+                            
+                            <h3 class="text-success mt-4">Installation</h3>
+                            <div class="terminal">
+# Install required libraries
+pip install cryptography
+pip install pycryptodome
+pip install hashlib
+pip install secrets
+
+# Import common modules
+from cryptography.fernet import Fernet
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
+import hashlib
+import secrets
+import base64
+                            </div>
+                        </section>
+
+                        <section id="basics" class="mt-5">
+                            <h2 class="text-success">Cryptography Basics</h2>
+                            <p>Understanding fundamental cryptographic concepts:</p>
+                            
+                            <h3 class="text-success mt-4">Key Generation</h3>
+                            <div class="terminal">
+import secrets
+import os
+
+# Generate random bytes
+random_bytes = secrets.token_bytes(32)
+print(f"Random bytes: {random_bytes.hex()}")
+
+# Generate random string
+random_string = secrets.token_urlsafe(32)
+print(f"Random string: {random_string}")
+
+# Generate cryptographically secure random numbers
+random_number = secrets.randbelow(1000000)
+print(f"Random number: {random_number}")
+
+# Using os.urandom (alternative)
+secure_random = os.urandom(16)
+print(f"OS random: {secure_random.hex()}")
+                            </div>
+                        </section>
+
+                        <section id="symmetric" class="mt-5">
+                            <h2 class="text-success">Symmetric Encryption</h2>
+                            <p>Symmetric encryption uses the same key for both encryption and decryption.</p>
+                            
+                            <h3 class="text-success mt-4">Fernet (AES-128)</h3>
+                            <div class="terminal">
+from cryptography.fernet import Fernet
+
+# Generate a key
+key = Fernet.generate_key()
+print(f"Key: {key}")
+
+# Create cipher suite
+cipher_suite = Fernet(key)
+
+# Encrypt data
+message = "This is a secret message"
+encrypted_message = cipher_suite.encrypt(message.encode())
+print(f"Encrypted: {encrypted_message}")
+
+# Decrypt data
+decrypted_message = cipher_suite.decrypt(encrypted_message)
+print(f"Decrypted: {decrypted_message.decode()}")
+
+# File encryption example
+def encrypt_file(filename, key):
+    fernet = Fernet(key)
+    with open(filename, 'rb') as file:
+        original = file.read()
+    encrypted = fernet.encrypt(original)
+    with open(filename + '.encrypted', 'wb') as encrypted_file:
+        encrypted_file.write(encrypted)
+
+def decrypt_file(filename, key):
+    fernet = Fernet(key)
+    with open(filename, 'rb') as enc_file:
+        encrypted = enc_file.read()
+    decrypted = fernet.decrypt(encrypted)
+    with open(filename.replace('.encrypted', ''), 'wb') as dec_file:
+        dec_file.write(decrypted)
+                            </div>
+
+                            <h3 class="text-success mt-4">AES Encryption</h3>
+                            <div class="terminal">
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
+from Crypto.Util.Padding import pad, unpad
+
+def aes_encrypt(data, key):
+    cipher = AES.new(key, AES.MODE_CBC)
+    ct_bytes = cipher.encrypt(pad(data.encode(), AES.block_size))
+    iv = cipher.iv
+    return iv + ct_bytes
+
+def aes_decrypt(encrypted_data, key):
+    iv = encrypted_data[:16]
+    ct = encrypted_data[16:]
+    cipher = AES.new(key, AES.MODE_CBC, iv)
+    pt = unpad(cipher.decrypt(ct), AES.block_size)
+    return pt.decode()
+
+# Example usage
+key = get_random_bytes(32)  # 256-bit key
+message = "Secret message for AES encryption"
+encrypted = aes_encrypt(message, key)
+decrypted = aes_decrypt(encrypted, key)
+print(f"Original: {message}")
+print(f"Decrypted: {decrypted}")
+                            </div>
+                        </section>
+
+                        <section id="asymmetric" class="mt-5">
+                            <h2 class="text-success">Asymmetric Encryption</h2>
+                            <p>Asymmetric encryption uses a pair of keys: public and private.</p>
+                            
+                            <h3 class="text-success mt-4">RSA Encryption</h3>
+                            <div class="terminal">
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.hazmat.primitives import serialization, hashes
+
+# Generate RSA key pair
+private_key = rsa.generate_private_key(
+    public_exponent=65537,
+    key_size=2048
+)
+public_key = private_key.public_key()
+
+# Encrypt with public key
+message = b"Secret message for RSA"
+encrypted = public_key.encrypt(
+    message,
+    padding.OAEP(
+        mgf=padding.MGF1(algorithm=hashes.SHA256()),
+        algorithm=hashes.SHA256(),
+        label=None
+    )
+)
+
+# Decrypt with private key
+decrypted = private_key.decrypt(
+    encrypted,
+    padding.OAEP(
+        mgf=padding.MGF1(algorithm=hashes.SHA256()),
+        algorithm=hashes.SHA256(),
+        label=None
+    )
+)
+
+print(f"Original: {message}")
+print(f"Decrypted: {decrypted}")
+
+# Save keys to files
+def save_keys(private_key, public_key):
+    # Private key
+    pem_private = private_key.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption()
+    )
+    
+    # Public key
+    pem_public = public_key.public_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+    
+    with open('private_key.pem', 'wb') as f:
+        f.write(pem_private)
+    
+    with open('public_key.pem', 'wb') as f:
+        f.write(pem_public)
+                            </div>
+                        </section>
+
+                        <section id="hashing" class="mt-5">
+                            <h2 class="text-success">Hashing and Message Digests</h2>
+                            <p>Hash functions create fixed-size outputs from variable-size inputs.</p>
+                            
+                            <div class="terminal">
+import hashlib
+import hmac
+
+# MD5 Hash (not secure for cryptographic use)
+def md5_hash(data):
+    return hashlib.md5(data.encode()).hexdigest()
+
+# SHA-256 Hash
+def sha256_hash(data):
+    return hashlib.sha256(data.encode()).hexdigest()
+
+# SHA-512 Hash
+def sha512_hash(data):
+    return hashlib.sha512(data.encode()).hexdigest()
+
+# Example usage
+message = "Hello, World!"
+print(f"MD5: {md5_hash(message)}")
+print(f"SHA-256: {sha256_hash(message)}")
+print(f"SHA-512: {sha512_hash(message)}")
+
+# HMAC (Hash-based Message Authentication Code)
+def create_hmac(message, key):
+    return hmac.new(key.encode(), message.encode(), hashlib.sha256).hexdigest()
+
+def verify_hmac(message, key, signature):
+    expected = hmac.new(key.encode(), message.encode(), hashlib.sha256).hexdigest()
+    return hmac.compare_digest(expected, signature)
+
+# HMAC example
+key = "secret_key"
+message = "Important message"
+signature = create_hmac(message, key)
+is_valid = verify_hmac(message, key, signature)
+print(f"HMAC: {signature}")
+print(f"Valid: {is_valid}")
+
+# Password hashing with salt
+import bcrypt
+
+def hash_password(password):
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password.encode('utf-8'), salt)
+    return hashed
+
+def verify_password(password, hashed):
+    return bcrypt.checkpw(password.encode('utf-8'), hashed)
+
+# Password example
+password = "my_secure_password"
+hashed_pw = hash_password(password)
+is_correct = verify_password(password, hashed_pw)
+print(f"Password valid: {is_correct}")
+                            </div>
+                        </section>
+
+                        <section id="digital-signatures" class="mt-5">
+                            <h2 class="text-success">Digital Signatures</h2>
+                            <p>Digital signatures provide authentication and non-repudiation.</p>
+                            
+                            <div class="terminal">
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.hazmat.primitives import hashes
+
+# Generate key pair for signing
+private_key = rsa.generate_private_key(
+    public_exponent=65537,
+    key_size=2048
+)
+public_key = private_key.public_key()
+
+# Sign a message
+message = b"This message needs to be signed"
+signature = private_key.sign(
+    message,
+    padding.PSS(
+        mgf=padding.MGF1(hashes.SHA256()),
+        salt_length=padding.PSS.MAX_LENGTH
+    ),
+    hashes.SHA256()
+)
+
+# Verify signature
+try:
+    public_key.verify(
+        signature,
+        message,
+        padding.PSS(
+            mgf=padding.MGF1(hashes.SHA256()),
+            salt_length=padding.PSS.MAX_LENGTH
+        ),
+        hashes.SHA256()
+    )
+    print("Signature is valid!")
+except:
+    print("Signature is invalid!")
+
+# Digital signature class
+class DigitalSigner:
+    def __init__(self):
+        self.private_key = rsa.generate_private_key(
+            public_exponent=65537,
+            key_size=2048
+        )
+        self.public_key = self.private_key.public_key()
+    
+    def sign_message(self, message):
+        signature = self.private_key.sign(
+            message.encode(),
+            padding.PSS(
+                mgf=padding.MGF1(hashes.SHA256()),
+                salt_length=padding.PSS.MAX_LENGTH
+            ),
+            hashes.SHA256()
+        )
+        return signature
+    
+    def verify_signature(self, message, signature):
+        try:
+            self.public_key.verify(
+                signature,
+                message.encode(),
+                padding.PSS(
+                    mgf=padding.MGF1(hashes.SHA256()),
+                    salt_length=padding.PSS.MAX_LENGTH
+                ),
+                hashes.SHA256()
+            )
+            return True
+        except:
+            return False
+
+# Usage example
+signer = DigitalSigner()
+message = "Important document content"
+signature = signer.sign_message(message)
+is_valid = signer.verify_signature(message, signature)
+print(f"Document signature valid: {is_valid}")
+                            </div>
+                        </section>
+
+                        <section id="practical" class="mt-5">
+                            <h2 class="text-success">Practical Security Applications</h2>
+                            <p>Real-world cryptography implementations for security professionals.</p>
+                            
+                            <h3 class="text-success mt-4">Secure Communication</h3>
+                            <div class="terminal">
+import socket
+import ssl
+from cryptography.fernet import Fernet
+
+class SecureClient:
+    def __init__(self):
+        self.key = Fernet.generate_key()
+        self.cipher = Fernet(self.key)
+    
+    def encrypt_message(self, message):
+        return self.cipher.encrypt(message.encode())
+    
+    def decrypt_message(self, encrypted_message):
+        return self.cipher.decrypt(encrypted_message).decode()
+    
+    def secure_connect(self, host, port):
+        context = ssl.create_default_context()
+        sock = socket.create_connection((host, port))
+        ssock = context.wrap_socket(sock, server_hostname=host)
+        return ssock
+
+# File integrity checker
+class FileIntegrityChecker:
+    def __init__(self):
+        self.checksums = {}
+    
+    def add_file(self, filepath):
+        with open(filepath, 'rb') as f:
+            content = f.read()
+        checksum = hashlib.sha256(content).hexdigest()
+        self.checksums[filepath] = checksum
+        return checksum
+    
+    def verify_file(self, filepath):
+        if filepath not in self.checksums:
+            return False, "File not in database"
+        
+        with open(filepath, 'rb') as f:
+            content = f.read()
+        current_checksum = hashlib.sha256(content).hexdigest()
+        
+        if current_checksum == self.checksums[filepath]:
+            return True, "File integrity verified"
+        else:
+            return False, "File has been modified"
+
+# Usage
+checker = FileIntegrityChecker()
+checker.add_file("important_file.txt")
+is_valid, message = checker.verify_file("important_file.txt")
+print(f"File check: {message}")
+                            </div>
+
+                            <h3 class="text-success mt-4">Cryptographic Attacks</h3>
+                            <div class="terminal">
+# Simple brute force attack simulation
+import itertools
+import string
+import time
+
+def brute_force_hash(target_hash, max_length=4):
+    characters = string.ascii_lowercase + string.digits
+    
+    for length in range(1, max_length + 1):
+        for attempt in itertools.product(characters, repeat=length):
+            password = ''.join(attempt)
+            if hashlib.md5(password.encode()).hexdigest() == target_hash:
+                return password
+    return None
+
+# Dictionary attack simulation
+def dictionary_attack(target_hash, wordlist):
+    with open(wordlist, 'r') as f:
+        for line in f:
+            password = line.strip()
+            if hashlib.md5(password.encode()).hexdigest() == target_hash:
+                return password
+    return None
+
+# Rainbow table concept
+class SimpleRainbowTable:
+    def __init__(self):
+        self.table = {}
+    
+    def generate_table(self, wordlist):
+        with open(wordlist, 'r') as f:
+            for line in f:
+                password = line.strip()
+                hash_value = hashlib.md5(password.encode()).hexdigest()
+                self.table[hash_value] = password
+    
+    def lookup(self, hash_value):
+        return self.table.get(hash_value, None)
+
+# Example usage (educational purposes only)
+# target = hashlib.md5("test".encode()).hexdigest()
+# result = brute_force_hash(target, 4)
+# print(f"Cracked password: {result}")
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="row mt-5">
+                            <div class="col-6">
+                                <a href="web-scraping.html" class="btn btn-outline-success">
+                                    <i class="fas fa-arrow-left"></i> Previous: Web Scraping
+                                </a>
+                            </div>
+                            <div class="col-6 text-end">
+                                <a href="../kali-tools/nmap.html" class="btn btn-outline-success">
+                                    Next: Nmap Mastery <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>ABID HACKER</h5>
+                    <p>Professional Ethical Hacking Learning Platform</p>
+                    <p>Created by: Abid Mehmood</p>
+                    <p>Email: abidbusiness@gmail.com</p>
+                    <p>Phone/WhatsApp: 03029382306</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../about.html" class="text-white-50">About Us</a></li>
+                        <li><a href="../contact.html" class="text-white-50">Contact</a></li>
+                        <li><a href="../privacy.html" class="text-white-50">Privacy Policy</a></li>
+                        <li><a href="../terms.html" class="text-white-50">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. All rights reserved. Professional Web Designer.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

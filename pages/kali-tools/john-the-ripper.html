@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John the Ripper - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card bg-dark text-white sticky-top">
+                    <div class="card-header">
+                        <h5><i class="fas fa-list"></i> Course Navigation</h5>
+                    </div>
+                    <div class="card-body">
+                        <nav class="nav flex-column">
+                            <a class="nav-link text-success" href="#introduction">Introduction</a>
+                            <a class="nav-link text-success" href="#installation">Installation</a>
+                            <a class="nav-link text-success" href="#basic-usage">Basic Usage</a>
+                            <a class="nav-link text-success" href="#hash-formats">Hash Formats</a>
+                            <a class="nav-link text-success" href="#attack-modes">Attack Modes</a>
+                            <a class="nav-link text-success" href="#advanced">Advanced Features</a>
+                            <a class="nav-link text-success" href="#defense">Defense</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <div class="card bg-dark text-white">
+                    <div class="card-header">
+                        <h1 class="text-success">
+                            <i class="fas fa-unlock-alt"></i> John the Ripper
+                        </h1>
+                        <p class="mb-0">Advanced password cracking and hash analysis tool</p>
+                    </div>
+                    <div class="card-body">
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to John the Ripper</h2>
+                            <p>John the Ripper is a fast password cracker, currently available for many flavors of Unix, macOS, Windows, DOS, BeOS, and OpenVMS. Its primary purpose is to detect weak Unix passwords.</p>
+                            
+                            <h3 class="text-success mt-4">Key Features</h3>
+                            <ul>
+                                <li>Multiple hash format support</li>
+                                <li>Dictionary and brute force attacks</li>
+                                <li>Rule-based password generation</li>
+                                <li>Distributed cracking support</li>
+                                <li>Custom character sets</li>
+                            </ul>
+                        </section>
+
+                        <section id="installation" class="mt-5">
+                            <h2 class="text-success">Installation</h2>
+                            <p>John comes pre-installed with Kali Linux. For other systems:</p>
+                            
+                            <div class="terminal">
+# Ubuntu/Debian
+sudo apt-get install john
+
+# From source (Jumbo version)
+git clone https://github.com/magnumripper/JohnTheRipper.git
+cd JohnTheRipper/src
+./configure && make
+
+# Check installation
+john --version
+                            </div>
+                        </section>
+
+                        <section id="basic-usage" class="mt-5">
+                            <h2 class="text-success">Basic Usage</h2>
+                            <p>Basic John the Ripper commands and operations:</p>
+                            
+                            <div class="terminal">
+# Basic password cracking
+john passwords.txt
+
+# Using wordlist
+john --wordlist=/usr/share/wordlists/rockyou.txt passwords.txt
+
+# Show cracked passwords
+john --show passwords.txt
+
+# Crack specific hash format
+john --format=md5 hashes.txt
+
+# Resume interrupted session
+john --restore
+                            </div>
+                        </section>
+
+                        <section id="hash-formats" class="mt-5">
+                            <h2 class="text-success">Supported Hash Formats</h2>
+                            <p>John supports numerous hash formats:</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-success">Common Formats</h4>
+                                    <ul>
+                                        <li>MD5 (md5)</li>
+                                        <li>SHA-1 (sha1)</li>
+                                        <li>SHA-256 (sha256)</li>
+                                        <li>SHA-512 (sha512)</li>
+                                        <li>NTLM (nt)</li>
+                                        <li>LM (lm)</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-success">System Formats</h4>
+                                    <ul>
+                                        <li>Unix crypt (crypt)</li>
+                                        <li>bcrypt (bcrypt)</li>
+                                        <li>scrypt (scrypt)</li>
+                                        <li>PBKDF2 (pbkdf2)</li>
+                                        <li>Argon2 (argon2)</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="terminal">
+# List all supported formats
+john --list=formats
+
+# Identify hash format
+john --list=format-details | grep -A5 "md5"
+
+# Format-specific cracking
+john --format=sha256 --wordlist=wordlist.txt hashes.txt
+                            </div>
+                        </section>
+
+                        <section id="attack-modes" class="mt-5">
+                            <h2 class="text-success">Attack Modes</h2>
+                            <p>Different attack strategies in John the Ripper:</p>
+                            
+                            <h3 class="text-success mt-4">Dictionary Attack</h3>
+                            <div class="terminal">
+# Basic dictionary attack
+john --wordlist=passwords.txt hashes.txt
+
+# Multiple wordlists
+john --wordlist=list1.txt,list2.txt hashes.txt
+
+# External wordlist
+john --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+                            </div>
+
+                            <h3 class="text-success mt-4">Brute Force Attack</h3>
+                            <div class="terminal">
+# Incremental mode (brute force)
+john --incremental hashes.txt
+
+# Custom character set
+john --incremental=digits --min-length=4 --max-length=8 hashes.txt
+
+# ASCII brute force
+john --incremental=ascii hashes.txt
+                            </div>
+
+                            <h3 class="text-success mt-4">Rule-based Attack</h3>
+                            <div class="terminal">
+# Using rules with wordlist
+john --wordlist=passwords.txt --rules hashes.txt
+
+# Specific rule set
+john --wordlist=passwords.txt --rules=best64 hashes.txt
+
+# Custom rules
+john --wordlist=passwords.txt --rules=custom hashes.txt
+                            </div>
+                        </section>
+
+                        <section id="advanced" class="mt-5">
+                            <h2 class="text-success">Advanced Features</h2>
+                            <p>Advanced John the Ripper techniques:</p>
+                            
+                            <h3 class="text-success mt-4">Performance Optimization</h3>
+                            <div class="terminal">
+# Use multiple CPU cores
+john --fork=4 hashes.txt
+
+# GPU acceleration (if available)
+john --format=sha256-opencl hashes.txt
+
+# Memory usage optimization
+john --mem-file-size=1024 hashes.txt
+                            </div>
+
+                            <h3 class="text-success mt-4">Session Management</h3>
+                            <div class="terminal">
+# Named session
+john --session=mysession hashes.txt
+
+# Restore specific session
+john --restore=mysession
+
+# Status of running session
+john --status=mysession
+                            </div>
+
+                            <h3 class="text-success mt-4">Hash Extraction</h3>
+                            <div class="terminal">
+# Extract from /etc/shadow
+sudo unshadow /etc/passwd /etc/shadow > mypasswd.txt
+
+# Extract from Windows SAM
+samdump2 system sam > hashes.txt
+
+# Extract from PDF
+pdf2john encrypted.pdf > pdf_hash.txt
+                            </div>
+                        </section>
+
+                        <section id="defense" class="mt-5">
+                            <h2 class="text-success">Defense Against Password Cracking</h2>
+                            <p>Protecting against password cracking attacks:</p>
+                            
+                            <ul>
+                                <li><strong>Strong Passwords:</strong> Use complex, long passwords</li>
+                                <li><strong>Salt Usage:</strong> Implement proper password salting</li>
+                                <li><strong>Slow Hashing:</strong> Use bcrypt, scrypt, or Argon2</li>
+                                <li><strong>Password Policies:</strong> Enforce minimum complexity</li>
+                                <li><strong>Multi-Factor Authentication:</strong> Add additional security layers</li>
+                                <li><strong>Regular Updates:</strong> Force periodic password changes</li>
+                            </ul>
+
+                            <div class="terminal">
+# Generate secure password
+openssl rand -base64 32
+
+# Check password strength
+echo "password123" | john --stdin --stdout --rules | wc -l
+
+# Hash password securely
+echo "mypassword" | mkpasswd -m sha-512 -S randomsalt
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="row mt-5">
+                            <div class="col-6">
+                                <a href="hydra.html" class="btn btn-outline-success">
+                                    <i class="fas fa-arrow-left"></i> Previous: Hydra
+                                </a>
+                            </div>
+                            <div class="col-6 text-end">
+                                <a href="../networking/tcp-ip.html" class="btn btn-outline-success">
+                                    Next: TCP/IP Protocol <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>ABID HACKER</h5>
+                    <p>Professional Ethical Hacking Learning Platform</p>
+                    <p>Created by: Abid Mehmood</p>
+                    <p>Email: abidbusiness@gmail.com</p>
+                    <p>Phone/WhatsApp: 03029382306</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../about.html" class="text-white-50">About Us</a></li>
+                        <li><a href="../contact.html" class="text-white-50">Contact</a></li>
+                        <li><a href="../privacy.html" class="text-white-50">Privacy Policy</a></li>
+                        <li><a href="../terms.html" class="text-white-50">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. All rights reserved. Professional Web Designer.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

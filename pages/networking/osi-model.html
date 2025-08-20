@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSI Model - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card bg-dark text-white sticky-top">
+                    <div class="card-header">
+                        <h5><i class="fas fa-list"></i> Course Navigation</h5>
+                    </div>
+                    <div class="card-body">
+                        <nav class="nav flex-column">
+                            <a class="nav-link text-success" href="#introduction">Introduction</a>
+                            <a class="nav-link text-success" href="#layer7">Application Layer</a>
+                            <a class="nav-link text-success" href="#layer6">Presentation Layer</a>
+                            <a class="nav-link text-success" href="#layer5">Session Layer</a>
+                            <a class="nav-link text-success" href="#layer4">Transport Layer</a>
+                            <a class="nav-link text-success" href="#layer3">Network Layer</a>
+                            <a class="nav-link text-success" href="#layer2">Data Link Layer</a>
+                            <a class="nav-link text-success" href="#layer1">Physical Layer</a>
+                            <a class="nav-link text-success" href="#security">Security Implications</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <div class="card bg-dark text-white">
+                    <div class="card-header">
+                        <h1 class="text-success">
+                            <i class="fas fa-layer-group"></i> OSI Model
+                        </h1>
+                        <p class="mb-0">Understanding the 7-layer network communication model</p>
+                    </div>
+                    <div class="card-body">
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to OSI Model</h2>
+                            <p>The Open Systems Interconnection (OSI) model is a conceptual framework that standardizes the functions of a telecommunication or computing system into seven abstraction layers. Each layer serves a specific function and communicates with the layers directly above and below it.</p>
+                            
+                            <div class="table-responsive mt-4">
+                                <table class="table table-dark table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Layer</th>
+                                            <th>Name</th>
+                                            <th>Function</th>
+                                            <th>Examples</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>Application</td>
+                                            <td>User interface</td>
+                                            <td>HTTP, FTP, SMTP</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>Presentation</td>
+                                            <td>Data formatting</td>
+                                            <td>SSL/TLS, JPEG, ASCII</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Session</td>
+                                            <td>Session management</td>
+                                            <td>NetBIOS, RPC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Transport</td>
+                                            <td>End-to-end delivery</td>
+                                            <td>TCP, UDP</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Network</td>
+                                            <td>Routing</td>
+                                            <td>IP, ICMP, OSPF</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Data Link</td>
+                                            <td>Node-to-node delivery</td>
+                                            <td>Ethernet, WiFi, PPP</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Physical</td>
+                                            <td>Physical transmission</td>
+                                            <td>Cables, Radio, Fiber</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <section id="layer7" class="mt-5">
+                            <h2 class="text-success">Layer 7: Application Layer</h2>
+                            <p>The Application Layer provides network services directly to end-users and applications.</p>
+                            
+                            <h3 class="text-success mt-4">Functions</h3>
+                            <ul>
+                                <li>User interface for network services</li>
+                                <li>Application-specific protocols</li>
+                                <li>Data exchange between applications</li>
+                                <li>Authentication and authorization</li>
+                            </ul>
+
+                            <div class="terminal">
+# Common Application Layer protocols
+HTTP/HTTPS - Web browsing
+FTP/SFTP - File transfer
+SMTP/POP3/IMAP - Email
+DNS - Domain name resolution
+DHCP - IP address assignment
+SSH - Secure shell access
+Telnet - Remote terminal access
+                            </div>
+                        </section>
+
+                        <section id="layer6" class="mt-5">
+                            <h2 class="text-success">Layer 6: Presentation Layer</h2>
+                            <p>The Presentation Layer handles data formatting, encryption, and compression.</p>
+                            
+                            <h3 class="text-success mt-4">Functions</h3>
+                            <ul>
+                                <li>Data encryption and decryption</li>
+                                <li>Data compression and decompression</li>
+                                <li>Character encoding (ASCII, Unicode)</li>
+                                <li>Data format conversion</li>
+                            </ul>
+
+                            <div class="terminal">
+# Presentation Layer examples
+SSL/TLS - Encryption protocols
+JPEG, GIF, PNG - Image formats
+MPEG, AVI - Video formats
+ASCII, EBCDIC - Character encoding
+ZIP, RAR - Compression formats
+                            </div>
+                        </section>
+
+                        <section id="layer5" class="mt-5">
+                            <h2 class="text-success">Layer 5: Session Layer</h2>
+                            <p>The Session Layer manages sessions between applications.</p>
+                            
+                            <h3 class="text-success mt-4">Functions</h3>
+                            <ul>
+                                <li>Session establishment and termination</li>
+                                <li>Session checkpointing and recovery</li>
+                                <li>Dialog control (full-duplex, half-duplex)</li>
+                                <li>Synchronization</li>
+                            </ul>
+
+                            <div class="terminal">
+# Session Layer protocols
+NetBIOS - Network Basic Input/Output System
+RPC - Remote Procedure Call
+SQL sessions - Database connections
+PPTP - Point-to-Point Tunneling Protocol
+                            </div>
+                        </section>
+
+                        <section id="layer4" class="mt-5">
+                            <h2 class="text-success">Layer 4: Transport Layer</h2>
+                            <p>The Transport Layer provides reliable data transfer between end systems.</p>
+                            
+                            <h3 class="text-success mt-4">Functions</h3>
+                            <ul>
+                                <li>Segmentation and reassembly</li>
+                                <li>Error detection and correction</li>
+                                <li>Flow control</li>
+                                <li>Port addressing</li>
+                            </ul>
+
+                            <div class="terminal">
+# Transport Layer protocols
+TCP (Transmission Control Protocol)
+- Connection-oriented
+- Reliable delivery
+- Error checking
+- Flow control
+
+UDP (User Datagram Protocol)
+- Connectionless
+- Fast transmission
+- No error checking
+- Best effort delivery
+
+# Port examples
+HTTP: 80, HTTPS: 443
+FTP: 21, SSH: 22
+Telnet: 23, SMTP: 25
+DNS: 53, DHCP: 67/68
+                            </div>
+                        </section>
+
+                        <section id="layer3" class="mt-5">
+                            <h2 class="text-success">Layer 3: Network Layer</h2>
+                            <p>The Network Layer handles routing and logical addressing.</p>
+                            
+                            <h3 class="text-success mt-4">Functions</h3>
+                            <ul>
+                                <li>Logical addressing (IP addresses)</li>
+                                <li>Routing between networks</li>
+                                <li>Path determination</li>
+                                <li>Packet forwarding</li>
+                            </ul>
+
+                            <div class="terminal">
+# Network Layer protocols
+IP (Internet Protocol)
+- IPv4: 32-bit addresses
+- IPv6: 128-bit addresses
+
+ICMP (Internet Control Message Protocol)
+- Error reporting
+- Network diagnostics
+
+Routing Protocols:
+- OSPF (Open Shortest Path First)
+- BGP (Border Gateway Protocol)
+- RIP (Routing Information Protocol)
+
+# Network Layer tools
+ping - Test connectivity
+traceroute - Trace packet path
+netstat - Network statistics
+route - View/modify routing table
+                            </div>
+                        </section>
+
+                        <section id="layer2" class="mt-5">
+                            <h2 class="text-success">Layer 2: Data Link Layer</h2>
+                            <p>The Data Link Layer provides node-to-node delivery and error detection.</p>
+                            
+                            <h3 class="text-success mt-4">Functions</h3>
+                            <ul>
+                                <li>Physical addressing (MAC addresses)</li>
+                                <li>Frame synchronization</li>
+                                <li>Error detection</li>
+                                <li>Flow control</li>
+                            </ul>
+
+                            <div class="terminal">
+# Data Link Layer protocols
+Ethernet - Wired LAN
+WiFi (802.11) - Wireless LAN
+PPP - Point-to-Point Protocol
+Frame Relay - WAN protocol
+ATM - Asynchronous Transfer Mode
+
+# MAC Address format
+48-bit address: 00:1A:2B:3C:4D:5E
+First 24 bits: Vendor identifier (OUI)
+Last 24 bits: Device identifier
+
+# Data Link Layer tools
+arp - View/modify ARP table
+ifconfig - Configure network interface
+iwconfig - Configure wireless interface
+                            </div>
+                        </section>
+
+                        <section id="layer1" class="mt-5">
+                            <h2 class="text-success">Layer 1: Physical Layer</h2>
+                            <p>The Physical Layer handles the physical transmission of data.</p>
+                            
+                            <h3 class="text-success mt-4">Functions</h3>
+                            <ul>
+                                <li>Bit transmission</li>
+                                <li>Physical topology</li>
+                                <li>Electrical specifications</li>
+                                <li>Mechanical specifications</li>
+                            </ul>
+
+                            <div class="terminal">
+# Physical Layer components
+Cables:
+- Ethernet (Cat5e, Cat6, Cat6a)
+- Fiber optic (Single-mode, Multi-mode)
+- Coaxial cables
+
+Wireless:
+- Radio frequencies
+- Infrared
+- Microwave
+
+Devices:
+- Hubs
+- Repeaters
+- Network interface cards
+- Transceivers
+                            </div>
+                        </section>
+
+                        <section id="security" class="mt-5">
+                            <h2 class="text-success">Security Implications by Layer</h2>
+                            <p>Understanding security vulnerabilities at each OSI layer:</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-success">Upper Layers (5-7)</h4>
+                                    <ul>
+                                        <li><strong>Application:</strong> SQL injection, XSS, CSRF</li>
+                                        <li><strong>Presentation:</strong> Encryption weaknesses</li>
+                                        <li><strong>Session:</strong> Session hijacking, fixation</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-success">Lower Layers (1-4)</h4>
+                                    <ul>
+                                        <li><strong>Transport:</strong> Port scanning, DoS attacks</li>
+                                        <li><strong>Network:</strong> IP spoofing, routing attacks</li>
+                                        <li><strong>Data Link:</strong> MAC spoofing, ARP poisoning</li>
+                                        <li><strong>Physical:</strong> Cable tapping, jamming</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="terminal">
+# Security tools by layer
+Application Layer:
+- Burp Suite, OWASP ZAP
+- Nikto, SQLmap
+
+Network Layer:
+- Nmap, Nessus
+- Wireshark, tcpdump
+
+Data Link Layer:
+- Ettercap, Bettercap
+- Aircrack-ng (wireless)
+
+# Defense strategies
+Layer 7: Input validation, WAF
+Layer 6: Strong encryption (AES, RSA)
+Layer 5: Session management
+Layer 4: Firewalls, IDS/IPS
+Layer 3: Router ACLs, VPNs
+Layer 2: Port security, VLANs
+Layer 1: Physical security
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="row mt-5">
+                            <div class="col-6">
+                                <a href="wireless-security.html" class="btn btn-outline-success">
+                                    <i class="fas fa-arrow-left"></i> Previous: Wireless Security
+                                </a>
+                            </div>
+                            <div class="col-6 text-end">
+                                <a href="tcp-ip.html" class="btn btn-outline-success">
+                                    Next: TCP/IP Protocol <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>ABID HACKER</h5>
+                    <p>Professional Ethical Hacking Learning Platform</p>
+                    <p>Created by: Abid Mehmood</p>
+                    <p>Email: abidbusiness@gmail.com</p>
+                    <p>Phone/WhatsApp: 03029382306</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../about.html" class="text-white-50">About Us</a></li>
+                        <li><a href="../contact.html" class="text-white-50">Contact</a></li>
+                        <li><a href="../privacy.html" class="text-white-50">Privacy Policy</a></li>
+                        <li><a href="../terms.html" class="text-white-50">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. All rights reserved. Professional Web Designer.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

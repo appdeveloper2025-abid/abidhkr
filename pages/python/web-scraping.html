@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Web Scraping - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">Web Scraping</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#introduction" class="text-success text-decoration-none">Introduction</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#libraries" class="text-success text-decoration-none">Python Libraries</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#basic-scraping" class="text-success text-decoration-none">Basic Scraping</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#advanced" class="text-success text-decoration-none">Advanced Techniques</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#security" class="text-success text-decoration-none">Security Applications</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#ethics" class="text-success text-decoration-none">Ethics & Legal</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fab fa-python"></i> Python Web Scraping for Security</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to Web Scraping</h2>
+                            <p>Web scraping is the process of extracting data from websites programmatically. It's a valuable skill for security professionals for reconnaissance and data gathering.</p>
+                            
+                            <div class="alert alert-info mt-4">
+                                <h4 class="text-primary"><i class="fas fa-lightbulb"></i> Core Theory</h4>
+                                <p>Web scraping simulates human browsing behavior programmatically. Think of it as teaching a robot to read websites like humans do - finding specific information, clicking links, and collecting data. For security professionals, it's like having an automated reconnaissance assistant.</p>
+                            </div>
+
+                            <h3 class="text-success mt-4">How Web Scraping Works</h3>
+                            <p>Web scraping involves several technical processes:</p>
+                            <ol>
+                                <li><strong>HTTP Requests:</strong> Send GET/POST requests to web servers</li>
+                                <li><strong>HTML Parsing:</strong> Parse received HTML content using DOM manipulation</li>
+                                <li><strong>Data Extraction:</strong> Locate and extract specific data using selectors</li>
+                                <li><strong>Data Processing:</strong> Clean and structure extracted information</li>
+                                <li><strong>Storage:</strong> Save data in databases, files, or APIs</li>
+                            </ol>
+
+                            <h3 class="text-success mt-4">Technical Architecture</h3>
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-cogs"></i> Web Scraping Components</h5>
+                                </div>
+                                <div class="card-body">
+                                    <dl class="row">
+                                        <dt class="col-sm-3">HTTP Client</dt>
+                                        <dd class="col-sm-9">Handles requests, cookies, sessions, and headers</dd>
+                                        
+                                        <dt class="col-sm-3">HTML Parser</dt>
+                                        <dd class="col-sm-9">BeautifulSoup, lxml for DOM navigation and manipulation</dd>
+                                        
+                                        <dt class="col-sm-3">JavaScript Engine</dt>
+                                        <dd class="col-sm-9">Selenium, Playwright for dynamic content rendering</dd>
+                                        
+                                        <dt class="col-sm-3">Data Pipeline</dt>
+                                        <dd class="col-sm-9">Processing, validation, and storage mechanisms</dd>
+                                    </dl>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Security Applications</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Reconnaissance</h4>
+                                    <ul>
+                                        <li><strong>OSINT Gathering:</strong> Collecting public information</li>
+                                        <li><strong>Social Media Mining:</strong> Extracting user data and relationships</li>
+                                        <li><strong>Technology Stack Detection:</strong> Identifying web technologies</li>
+                                        <li><strong>Employee Information:</strong> LinkedIn and company data</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Brand Monitoring:</strong> Phishing site detection</li>
+                                        <li><strong>Dark Web Monitoring:</strong> Threat actor tracking</li>
+                                        <li><strong>Compliance:</strong> Security posture assessment</li>
+                                        <li><strong>Incident Response:</strong> Evidence collection</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Libraries Section -->
+                        <section id="libraries" class="mb-5">
+                            <h2 class="text-success">Essential Python Libraries</h2>
+                            
+                            <h3 class="text-success mt-4">Core Libraries</h3>
+                            <div class="terminal">
+# Install required libraries
+pip install requests beautifulsoup4 selenium scrapy lxml
+
+# Basic imports
+import requests
+from bs4 import BeautifulSoup
+import json
+import time
+import random
+from urllib.parse import urljoin, urlparse
+                            </div>
+
+                            <h3 class="text-success mt-4">Requests Library</h3>
+                            <div class="terminal">
+import requests
+
+# Basic GET request
+response = requests.get('https://example.com')
+print(response.status_code)
+print(response.text)
+
+# Headers and User-Agent
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+}
+response = requests.get('https://example.com', headers=headers)
+
+# Session handling
+session = requests.Session()
+session.headers.update(headers)
+response = session.get('https://example.com/login')
+                            </div>
+
+                            <h3 class="text-success mt-4">BeautifulSoup Parsing</h3>
+                            <div class="terminal">
+from bs4 import BeautifulSoup
+
+# Parse HTML
+html = requests.get('https://example.com').text
+soup = BeautifulSoup(html, 'html.parser')
+
+# Find elements
+title = soup.find('title').text
+links = soup.find_all('a')
+emails = soup.find_all('a', href=lambda x: x and 'mailto:' in x)
+
+# CSS selectors
+divs = soup.select('div.content')
+forms = soup.select('form[action]')
+                            </div>
+                        </section>
+
+                        <!-- Basic Scraping Section -->
+                        <section id="basic-scraping" class="mb-5">
+                            <h2 class="text-success">Basic Scraping Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">Simple Web Scraper</h3>
+                            <div class="terminal">
+import requests
+from bs4 import BeautifulSoup
+import time
+
+def scrape_website(url):
+    try:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (compatible; SecurityBot/1.0)'
+        }
+        
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+        
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # Extract data
+        title = soup.find('title').text if soup.find('title') else 'No title'
+        links = [a.get('href') for a in soup.find_all('a', href=True)]
+        
+        return {
+            'url': url,
+            'title': title,
+            'links': links,
+            'status_code': response.status_code
+        }
+        
+    except Exception as e:
+        return {'error': str(e)}
+
+# Usage
+result = scrape_website('https://example.com')
+print(result)
+                            </div>
+
+                            <h3 class="text-success mt-4">Form Data Extraction</h3>
+                            <div class="terminal">
+def extract_forms(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    forms = []
+    for form in soup.find_all('form'):
+        form_data = {
+            'action': form.get('action'),
+            'method': form.get('method', 'GET'),
+            'inputs': []
+        }
+        
+        for input_tag in form.find_all('input'):
+            form_data['inputs'].append({
+                'name': input_tag.get('name'),
+                'type': input_tag.get('type'),
+                'value': input_tag.get('value')
+            })
+        
+        forms.append(form_data)
+    
+    return forms
+
+# Security-focused form analysis
+forms = extract_forms('https://target.com/login')
+for form in forms:
+    print(f"Form action: {form['action']}")
+    print(f"Method: {form['method']}")
+    for input_field in form['inputs']:
+        if input_field['type'] == 'password':
+            print("Password field found!")
+                            </div>
+                        </section>
+
+                        <!-- Advanced Section -->
+                        <section id="advanced" class="mb-5">
+                            <h2 class="text-success">Advanced Scraping Techniques</h2>
+                            
+                            <h3 class="text-success mt-4">Handling JavaScript with Selenium</h3>
+                            <div class="terminal">
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+
+# Setup headless browser
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+
+driver = webdriver.Chrome(options=chrome_options)
+
+def scrape_js_content(url):
+    driver.get(url)
+    time.sleep(3)  # Wait for JS to load
+    
+    # Extract dynamic content
+    elements = driver.find_elements(By.CLASS_NAME, 'dynamic-content')
+    content = [elem.text for elem in elements]
+    
+    return content
+
+# Usage
+content = scrape_js_content('https://spa-app.com')
+driver.quit()
+                            </div>
+
+                            <h3 class="text-success mt-4">Rate Limiting and Stealth</h3>
+                            <div class="terminal">
+import random
+import time
+from fake_useragent import UserAgent
+
+class StealthScraper:
+    def __init__(self):
+        self.session = requests.Session()
+        self.ua = UserAgent()
+        
+    def random_delay(self, min_delay=1, max_delay=5):
+        time.sleep(random.uniform(min_delay, max_delay))
+        
+    def get_random_headers(self):
+        return {
+            'User-Agent': self.ua.random,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate',
+            'Connection': 'keep-alive',
+        }
+    
+    def scrape_with_stealth(self, url):
+        self.session.headers.update(self.get_random_headers())
+        self.random_delay()
+        
+        response = self.session.get(url)
+        return response
+
+scraper = StealthScraper()
+                            </div>
+
+                            <h3 class="text-success mt-4">Proxy Rotation</h3>
+                            <div class="terminal">
+import itertools
+
+class ProxyScraper:
+    def __init__(self, proxy_list):
+        self.proxies = itertools.cycle(proxy_list)
+        self.session = requests.Session()
+    
+    def get_next_proxy(self):
+        proxy = next(self.proxies)
+        return {
+            'http': f'http://{proxy}',
+            'https': f'https://{proxy}'
+        }
+    
+    def scrape_with_proxy(self, url):
+        proxy = self.get_next_proxy()
+        try:
+            response = self.session.get(url, proxies=proxy, timeout=10)
+            return response
+        except:
+            # Try next proxy
+            return self.scrape_with_proxy(url)
+
+# Usage
+proxy_list = ['proxy1:8080', 'proxy2:8080', 'proxy3:8080']
+scraper = ProxyScraper(proxy_list)
+                            </div>
+                        </section>
+
+                        <!-- Security Section -->
+                        <section id="security" class="mb-5">
+                            <h2 class="text-success">Security Applications</h2>
+                            
+                            <h3 class="text-success mt-4">OSINT Data Collection</h3>
+                            <div class="terminal">
+import re
+from urllib.parse import urljoin
+
+def collect_osint(target_domain):
+    osint_data = {
+        'emails': set(),
+        'phone_numbers': set(),
+        'social_media': set(),
+        'subdomains': set(),
+        'technologies': set()
+    }
+    
+    # Email regex
+    email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    
+    # Phone regex
+    phone_pattern = r'(\+\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}'
+    
+    def scrape_page(url):
+        try:
+            response = requests.get(url, timeout=10)
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            # Extract emails
+            emails = re.findall(email_pattern, response.text)
+            osint_data['emails'].update(emails)
+            
+            # Extract phone numbers
+            phones = re.findall(phone_pattern, response.text)
+            osint_data['phone_numbers'].update(phones)
+            
+            # Extract social media links
+            for link in soup.find_all('a', href=True):
+                href = link['href']
+                if any(social in href for social in ['facebook', 'twitter', 'linkedin', 'instagram']):
+                    osint_data['social_media'].add(href)
+            
+            return True
+        except:
+            return False
+    
+    # Scrape main domain
+    scrape_page(f'https://{target_domain}')
+    
+    return osint_data
+
+# Usage
+osint = collect_osint('example.com')
+print(f"Found {len(osint['emails'])} emails")
+                            </div>
+
+                            <h3 class="text-success mt-4">Vulnerability Scanner Integration</h3>
+                            <div class="terminal">
+def scan_for_vulnerabilities(url):
+    vulnerabilities = []
+    
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Check for common vulnerabilities
+    
+    # 1. Check for forms without CSRF protection
+    forms = soup.find_all('form')
+    for form in forms:
+        csrf_found = False
+        for input_tag in form.find_all('input'):
+            if 'csrf' in input_tag.get('name', '').lower():
+                csrf_found = True
+                break
+        
+        if not csrf_found:
+            vulnerabilities.append({
+                'type': 'Missing CSRF Token',
+                'form_action': form.get('action'),
+                'severity': 'Medium'
+            })
+    
+    # 2. Check for sensitive information disclosure
+    sensitive_patterns = [
+        r'password\s*[:=]\s*["\'][^"\']+["\']',
+        r'api[_-]?key\s*[:=]\s*["\'][^"\']+["\']',
+        r'secret\s*[:=]\s*["\'][^"\']+["\']'
+    ]
+    
+    for pattern in sensitive_patterns:
+        matches = re.findall(pattern, response.text, re.IGNORECASE)
+        if matches:
+            vulnerabilities.append({
+                'type': 'Information Disclosure',
+                'details': f'Found {len(matches)} sensitive patterns',
+                'severity': 'High'
+            })
+    
+    return vulnerabilities
+
+# Usage
+vulns = scan_for_vulnerabilities('https://target.com')
+for vuln in vulns:
+    print(f"{vuln['type']}: {vuln['severity']}")
+                            </div>
+
+                            <h3 class="text-success mt-4">Threat Intelligence Gathering</h3>
+                            <div class="terminal">
+def collect_threat_intel():
+    threat_feeds = [
+        'https://feodotracker.abuse.ch/downloads/ipblocklist.csv',
+        'https://urlhaus.abuse.ch/downloads/csv/',
+        'https://bazaar.abuse.ch/downloads/csv/'
+    ]
+    
+    threat_data = {
+        'malicious_ips': [],
+        'malicious_urls': [],
+        'malware_hashes': []
+    }
+    
+    for feed_url in threat_feeds:
+        try:
+            response = requests.get(feed_url, timeout=30)
+            if 'ip' in feed_url:
+                # Parse IP feed
+                ips = re.findall(r'\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b', response.text)
+                threat_data['malicious_ips'].extend(ips)
+            
+            elif 'url' in feed_url:
+                # Parse URL feed
+                lines = response.text.split('\n')
+                for line in lines[1:]:  # Skip header
+                    if line.strip():
+                        parts = line.split(',')
+                        if len(parts) > 2:
+                            threat_data['malicious_urls'].append(parts[2])
+            
+        except Exception as e:
+            print(f"Error fetching {feed_url}: {e}")
+    
+    return threat_data
+
+# Usage
+intel = collect_threat_intel()
+print(f"Collected {len(intel['malicious_ips'])} malicious IPs")
+                            </div>
+                        </section>
+
+                        <!-- Ethics Section -->
+                        <section id="ethics" class="mb-5">
+                            <h2 class="text-success">Ethics & Legal Considerations</h2>
+                            
+                            <h3 class="text-success mt-4">Responsible Scraping</h3>
+                            <div class="terminal">
+# Check robots.txt before scraping
+def check_robots_txt(domain):
+    robots_url = f"https://{domain}/robots.txt"
+    try:
+        response = requests.get(robots_url)
+        if response.status_code == 200:
+            print("Robots.txt content:")
+            print(response.text)
+            return response.text
+    except:
+        print("No robots.txt found")
+    return None
+
+# Respect rate limits
+class RespectfulScraper:
+    def __init__(self, delay=1):
+        self.delay = delay
+        self.last_request = 0
+    
+    def scrape(self, url):
+        # Ensure minimum delay between requests
+        elapsed = time.time() - self.last_request
+        if elapsed < self.delay:
+            time.sleep(self.delay - elapsed)
+        
+        self.last_request = time.time()
+        return requests.get(url)
+
+# Usage
+scraper = RespectfulScraper(delay=2)  # 2 second delay
+                            </div>
+
+                            <h3 class="text-success mt-4">Legal Guidelines</h3>
+                            <div class="code-block">
+# Web Scraping Legal Guidelines:
+
+1. PUBLIC DATA ONLY
+   - Only scrape publicly available information
+   - Respect copyright and intellectual property
+
+2. TERMS OF SERVICE
+   - Always read and respect website ToS
+   - Some sites explicitly prohibit scraping
+
+3. RATE LIMITING
+   - Don't overload servers with requests
+   - Implement reasonable delays
+
+4. ROBOTS.TXT
+   - Check and respect robots.txt directives
+   - Follow crawl-delay specifications
+
+5. PERSONAL DATA
+   - Be careful with personal information
+   - Follow GDPR/privacy regulations
+
+6. COMMERCIAL USE
+   - Different rules for commercial scraping
+   - May require explicit permission
+                            </div>
+
+                            <h3 class="text-success mt-4">Best Practices</h3>
+                            <div class="terminal">
+# Scraping best practices implementation
+class EthicalScraper:
+    def __init__(self, domain):
+        self.domain = domain
+        self.session = requests.Session()
+        self.check_robots_txt()
+        
+    def check_robots_txt(self):
+        robots_url = f"https://{self.domain}/robots.txt"
+        try:
+            response = requests.get(robots_url)
+            if "Disallow: /" in response.text:
+                print("Warning: Site disallows all crawling")
+        except:
+            pass
+    
+    def scrape_responsibly(self, url, delay=2):
+        # Add identification
+        headers = {
+            'User-Agent': 'Research Bot 1.0 (contact@researcher.com)',
+            'From': 'researcher@example.com'
+        }
+        
+        time.sleep(delay)  # Respect rate limits
+        
+        try:
+            response = self.session.get(url, headers=headers, timeout=10)
+            return response
+        except requests.exceptions.RequestException as e:
+            print(f"Request failed: {e}")
+            return None
+
+# Usage
+scraper = EthicalScraper('example.com')
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="../networking/firewall-bypassing.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Previous: Firewall Bypassing
+                            </a>
+                            <a href="cryptography.html" class="btn btn-success">
+                                Next: Cryptography <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

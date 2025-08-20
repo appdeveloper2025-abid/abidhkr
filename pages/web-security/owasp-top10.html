@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OWASP Top 10 - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-shield-alt"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="card border-success sticky-top" style="top: 100px;">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0">OWASP Top 10</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#introduction" class="text-success text-decoration-none">Introduction</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#injection" class="text-success text-decoration-none">A01: Injection</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#broken-auth" class="text-success text-decoration-none">A02: Broken Auth</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#sensitive-data" class="text-success text-decoration-none">A03: Sensitive Data</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#xxe" class="text-success text-decoration-none">A04: XXE</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#access-control" class="text-success text-decoration-none">A05: Access Control</a>
+                            </li>
+                            <li class="list-group-item bg-dark border-success">
+                                <a href="#security-config" class="text-success text-decoration-none">A06: Security Config</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fas fa-exclamation-triangle"></i> OWASP Top 10 Web Security Risks</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction" class="mb-5">
+                            <h2 class="text-success">What is OWASP Top 10?</h2>
+                            <p class="lead">The OWASP Top 10 is a standard awareness document for developers and web application security. It represents a broad consensus about the most critical security risks to web applications.</p>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i> <strong>Learning Objective:</strong> Understand the most critical web application security risks and learn how to identify, exploit, and prevent them.
+                            </div>
+
+                            <h3 class="text-success mt-4">OWASP Top 10 2021</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ol>
+                                        <li><strong>A01:2021 - Broken Access Control</strong></li>
+                                        <li><strong>A02:2021 - Cryptographic Failures</strong></li>
+                                        <li><strong>A03:2021 - Injection</strong></li>
+                                        <li><strong>A04:2021 - Insecure Design</strong></li>
+                                        <li><strong>A05:2021 - Security Misconfiguration</strong></li>
+                                    </ol>
+                                </div>
+                                <div class="col-md-6">
+                                    <ol start="6">
+                                        <li><strong>A06:2021 - Vulnerable Components</strong></li>
+                                        <li><strong>A07:2021 - Authentication Failures</strong></li>
+                                        <li><strong>A08:2021 - Software Integrity Failures</strong></li>
+                                        <li><strong>A09:2021 - Logging Failures</strong></li>
+                                        <li><strong>A10:2021 - Server-Side Request Forgery</strong></li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- A01: Broken Access Control -->
+                        <section id="injection" class="mb-5">
+                            <h2 class="text-success">A01:2021 - Broken Access Control</h2>
+                            <p>Access control enforces policy such that users cannot act outside of their intended permissions. Failures typically lead to unauthorized information disclosure, modification, or destruction of all data.</p>
+                            
+                            <h3 class="text-success mt-4">Common Vulnerabilities</h3>
+                            <ul>
+                                <li>Violation of the principle of least privilege</li>
+                                <li>Bypassing access control checks by modifying URLs</li>
+                                <li>Viewing or editing someone else's account</li>
+                                <li>Accessing API with missing access controls</li>
+                                <li>Elevation of privilege (acting as admin without being one)</li>
+                            </ul>
+
+                            <h3 class="text-success mt-4">Example Attack</h3>
+                            <div class="code-block">
+# Vulnerable URL - Direct object reference
+https://bank.com/account?id=12345
+
+# Attacker changes ID to access other accounts
+https://bank.com/account?id=12346
+https://bank.com/account?id=12347
+
+# Admin function accessible to regular users
+https://app.com/admin/deleteUser?id=123
+                            </div>
+
+                            <h3 class="text-success mt-4">Prevention</h3>
+                            <div class="alert alert-success">
+                                <ul class="mb-0">
+                                    <li>Implement proper access control mechanisms</li>
+                                    <li>Deny access by default</li>
+                                    <li>Use server-side enforcement of access controls</li>
+                                    <li>Log access control failures and alert admins</li>
+                                    <li>Rate limit API calls to minimize automated attacks</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- A02: Cryptographic Failures -->
+                        <section id="broken-auth" class="mb-5">
+                            <h2 class="text-success">A02:2021 - Cryptographic Failures</h2>
+                            <p>Previously known as "Sensitive Data Exposure," this category focuses on failures related to cryptography which often leads to sensitive data exposure or system compromise.</p>
+                            
+                            <h3 class="text-success mt-4">Common Issues</h3>
+                            <ul>
+                                <li>Transmitting data in clear text (HTTP, SMTP, FTP)</li>
+                                <li>Using old or weak cryptographic algorithms</li>
+                                <li>Default crypto keys or weak keys</li>
+                                <li>Encryption not enforced (missing HTTP security headers)</li>
+                                <li>Certificate validation not properly verified</li>
+                            </ul>
+
+                            <h3 class="text-success mt-4">Testing for Cryptographic Failures</h3>
+                            <div class="terminal">
+# Check for HTTP instead of HTTPS
+curl -I http://example.com
+
+# Test SSL/TLS configuration
+nmap --script ssl-enum-ciphers -p 443 example.com
+
+# Check for weak ciphers
+sslscan example.com
+
+# Test certificate validation
+openssl s_client -connect example.com:443 -verify_return_error
+                            </div>
+
+                            <h3 class="text-success mt-4">Prevention</h3>
+                            <div class="alert alert-success">
+                                <ul class="mb-0">
+                                    <li>Encrypt all data in transit with secure protocols (TLS)</li>
+                                    <li>Encrypt sensitive data at rest</li>
+                                    <li>Use strong, up-to-date cryptographic algorithms</li>
+                                    <li>Proper key management and rotation</li>
+                                    <li>Disable caching for responses containing sensitive data</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- A03: Injection -->
+                        <section id="sensitive-data" class="mb-5">
+                            <h2 class="text-success">A03:2021 - Injection</h2>
+                            <p>Injection flaws occur when untrusted data is sent to an interpreter as part of a command or query. The attacker's hostile data can trick the interpreter into executing unintended commands.</p>
+                            
+                            <h3 class="text-success mt-4">Types of Injection</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>SQL Injection:</strong> Database queries</li>
+                                        <li><strong>NoSQL Injection:</strong> NoSQL databases</li>
+                                        <li><strong>OS Command Injection:</strong> System commands</li>
+                                        <li><strong>LDAP Injection:</strong> LDAP queries</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>XPath Injection:</strong> XML queries</li>
+                                        <li><strong>HTML Injection:</strong> HTML content</li>
+                                        <li><strong>Code Injection:</strong> Application code</li>
+                                        <li><strong>Template Injection:</strong> Template engines</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">SQL Injection Example</h3>
+                            <div class="code-block">
+# Vulnerable code
+query = "SELECT * FROM users WHERE username = '" + username + "' AND password = '" + password + "'"
+
+# Attack payload
+username: admin' --
+password: anything
+
+# Resulting query
+SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'
+
+# The -- comments out the password check, allowing bypass
+                            </div>
+
+                            <h3 class="text-success mt-4">Testing for Injection</h3>
+                            <div class="terminal">
+# SQL injection testing with sqlmap
+sqlmap -u "http://example.com/login.php" --data="username=admin&password=pass" --dbs
+
+# Manual testing payloads
+' OR '1'='1
+'; DROP TABLE users; --
+' UNION SELECT null,username,password FROM users --
+
+# Command injection testing
+; ls -la
+| whoami
+& ping -c 4 attacker.com
+                            </div>
+
+                            <h3 class="text-success mt-4">Prevention</h3>
+                            <div class="alert alert-success">
+                                <ul class="mb-0">
+                                    <li>Use parameterized queries (prepared statements)</li>
+                                    <li>Input validation and sanitization</li>
+                                    <li>Escape special characters</li>
+                                    <li>Use stored procedures (when properly implemented)</li>
+                                    <li>Principle of least privilege for database accounts</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- A04: Insecure Design -->
+                        <section id="xxe" class="mb-5">
+                            <h2 class="text-success">A04:2021 - Insecure Design</h2>
+                            <p>Insecure design is a broad category representing different weaknesses, expressed as "missing or ineffective control design." It focuses on risks related to design and architectural flaws.</p>
+                            
+                            <h3 class="text-success mt-4">Common Design Flaws</h3>
+                            <ul>
+                                <li>Lack of security controls in the design phase</li>
+                                <li>Missing threat modeling</li>
+                                <li>Insecure design patterns</li>
+                                <li>Insufficient security requirements</li>
+                                <li>Missing security architecture review</li>
+                            </ul>
+
+                            <h3 class="text-success mt-4">Example: Password Recovery Flaw</h3>
+                            <div class="code-block">
+# Insecure design - predictable security questions
+Q: What is your mother's maiden name?
+Q: What was your first pet's name?
+Q: What city were you born in?
+
+# Better design - multiple factors
+- Email verification
+- SMS verification  
+- Time-limited tokens
+- Account lockout after failed attempts
+- Security questions with unpredictable answers
+                            </div>
+
+                            <h3 class="text-success mt-4">Prevention</h3>
+                            <div class="alert alert-success">
+                                <ul class="mb-0">
+                                    <li>Establish secure development lifecycle</li>
+                                    <li>Use threat modeling for critical authentication flows</li>
+                                    <li>Integrate security language and controls into user stories</li>
+                                    <li>Write unit and integration tests to validate critical flows</li>
+                                    <li>Segregate tier layers and implement proper access controls</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- A05: Security Misconfiguration -->
+                        <section id="access-control" class="mb-5">
+                            <h2 class="text-success">A05:2021 - Security Misconfiguration</h2>
+                            <p>Security misconfiguration is commonly a result of insecure default configurations, incomplete configurations, open cloud storage, misconfigured HTTP headers, and verbose error messages.</p>
+                            
+                            <h3 class="text-success mt-4">Common Misconfigurations</h3>
+                            <ul>
+                                <li>Default accounts and passwords still enabled</li>
+                                <li>Directory listing enabled on web servers</li>
+                                <li>Unnecessary features enabled (ports, services, accounts)</li>
+                                <li>Error handling reveals stack traces or sensitive information</li>
+                                <li>Missing security headers</li>
+                                <li>Software is out of date or vulnerable</li>
+                            </ul>
+
+                            <h3 class="text-success mt-4">Testing for Misconfigurations</h3>
+                            <div class="terminal">
+# Check for directory listing
+curl http://example.com/admin/
+curl http://example.com/backup/
+
+# Test for default credentials
+admin:admin
+admin:password
+root:root
+guest:guest
+
+# Check security headers
+curl -I https://example.com
+# Look for missing headers: X-Frame-Options, X-XSS-Protection, etc.
+
+# Scan for unnecessary services
+nmap -sS -O example.com
+                            </div>
+
+                            <h3 class="text-success mt-4">Prevention</h3>
+                            <div class="alert alert-success">
+                                <ul class="mb-0">
+                                    <li>Implement repeatable hardening process</li>
+                                    <li>Remove unnecessary features, components, documentation</li>
+                                    <li>Review and update configurations regularly</li>
+                                    <li>Implement proper error handling</li>
+                                    <li>Use security headers and configurations</li>
+                                    <li>Automated verification of configurations</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- Testing Tools Section -->
+                        <section id="security-config" class="mb-5">
+                            <h2 class="text-success">Testing Tools for OWASP Top 10</h2>
+                            
+                            <h3 class="text-success mt-4">Automated Scanners</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="text-success">Free Tools</h5>
+                                    <ul>
+                                        <li><strong>OWASP ZAP:</strong> Web application scanner</li>
+                                        <li><strong>Nikto:</strong> Web server scanner</li>
+                                        <li><strong>SQLMap:</strong> SQL injection testing</li>
+                                        <li><strong>Burp Suite Community:</strong> Web testing proxy</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="text-success">Commercial Tools</h5>
+                                    <ul>
+                                        <li><strong>Burp Suite Professional:</strong> Advanced web testing</li>
+                                        <li><strong>Acunetix:</strong> Web vulnerability scanner</li>
+                                        <li><strong>Nessus:</strong> Vulnerability assessment</li>
+                                        <li><strong>Veracode:</strong> Static/dynamic analysis</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Manual Testing Checklist</h3>
+                            <div class="code-block">
+# Basic security testing checklist
+□ Test for SQL injection in all input fields
+□ Check for XSS in all user inputs
+□ Verify authentication mechanisms
+□ Test authorization and access controls
+□ Check for sensitive data exposure
+□ Verify HTTPS implementation
+□ Test for CSRF vulnerabilities
+□ Check error handling
+□ Verify security headers
+□ Test file upload functionality
+□ Check for directory traversal
+□ Verify session management
+                            </div>
+
+                            <h3 class="text-success mt-4">Reporting Template</h3>
+                            <div class="code-block">
+# Vulnerability Report Template
+Title: [Vulnerability Name]
+Severity: [Critical/High/Medium/Low]
+OWASP Category: [A01-A10]
+
+Description:
+[Detailed description of the vulnerability]
+
+Steps to Reproduce:
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+
+Impact:
+[What can an attacker achieve]
+
+Recommendation:
+[How to fix the vulnerability]
+
+References:
+[OWASP links, CVE numbers, etc.]
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="../courses.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Back to Courses
+                            </a>
+                            <a href="sql-injection.html" class="btn btn-success">
+                                Next: SQL Injection <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/script.js"></script>
+</body>
+</html>

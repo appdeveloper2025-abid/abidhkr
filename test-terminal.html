@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Test</title>
+    <style>
+        .terminal-container {
+            background-color: #000;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #333;
+        }
+        .terminal-line {
+            margin: 2px 0;
+        }
+        .terminal-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #00ff41;
+            font-family: inherit;
+            font-size: inherit;
+            width: 70%;
+        }
+        .text-warning { color: #ffc107; }
+        .text-white { color: #fff; }
+        .text-primary { color: #007bff; }
+        .text-success { color: #28a745; }
+        .text-danger { color: #dc3545; }
+        .text-info { color: #17a2b8; }
+        .text-muted { color: #6c757d; }
+    </style>
+</head>
+<body>
+    <h1>Terminal Functionality Test</h1>
+    <div id="terminal-test" class="terminal-container"></div>
+    
+    <script src="js/virtual-terminal.js"></script>
+    <script>
+        // Test the terminal
+        try {
+            const terminal = new VirtualTerminal('terminal-test', 'test@kali:~# ');
+            console.log('Terminal initialized successfully');
+        } catch (error) {
+            console.error('Terminal initialization failed:', error);
+            document.getElementById('terminal-test').innerHTML = '<div style="color: red;">Error: ' + error.message + '</div>';
+        }
+    </script>
+</body>
+</html>

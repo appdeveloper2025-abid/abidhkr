@@ -1,0 +1,317 @@
+/* ABID HACKER - Kali Linux Inspired Theme */
+
+:root {
+    --kali-green: #00ff41;
+    --kali-dark: #0d1117;
+    --kali-darker: #010409;
+    --kali-gray: #21262d;
+    --kali-light-gray: #30363d;
+    --text-primary: #f0f6fc;
+    --text-secondary: #8b949e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--kali-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Navigation Styles */
+.navbar-dark {
+    background-color: var(--kali-darker) !important;
+    border-bottom: 2px solid var(--kali-green);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--kali-green) !important;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--kali-green) !important;
+}
+
+.dropdown-menu {
+    background-color: var(--kali-gray);
+    border: 1px solid var(--kali-green);
+}
+
+.dropdown-item {
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: var(--kali-green);
+    color: var(--kali-dark);
+}
+
+/* Hero Carousel Styles */
+.carousel {
+    margin-top: 76px; /* Account for fixed navbar */
+}
+
+.hero-slide {
+    height: 70vh;
+    background: linear-gradient(135deg, var(--kali-darker) 0%, var(--kali-dark) 100%);
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.hero-slide-1::before {
+    background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+}
+
+.hero-slide-2::before {
+    background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+}
+
+.hero-slide-3::before {
+    background-image: url('https://images.unsplash.com/photo-1629654297299-c8506221ca97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+}
+
+.hero-slide .container {
+    position: relative;
+    z-index: 2;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--kali-green);
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+}
+
+.carousel-indicators button {
+    background-color: var(--kali-green);
+}
+
+/* Main Content Styles */
+main {
+    background-color: var(--kali-dark);
+    min-height: 60vh;
+}
+
+.text-success {
+    color: var(--kali-green) !important;
+}
+
+.btn-success {
+    background-color: var(--kali-green);
+    border-color: var(--kali-green);
+    color: var(--kali-dark);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: transparent;
+    border-color: var(--kali-green);
+    color: var(--kali-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+.btn-outline-success {
+    border-color: var(--kali-green);
+    color: var(--kali-green);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-success:hover {
+    background-color: var(--kali-green);
+    border-color: var(--kali-green);
+    color: var(--kali-dark);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+/* Card Styles */
+.card {
+    background-color: var(--kali-gray);
+    border: 1px solid var(--kali-light-gray);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 255, 65, 0.1);
+    border-color: var(--kali-green);
+}
+
+.card-body {
+    color: var(--text-primary);
+}
+
+.card-title {
+    color: var(--kali-green);
+    font-weight: bold;
+}
+
+.border-success {
+    border-color: var(--kali-green) !important;
+}
+
+.card-header.bg-success {
+    background-color: var(--kali-green) !important;
+    color: var(--kali-dark) !important;
+    font-weight: bold;
+}
+
+/* Link Styles */
+a {
+    color: var(--kali-green);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #00cc33;
+}
+
+.text-decoration-none {
+    text-decoration: none !important;
+}
+
+/* List Styles */
+.list-unstyled li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.list-unstyled li::before {
+    content: '▶';
+    color: var(--kali-green);
+    position: absolute;
+    left: 0;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--kali-darker) !important;
+    border-top: 2px solid var(--kali-green);
+}
+
+.text-white-50 {
+    color: var(--text-secondary) !important;
+    transition: color 0.3s ease;
+}
+
+.text-white-50:hover {
+    color: var(--kali-green) !important;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    font-weight: bold;
+}
+
+.display-4 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.lead {
+    color: var(--text-secondary);
+}
+
+/* Icons */
+.fas, .fab {
+    color: var(--kali-green);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-slide {
+        height: 50vh;
+        text-align: center;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+}
+
+/* Animation Effects */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px var(--kali-green); }
+    50% { box-shadow: 0 0 20px var(--kali-green); }
+    100% { box-shadow: 0 0 5px var(--kali-green); }
+}
+
+.btn-success:focus {
+    animation: glow 1s infinite;
+}
+
+/* Code Blocks (for tutorial content) */
+.code-block {
+    background-color: var(--kali-darker);
+    border: 1px solid var(--kali-green);
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+    color: var(--kali-green);
+    overflow-x: auto;
+}
+
+/* Terminal Style */
+.terminal {
+    background-color: #000;
+    color: var(--kali-green);
+    font-family: 'Courier New', monospace;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+}
+
+.terminal::before {
+    content: '$ ';
+    color: var(--kali-green);
+    font-weight: bold;
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--kali-light-gray);
+    border-radius: 50%;
+    border-top-color: var(--kali-green);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

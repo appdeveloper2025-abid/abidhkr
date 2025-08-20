@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Basics for Hackers - ABID HACKER</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fas fa-dragon text-warning"></i> ABID HACKER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container-fluid my-5" style="margin-top: 100px !important;">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h1 class="mb-0"><i class="fab fa-python"></i> Python Basics for Hackers</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Introduction Section -->
+                        <section id="introduction">
+                            <h2 class="text-success">Introduction to Python for Security</h2>
+                            <p>Python is one of the most popular programming languages for cybersecurity professionals. Its simplicity, extensive libraries, and powerful features make it ideal for security tasks.</p>
+                            
+                            <div class="alert alert-info mt-4">
+                                <h4 class="text-primary"><i class="fas fa-lightbulb"></i> Core Theory</h4>
+                                <p>Python's philosophy "readability counts" makes it perfect for security work where code needs to be quickly understood, modified, and shared among team members. Think of Python as the "Swiss Army knife" of programming languages.</p>
+                            </div>
+
+                            <h3 class="text-success mt-4">Python's Role in Cybersecurity</h3>
+                            <p>Python has become the de facto standard in cybersecurity for several reasons:</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-warning">Technical Advantages</h4>
+                                    <ul>
+                                        <li><strong>Interpreted Language:</strong> No compilation needed, faster development</li>
+                                        <li><strong>Dynamic Typing:</strong> Flexible variable types, rapid prototyping</li>
+                                        <li><strong>Rich Standard Library:</strong> Built-in modules for networking, crypto, etc.</li>
+                                        <li><strong>Cross-Platform:</strong> Works on Windows, Linux, macOS</li>
+                                        <li><strong>Memory Management:</strong> Automatic garbage collection</li>
+                                        <li><strong>Rapid Development:</strong> Quick prototyping</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Network Programming:</strong> Built-in socket support</li>
+                                        <li><strong>Automation:</strong> Perfect for repetitive tasks</li>
+                                        <li><strong>Integration:</strong> Works with other tools</li>
+                                        <li><strong>Community:</strong> Large security community</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Setup Section -->
+                        <section id="setup" class="mb-5">
+                            <h2 class="text-success">Setting Up Python Environment</h2>
+                            
+                            <h3 class="text-success mt-4">Installation</h3>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5 class="text-success">Kali Linux</h5>
+                                    <div class="terminal">
+# Python is pre-installed
+python3 --version
+pip3 --version
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="text-success">Ubuntu/Debian</h5>
+                                    <div class="terminal">
+sudo apt update
+sudo apt install python3 python3-pip
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="text-success">Windows</h5>
+                                    <p>Download from <a href="https://python.org" class="text-success">python.org</a></p>
+                                </div>
+                            </div>
+
+                            <h3 class="text-success mt-4">Essential Security Libraries</h3>
+                            <div class="terminal">
+# Install common security libraries
+pip3 install requests scapy nmap python-nmap
+pip3 install beautifulsoup4 paramiko pycryptodome
+pip3 install colorama termcolor rich
+                            </div>
+
+                            <h3 class="text-success mt-4">IDE Setup</h3>
+                            <p>Recommended development environments:</p>
+                            <ul>
+                                <li><strong>VS Code:</strong> Lightweight with Python extensions</li>
+                                <li><strong>PyCharm:</strong> Full-featured Python IDE</li>
+                                <li><strong>Vim/Nano:</strong> Terminal-based editors</li>
+                                <li><strong>Jupyter:</strong> Interactive notebooks</li>
+                            </ul>
+                        </section>
+
+                        <!-- Python Basics Section -->
+                        <section id="basics" class="mb-5">
+                            <h2 class="text-success">Python Fundamentals</h2>
+                            
+                            <h3 class="text-success mt-4">Variables and Data Types</h3>
+                            <div class="code-block">
+# Variables
+target_ip = "192.168.1.1"
+port = 80
+is_open = True
+services = ["http", "https", "ssh"]
+
+# Data types
+print(type(target_ip))    # <class 'str'>
+print(type(port))         # <class 'int'>
+print(type(is_open))      # <class 'bool'>
+print(type(services))     # <class 'list'>
+                            </div>
+
+                            <h3 class="text-success mt-4">Control Structures</h3>
+                            <div class="code-block">
+# Conditional statements
+if port == 80:
+    print("HTTP service detected")
+elif port == 443:
+    print("HTTPS service detected")
+else:
+    print(f"Unknown service on port {port}")
+
+# Loops
+ports = [22, 80, 443, 8080]
+for port in ports:
+    print(f"Scanning port {port}")
+
+# While loop
+attempts = 0
+while attempts < 3:
+    print(f"Login attempt {attempts + 1}")
+    attempts += 1
+                            </div>
+
+                            <h3 class="text-success mt-4">Functions</h3>
+                            <div class="code-block">
+def port_scanner(target, port):
+    """Simple port scanner function"""
+    try:
+        import socket
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(1)
+        result = sock.connect_ex((target, port))
+        sock.close()
+        
+        if result == 0:
+            return True
+        else:
+            return False
+    except Exception as e:
+        return False
+
+# Usage
+if port_scanner("192.168.1.1", 80):
+    print("Port 80 is open")
+else:
+    print("Port 80 is closed")
+                            </div>
+
+                            <h3 class="text-success mt-4">Error Handling</h3>
+                            <div class="code-block">
+import socket
+
+def safe_connect(host, port):
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(5)
+        sock.connect((host, port))
+        print(f"Successfully connected to {host}:{port}")
+        sock.close()
+    except socket.timeout:
+        print(f"Connection to {host}:{port} timed out")
+    except ConnectionRefusedError:
+        print(f"Connection to {host}:{port} refused")
+    except Exception as e:
+        print(f"Error connecting to {host}:{port}: {e}")
+                            </div>
+                        </section>
+
+                        <!-- Network Programming Section -->
+                        <section id="networking" class="mb-5">
+                            <h2 class="text-success">Network Programming Essentials</h2>
+                            
+                            <h3 class="text-success mt-4">Socket Programming</h3>
+                            <div class="code-block">
+import socket
+
+# TCP Client
+def tcp_client(host, port):
+    try:
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client.connect((host, port))
+        
+        # Send data
+        message = "GET / HTTP/1.1\r\nHost: {}\r\n\r\n".format(host)
+        client.send(message.encode())
+        
+        # Receive response
+        response = client.recv(4096)
+        print(response.decode())
+        
+        client.close()
+    except Exception as e:
+        print(f"Error: {e}")
+
+# Usage
+tcp_client("httpbin.org", 80)
+                            </div>
+
+                            <h3 class="text-success mt-4">HTTP Requests</h3>
+                            <div class="code-block">
+import requests
+
+# GET request
+response = requests.get("https://httpbin.org/get")
+print(f"Status Code: {response.status_code}")
+print(f"Headers: {response.headers}")
+print(f"Content: {response.text}")
+
+# POST request with data
+data = {"username": "admin", "password": "password"}
+response = requests.post("https://httpbin.org/post", data=data)
+print(response.json())
+
+# Custom headers
+headers = {"User-Agent": "Mozilla/5.0 (Security Scanner)"}
+response = requests.get("https://httpbin.org/headers", headers=headers)
+print(response.json())
+                            </div>
+
+                            <h3 class="text-success mt-4">Multi-threading for Scanning</h3>
+                            <div class="code-block">
+import threading
+import socket
+
+def scan_port(host, port):
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(1)
+        result = sock.connect_ex((host, port))
+        if result == 0:
+            print(f"Port {port}: Open")
+        sock.close()
+    except:
+        pass
+
+def threaded_scan(host, ports):
+    threads = []
+    for port in ports:
+        thread = threading.Thread(target=scan_port, args=(host, port))
+        threads.append(thread)
+        thread.start()
+    
+    for thread in threads:
+        thread.join()
+
+# Scan common ports
+common_ports = [22, 23, 53, 80, 110, 443, 993, 995]
+threaded_scan("scanme.nmap.org", common_ports)
+                            </div>
+                        </section>
+
+                        <!-- Security Libraries Section -->
+                        <section id="security" class="mb-5">
+                            <h2 class="text-success">Essential Security Libraries</h2>
+                            
+                            <h3 class="text-success mt-4">1. Scapy - Packet Manipulation</h3>
+                            <div class="code-block">
+from scapy.all import *
+
+# Create and send packets
+packet = IP(dst="8.8.8.8")/ICMP()
+response = sr1(packet, timeout=2)
+
+if response:
+    print(f"Received response from {response.src}")
+    response.show()
+
+# Packet sniffing
+def packet_handler(packet):
+    if packet.haslayer(TCP):
+        print(f"TCP Packet: {packet[IP].src}:{packet[TCP].sport} -> {packet[IP].dst}:{packet[TCP].dport}")
+
+# Sniff packets (requires root privileges)
+# sniff(filter="tcp", prn=packet_handler, count=10)
+                            </div>
+
+                            <h3 class="text-success mt-4">2. Paramiko - SSH Client</h3>
+                            <div class="code-block">
+import paramiko
+
+def ssh_connect(hostname, username, password):
+    try:
+        client = paramiko.SSHClient()
+        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        client.connect(hostname, username=username, password=password)
+        
+        # Execute command
+        stdin, stdout, stderr = client.exec_command('whoami')
+        print(stdout.read().decode())
+        
+        client.close()
+        return True
+    except Exception as e:
+        print(f"SSH connection failed: {e}")
+        return False
+
+# Usage (for authorized testing only)
+# ssh_connect("192.168.1.100", "admin", "password")
+                            </div>
+
+                            <h3 class="text-success mt-4">3. Cryptography</h3>
+                            <div class="code-block">
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
+import hashlib
+
+# Hash functions
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
+
+# AES Encryption
+def encrypt_data(data, key):
+    cipher = AES.new(key, AES.MODE_EAX)
+    ciphertext, tag = cipher.encrypt_and_digest(data.encode())
+    return cipher.nonce, ciphertext, tag
+
+def decrypt_data(nonce, ciphertext, tag, key):
+    cipher = AES.new(key, AES.MODE_EAX, nonce=nonce)
+    plaintext = cipher.decrypt_and_verify(ciphertext, tag)
+    return plaintext.decode()
+
+# Example usage
+key = get_random_bytes(16)
+nonce, ciphertext, tag = encrypt_data("Secret message", key)
+decrypted = decrypt_data(nonce, ciphertext, tag, key)
+print(f"Decrypted: {decrypted}")
+                            </div>
+                        </section>
+
+                        <!-- Practical Examples Section -->
+                        <section id="examples" class="mb-5">
+                            <h2 class="text-success">Practical Security Scripts</h2>
+                            
+                            <h3 class="text-success mt-4">1. Simple Port Scanner</h3>
+                            <div class="code-block">
+#!/usr/bin/env python3
+import socket
+import sys
+from datetime import datetime
+
+def scan_port(target, port):
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(1)
+        result = sock.connect_ex((target, port))
+        sock.close()
+        return result == 0
+    except socket.gaierror:
+        return False
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: python3 scanner.py <target>")
+        sys.exit(1)
+    
+    target = sys.argv[1]
+    print(f"Starting port scan on {target}")
+    print(f"Time started: {datetime.now()}")
+    print("-" * 50)
+    
+    try:
+        for port in range(1, 1001):
+            if scan_port(target, port):
+                print(f"Port {port}: Open")
+    except KeyboardInterrupt:
+        print("\nScan interrupted by user")
+        sys.exit(1)
+    
+    print(f"Scan completed at {datetime.now()}")
+
+if __name__ == "__main__":
+    main()
+                            </div>
+
+                            <h3 class="text-success mt-4">2. Web Directory Bruteforcer</h3>
+                            <div class="code-block">
+#!/usr/bin/env python3
+import requests
+import sys
+
+def check_directory(url, directory):
+    try:
+        full_url = f"{url}/{directory}"
+        response = requests.get(full_url, timeout=5)
+        return response.status_code, len(response.content)
+    except:
+        return None, None
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: python3 dirbrute.py <url>")
+        sys.exit(1)
+    
+    target_url = sys.argv[1]
+    
+    # Common directories to check
+    directories = [
+        "admin", "administrator", "login", "wp-admin",
+        "phpmyadmin", "backup", "config", "test",
+        "dev", "staging", "api", "uploads"
+    ]
+    
+    print(f"Directory bruteforcing: {target_url}")
+    print("-" * 50)
+    
+    for directory in directories:
+        status_code, content_length = check_directory(target_url, directory)
+        if status_code:
+            if status_code == 200:
+                print(f"[FOUND] /{directory} - Status: {status_code}, Size: {content_length}")
+            elif status_code in [301, 302]:
+                print(f"[REDIRECT] /{directory} - Status: {status_code}")
+
+if __name__ == "__main__":
+    main()
+                            </div>
+
+                            <h3 class="text-success mt-4">3. Password Generator</h3>
+                            <div class="code-block">
+#!/usr/bin/env python3
+import random
+import string
+import secrets
+
+def generate_password(length=12, include_symbols=True):
+    """Generate a secure random password"""
+    characters = string.ascii_letters + string.digits
+    if include_symbols:
+        characters += "!@#$%^&*"
+    
+    password = ''.join(secrets.choice(characters) for _ in range(length))
+    return password
+
+def generate_wordlist(base_word, variations=100):
+    """Generate password variations for testing"""
+    wordlist = []
+    
+    # Common variations
+    for i in range(variations):
+        variation = base_word
+        
+        # Add numbers
+        if random.choice([True, False]):
+            variation += str(random.randint(0, 999))
+        
+        # Capitalize
+        if random.choice([True, False]):
+            variation = variation.capitalize()
+        
+        # Add symbols
+        if random.choice([True, False]):
+            variation += random.choice("!@#$%")
+        
+        wordlist.append(variation)
+    
+    return list(set(wordlist))  # Remove duplicates
+
+# Examples
+print("Secure passwords:")
+for _ in range(5):
+    print(generate_password(16))
+
+print("\nPassword variations for 'admin':")
+variations = generate_wordlist("admin", 10)
+for var in variations[:10]:
+    print(var)
+                            </div>
+                        </section>
+
+                        <!-- Navigation -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <a href="../courses.html" class="btn btn-outline-success">
+                                <i class="fas fa-arrow-left"></i> Back to Courses
+                            </a>
+                            <a href="network-programming.html" class="btn btn-success">
+                                Next: Network Programming <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Python Editor Sidebar -->
+            <div class="col-lg-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <div id="sidebar-python-editor">
+                        <!-- Python editor content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ABID HACKER. Created by Abid Mehmood - Professional Web Designer</p>
+                <p>Email: abidbusiness@gmail.com | Phone: 03029382306</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JS - Load virtual-terminal first -->
+    <script src="../../js/virtual-terminal.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/sidebar-python-editor.js"></script>
+</body>
+</html>
